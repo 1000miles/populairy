@@ -4,11 +4,11 @@ This project is based on the [Women Tech Makers Berlin - JavaScript Crash Course
 
 ## Homework for week 1
 
-- [ ] 1) Create a GitHub account
-- [ ] 2) Come up with your very own project idea that you will build throughout the course (you can change this afterwards)
-- [ ] 3) Create at least 2 different classes and several instances for these classes for your projects
-- [ ] 4) create at least 3 different interactions between said classes
-- [ ] 5) Publish your code as an `index.js` file to your GitHub account
+- [x] 1) Create a GitHub account
+- [x] 2) Come up with your very own project idea that you will build throughout the course (you can change this afterwards)
+- [x] 3) Create at least 2 different classes and several instances for these classes for your projects
+- [x] 4) create at least 3 different interactions between said classes
+- [x] 5) Publish your code as an `index.js` file to your GitHub account
 
 **Video: [Women Techmakers Berlin JS Crash Course Vol 3 Lecture 1 — JavaScript & ES6 Fundamentals](https://www.youtube.com/watch?v=xCr2v8I4x-I)**
 
