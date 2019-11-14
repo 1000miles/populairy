@@ -15,7 +15,7 @@ When runnning a pop-up usually event hosts face challenges on:
 - Venue Search => send inquiries, ask friends and partners, book venues
 - Equipment / Products => build partnerships with suppliers to rent, buy or organize equipment, etc.
 - Logistics => plan staff, delivery and pick-up
-- Networking => research, handle feeback, outreach
+- Networking => research, handle feedback, outreach
 - Marketing => word-of-mouth, social media, mailing lists, kitchen table
 
 ### Event types:

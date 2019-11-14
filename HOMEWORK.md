@@ -1,6 +1,6 @@
 # Homeworks
 
-This project is based on the [Women Tech Makers Berlin - JavaScript Crash Course 2019](git@github.com:WTMBerlin/jscc2019.git)
+This project is based on the [Women Tech Makers Berlin - JavaScript Crash Course 2019](https://github.com/WTMBerlin/jscc2019)
 
 ## Homework for week 1
 
