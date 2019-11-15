@@ -1,8 +1,8 @@
 # Populairy - Pop-up Event Organizer
 
->  This app is at the beginning and constantly a work-in-progress.
+> This app is at the beginning and constantly a work-in-progress.
 
-🍿🥒🍅🥕🥮🍕🍰🥤🥢🥣🍱🌮🥐🥂📚💆🏽‍♀️
+🍿🥒🍅🥕🥮🍕🍰🥤🥢🥣🍱🌮🥐🥂📚🍵
 
 **Populairy** is a pop-up event organizer to reduce the underlying work of pop-ups.
 

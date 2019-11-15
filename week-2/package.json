@@ -1,16 +1,16 @@
 {
-  "name": "popitairy",
+  "name": "Populairy",
   "version": "1.0.0",
-  "description": "Popitairy is a pop-up event organizer",
+  "description": "Populairy is a pop-up event organizer",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
+    "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1000miles/popitairy.git"
+    "url": "git+https://github.com/1000miles/populairy.git"
   },
   "keywords": [
     "nodejs",
@@ -23,13 +23,13 @@
   "author": "Thuy Le",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/1000miles/popitairy/issues"
+    "url": "https://github.com/1000miles/populairy/issues"
   },
-  "homepage": "https://github.com/1000miles/popitairy#readme",
+  "homepage": "https://github.com/1000miles/populairy#readme",
   "dependencies": {
     "chalk": "^3.0.0"
   },
   "devDependencies": {
-    "prettier": "1.19.1"
+    "prettier": "^1.19.1"
   }
 }

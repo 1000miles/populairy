@@ -25,21 +25,21 @@ This project is based on the [Women Tech Makers Berlin - JavaScript Crash Course
 
 ## Homework for week 3
 
-- [ ] 1) Add base-service.js to your application
-- [ ] 2) Ensure your database operations are asynchronous
-- [ ] 3) Add at least one service for one of your models to abstract away add / find / findAll / delete operations
-- [ ] 4) Make use of these service(s) in your index.js
+- [ ] 1. Add base-service.js to your application
+- [ ] 2. Ensure your database operations are asynchronous
+- [ ] 3. Add at least one service for one of your models to abstract away add / find / findAll / delete operations
+- [ ] 4. Make use of these service(s) in your index.js
 
 **Video: [Women Techmakers Berlin JS Crash Course Vol 3 Lecture 3 — Promises and Async Programming](https://www.youtube.com/watch?v=pMXeY7Vz1no)**
 
 ## Homework for week 4
 
-- [ ] 1) Extend your NodeJS application by implemeting a web server using Express.js framework
-- [ ] 2) Expose the capabilities of your application through URLs
-- [ ] 3) Make sure to add as many URLs as possible for creating / fetching / deleting resources
-- [ ] 4) Add at least one URL which does a complex operation. Examples: Make a user attend a meetup, make a user comment on a movie
-- [ ] 5) Add layout.pug file in your application under views folder
-- [ ] 6) Display the data in the browser using pug files. Extend your pug templates from layout.pug.
+- [ ] 1. Extend your NodeJS application by implemeting a web server using Express.js framework
+- [ ] 2. Expose the capabilities of your application through URLs
+- [ ] 3. Make sure to add as many URLs as possible for creating / fetching / deleting resources
+- [ ] 4. Add at least one URL which does a complex operation. Examples: Make a user attend a meetup, make a user comment on a movie
+- [ ] 5. Add layout.pug file in your application under views folder
+- [ ] 6. Display the data in the browser using pug files. Extend your pug templates from layout.pug.
 
 **Video: [Women Techmakers Berlin JS Crash Course Vol 3 Lecture 4 — HTTP APIs with Express.js](https://www.youtube.com/watch?v=ISjAVIy2VEA)**
 

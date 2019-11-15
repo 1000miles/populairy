@@ -1,1 +1,7 @@
-{"hostName":"Nilhan Oezdemir","email":"nilhan@example.org","phoneNumber":"+42 123456789"}
+{
+  "name": "Nilhan Oezdemir",
+  "email": "nilhan@example.org",
+  "phoneNumber": "+42 123456789",
+  "role": "host",
+  "popup": "Barber Shop Vol. 10"
+}

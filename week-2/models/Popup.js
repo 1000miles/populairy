@@ -1,14 +1,18 @@
-const Chalk = require("chalk");
+const Chalk = require("chalk")
 
 module.exports = class Popup {
   constructor(category, title, host, space, date) {
-    this.category = category;
-    this.title = title;
-    this.space = space;
-    this.host = host;
-    this.date = date;
-    this.guests = [];
-    this.hosts = [];
+    this.category = category
+    this.title = title
+    this.host = host
+    this.space = space
+    this.date = date
+    this.attendees = []
+  }
+
+  printAttendeesNames() {
+    // this.attendees.push(printHost, printGuest)
+    console.log(`[printAttendeesNames]`, this.attendees)
   }
 
   getPopupInfo() {
@@ -22,13 +26,10 @@ module.exports = class Popup {
       `at`,
       Chalk.red(this.space),
       `.`,
-      `It currently has ${this.guests.length} guests attending.`
-    );
+      `It currently has ${this.attendees.length} people attending.`
+    )
   }
+}
 
-  printAttendeesNames() {
-    this.guests.forEach(printGuest);
-  }
-};
-
-printGuest = guest => console.log(guest.firstName, guest.lastName, guest.email);
+printGuest = (guest) => console.log(guest.name, guest.email)
+printHost = (host) => console.log(host.name, host.email, host.phoneNumber)
