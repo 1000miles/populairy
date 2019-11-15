@@ -26,15 +26,15 @@ guest2.getGuestInfo()
 let guestList = []
 guestList.push(guest1, guest2)
 
-// console.log(guestList)
-// barberShop.getPopupInfo()
-// barberShop.printAttendeesNames()
+console.log(guestList)
+barberShop.getPopupInfo()
+barberShop.printAttendeesNames()
 
 /*
  * Database
  */
 
-// Database.save(filename, data)
+Database.save(filename, data)
 Database.save("./database/host-data.json", host)
 Database.save("./database/guests-data.json", guestList)
 Database.save("./database/popup-data.json", barberShop)

@@ -11,8 +11,23 @@ module.exports = class Popup {
   }
 
   printAttendeesNames() {
-    this.attendees.push(printHost, printGuest)
+    // this.attendees.push(printHost, printGuest)
     console.log(`[printAttendeesNames]`, this.attendees)
+  }
+
+  getPopupInfo() {
+    console.log(
+      `The pop-up event`,
+      Chalk.bgMagenta.white(this.title),
+      `is hosted by`,
+      Chalk.blue(this.host),
+      `and will take place on`,
+      Chalk.green(this.date),
+      `at`,
+      Chalk.red(this.space),
+      `.`,
+      `It currently has ${this.attendees.length} people attending.`
+    )
 	}
 
 	static create({
