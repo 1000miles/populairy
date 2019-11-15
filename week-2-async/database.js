@@ -1,14 +1,23 @@
 const fs = require('fs')
 
-// ! FIXME: TypeError [ERR_INVALID_CALLBACK]: Callback must be a function. Received undefined
-const save = function(filename, data) {
-  fs.writeFile(filename, JSON.stringify(data))
+// FIXME: database-new.json => undefined
+const save = function (filename, data) {
+	console.log(`DATA:`, data)
+	fs.writeFile(filename, JSON.stringify(data), (err, data) => {
+		if (err) throw err
+		console.log(data)
+	})
 }
 
-const load = function(filename, data) {
-  fs.readFile(filename, JSON.stringify(data), (err, file) => {
-		if (err) throw err;
-		console.log(`Loading file...`, JSON.parse(file))
+const load = function(filename, handler) {
+  fs.readFile(filename, 'utf8', (err, file) => {
+    if (err) {
+      console.log('there is a read error', err)
+      handler(err)
+      return
+    }
+
+    handler(null, JSON.parse(file));
   })
 }
 
