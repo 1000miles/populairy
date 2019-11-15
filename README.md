@@ -1,10 +1,10 @@
-# Popitairy - Pop-up Event Organizer
+# Populairy - Pop-up Event Organizer
 
 >  This app is at the beginning and constantly a work-in-progress.
 
-🍿🥒🍅🥕🥮🍕🍰🥤🥢🥣🍱🌮🥐🥂
+🍿🥒🍅🥕🥮🍕🍰🥤🥢🥣🍱🌮🥐🥂📚💆🏽‍♀️
 
-**Popitairy** is a pop-up event organizer to reduce the underlying work of pop-ups.
+**Populairy** is a pop-up event organizer to reduce the underlying work of pop-ups.
 
 ## Background
 
@@ -23,9 +23,12 @@ When runnning a pop-up usually event hosts face challenges on:
 Examples
 
 - Barber Shop
+- Book Store
 - Drinks
 - Flash Tattoo
 - Food
+- Massage
+- Tarot Reading
 - Misc
 
 ## Features

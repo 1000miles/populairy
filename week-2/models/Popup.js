@@ -1,23 +1,34 @@
-const Chalk = require('chalk');
+const Chalk = require("chalk");
 
 module.exports = class Popup {
-	constructor(category, title, space, host, date) {
-		this.category = category
-		this.title = title
-		this.space = space
-		this.host = host
-		this.date = date
-		this.guests = []
-	}
+  constructor(category, title, host, space, date) {
+    this.category = category;
+    this.title = title;
+    this.space = space;
+    this.host = host;
+    this.date = date;
+    this.guests = [];
+    this.hosts = [];
+  }
 
-	getPopupInfo() {
-		console.log(`The event`, Chalk.bgMagenta.white(this.title), `is hosted by ${this.host}`, `and will take place on`, Chalk.green(this.date), `at`, Chalk.red(this.space), `and has currently ${this.guests.length} guests attending.`);
-	}
+  getPopupInfo() {
+    console.log(
+      `The pop-up event`,
+      Chalk.bgMagenta.white(this.title),
+      `is hosted by`,
+      Chalk.blue(this.host),
+      `and will take place on`,
+      Chalk.green(this.date),
+      `at`,
+      Chalk.red(this.space),
+      `.`,
+      `It currently has ${this.guests.length} guests attending.`
+    );
+  }
 
-	printGuestNames() {
-		this.guests.forEach(printName);
-	}
-}
+  printAttendeesNames() {
+    this.guests.forEach(printGuest);
+  }
+};
 
-printName = guest => console.log(guest.firstName, guest.lastName, guest.email);
-
+printGuest = guest => console.log(guest.firstName, guest.lastName, guest.email);
