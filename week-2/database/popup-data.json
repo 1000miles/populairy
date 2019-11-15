@@ -1,0 +1,28 @@
+{
+  "category": "barber",
+  "title": "Barber Shop Vol. 10",
+  "host": "Nilhan Oezdemir",
+  "space": "co.up Community Space",
+  "date": "2019-12-30T18:00:00.000Z",
+  "attendees": [
+    {
+      "name": "Nilhan Oezdemir",
+      "email": "nilhan@example.org",
+      "phoneNumber": "+42 123456789",
+      "role": "host",
+      "popup": "Barber Shop Vol. 10"
+    },
+    {
+      "name": "Kim Nolan",
+      "email": "kim@example.org",
+      "role": "guest",
+      "popup": "Barber Shop Vol. 10"
+    },
+    {
+      "name": "Johnny Crash",
+      "email": "johnny@example.org",
+      "role": "guest",
+      "popup": "Barber Shop Vol. 10"
+    }
+  ]
+}

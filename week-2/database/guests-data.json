@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Kim Nolan",
+    "email": "kim@example.org",
+    "role": "guest",
+    "popup": "Barber Shop Vol. 10"
+  },
+  {
+    "name": "Johnny Crash",
+    "email": "johnny@example.org",
+    "role": "guest",
+    "popup": "Barber Shop Vol. 10"
+  }
+]
