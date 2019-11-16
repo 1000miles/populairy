@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Georgia Toggendorf",
+    "firstName": "Georgia",
+    "lastName": "Toggendorf",
+    "email": "georgia@example.org",
+    "phoneNumber": "+33 124 566 63 64",
+    "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
+    "role": "host",
+    "id": 1
+  }
+]

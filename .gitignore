@@ -2,7 +2,7 @@
 node_modules/
 
 # Weeks
-week-2/node_modules
+**/node_modules
 
 # Files to ignore
 .env
