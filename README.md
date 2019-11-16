@@ -39,3 +39,7 @@ Examples
 - [ ] Emailing
 - [ ] Newsletter
 - [ ] Solidarity pot (Buy 2 and donate 1)
+
+## Roadmap
+
+- [Barber Shop](docs/BARBERSHOP.md)
