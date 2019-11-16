@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 #{events.length} Event(s) with #{popups.length} Pop-up(s) listed and counting...
+  h2 Event Details:
+  each event in events
+    h3 Theme: #{event.name}
+    p Location: #{event.location}
+    p Date: #{event.date}
+    p Space Host: #{event.host}
+    h3 Pop-ups:
+    each popup in popups
+      li #{popup.title} performed by #{popup.host}
+    p Organizers:
+    each host in hosts
+      li #{host.firstName} #{host.lastName}
+    p Guests:
+    each guest in guests
+      li #{guest.firstName} #{guest.lastName}
