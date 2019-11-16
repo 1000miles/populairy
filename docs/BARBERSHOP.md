@@ -5,6 +5,7 @@
 ### Classes
 
 - [ ] Guest
+- [ ] Event
 - [ ] Host
 - [ ] Pop-up (Event)
 
@@ -24,6 +25,7 @@ At this stage all events are public.
 ## Classes
 
 - [ ] Guest
+- [ ] Event
 - [ ] Host
 - [ ] Pop-up (Event)
 - [ ] Task
@@ -46,6 +48,7 @@ At this stage only host can create a task.
 ## Classes
 
 - [ ] Guest
+- [ ] Event
 - [ ] Host
 - [ ] Pop-up (Event)
 - [ ] Task
@@ -65,6 +68,7 @@ At this stage only host can create an addressbook.
 ## Classes
 
 - [ ] Guest
+- [ ] Event
 - [ ] Host
 - [ ] Pop-up (Event)
 - [ ] Task
@@ -84,6 +88,7 @@ At this stage only host can create a calendar event.
 ## Classes
 
 - [ ] Guest
+- [ ] Event
 - [ ] Host
 - [ ] Pop-up (Event)
 - [ ] Task
