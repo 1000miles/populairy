@@ -43,3 +43,42 @@ Examples
 ## Roadmap
 
 - [Barber Shop](docs/BARBERSHOP.md)
+
+## Getting started
+
+1. Select the week you want to setup, e.g. `week-4` and change into that directory.
+
+```shell
+$ cd week-4/
+```
+
+2. Install all npm packages
+
+```shell
+$ npm install
+```
+
+2. Copy `env.SAMPLE` and rename it to `.env` and make sure the `.env` file is listed in `.gitignore`.
+
+```shell
+$ cp env.SAMPLE .env
+```
+
+3. Start up the server:
+
+```shell
+# from the root in dev mode with nodemon
+$ npm run dev
+
+# Dependent on your .env configs for NODE_ENV
+$ npm start
+```
+
+4. Use prettier to format your code:
+
+```shell
+$ npm run format
+
+# Prettify .pug files
+$ ./node_modules/.bin/prettier --write "**/*.pug"
+```
