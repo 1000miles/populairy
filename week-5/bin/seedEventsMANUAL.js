@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const Event = require('../models/EventNew');
-const Popup = require('../models/PopupNew');
-const Host = require('../models/HostNew');
-const Guest = require('../models/GuestNew');
+const Event = require('../models/Event');
+const Popup = require('../models/Popup');
+const Host = require('../models/Host');
+const Guest = require('../models/Guest');
 
 const EventService = require('../services/event-service');
 const PopupService = require('../services/popup-service');

@@ -1,8 +1,12 @@
 require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const pug = require('pug');
+
+require('pug');
+require('./mongo-connection');
+require('./package.json').name;
 
 const indexRoutes = require('./routes/index-routes');
 const eventRoutes = require('./routes/event-routes');

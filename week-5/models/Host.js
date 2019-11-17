@@ -12,12 +12,12 @@ module.exports = class Host {
 
   attend(popup) {
     this.popups.push(popup.title);
-    popup.attendees.push(this);
+    popup.organizers.push(this);
   }
 
   getHostInfo() {
     console.log(
-      `The ${this.role} ${this.name} attends ${this.popups} and can be contacted via ${this.email} or ${this.phoneNumber}.`,
+      `The ${this.role} ${this.name} organizes ${this.popups} and can be contacted via ${this.email} or ${this.phoneNumber}.`,
     );
   }
 
