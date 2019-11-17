@@ -5,6 +5,7 @@ const PopupService = require('./../services/popup-service');
 const HostService = require('./../services/host-service');
 const GuestService = require('./../services/guest-service');
 
+// GET `/popup/all`
 router.get('/all', async (req, res) => {
   const popups = await PopupService.findAll();
   const guests = await GuestService.findAll();
@@ -13,18 +14,21 @@ router.get('/all', async (req, res) => {
   res.render('popup', { popups, guests, hosts });
 });
 
+// GET `/popup/:id`
 router.get('/:id', async (req, res) => {
   const popup = await PopupService.find(req.params.id);
   res.send(popup);
 });
 
+// POST `/popup` w/ req.body
 router.post('/', async (req, res) => {
-  const popup = await PopupService.find(req.params.id);
+  const popup = await PopupService.add(req.body);
   res.send(popup);
 });
 
+// DELETE `/popup/:id`
 router.delete('/:id', async (req, res) => {
-  const popup = await PopupService.find(req.params.id);
+  const popup = await PopupService.del(req.params.id);
   res.send(popup);
 });
 
