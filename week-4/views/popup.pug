@@ -1,16 +1,15 @@
 extends layout
 
 block content
-	h1 #{popups.length} Pop-up(s) listed and counting...
-  h2 Pop-up Details:
+	h1 #[u #{popups.length}] Pop-up(s) listed and counting...
+	each event in events
+		h2 Pop-ups @ #{event.name}:
 	each popup in popups
-		li #{popup.title} performed by #{popup.host}
-		p Organizers:
-		each host in hosts
-			li #{host.firstName} #{host.lastName}
-			li #{host.email}
-			li #{host.phoneNumber}
-		p Guests:
-		each guest in guests
-			li #{guest.firstName} #{guest.lastName}
-			li #{host.email}
+		li #[strong #{popup.title}] performed by #[em #{popup.host}]
+	p Organizer:
+	each host in hosts
+		li Name: #{host.firstName} #{host.lastName}, 
+			| Email: #{host.email}, Phone: #{host.phoneNumber}
+	p Guests:
+	each guest in guests
+		li Name: #{guest.firstName} #{guest.lastName}, Email: #{guest.email}

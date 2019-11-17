@@ -9,7 +9,6 @@ module.exports = class Popup {
     date,
     space,
     attendees = [],
-    popups = [],
     id,
   ) {
     this.category = category;
@@ -18,8 +17,7 @@ module.exports = class Popup {
     this.host = host;
     this.space = space;
     this.date = date;
-    this.attendees = attendees;
-    this.popups = popups;
+		this.attendees = attendees;
     this.id = id;
   }
 
@@ -47,7 +45,6 @@ module.exports = class Popup {
     date,
     space,
     attendees,
-    popups,
     id,
   }) {
     return new Popup(
@@ -58,7 +55,6 @@ module.exports = class Popup {
       date,
       space,
       attendees,
-      popups,
       id,
     );
   }
