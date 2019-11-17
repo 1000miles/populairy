@@ -1,7 +1,9 @@
 {
-  "printWidth": 85,
-  "arrowParens": "always",
+  "printWidth": 80,
+  "arrowParens": "avoid",
+  "jsxBracketSameLine": false,
+  "endOfLine": "lf",
   "semi": true,
-  "tabWidth": 2,
-	"singleQuote": true
+  "singleQuote": true,
+  "trailingComma": "all"
 }
