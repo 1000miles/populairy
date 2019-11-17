@@ -11,9 +11,10 @@ module.exports = class Event {
     this.id = id;
   }
 
-  hasPopups(popup) {
-    this.popups.push(popup.title);
-    popup.popups.push(this.title);
+	hasPopups(popup) {
+		popup = popup.title
+    this.popups.push(popup);
+    popup.popups.push(this);
   }
 
   getEventInfo() {

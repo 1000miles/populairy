@@ -1,19 +1,20 @@
 const Chalk = require('chalk');
 
 module.exports = class Event {
-  constructor(type, name, location, date, host, popups = [], id) {
+  constructor(type, name, location, date, host, popups = [], organizers = [], id) {
     this.type = type;
     this.name = name;
     this.location = location;
     this.date = date;
     this.host = host;
-    this.popups = popups;
+		this.popups = popups;
+		this.organizers = organizers;
     this.id = id;
   }
 
   hasPopups(popup) {
     this.popups.push(popup.title);
-    popup.popups.push(this.title);
+    popup.organizers.push(this.host);
   }
 
   getEventInfo() {
@@ -31,7 +32,7 @@ module.exports = class Event {
     );
   }
 
-  static create({ type, name, location, date, host, popups, id }) {
-    return new Event(type, name, location, date, host, popups, id);
+  static create({ type, name, location, date, host, popups, organizers, id }) {
+    return new Event(type, name, location, date, host, popups, organizers, id);
   }
 };

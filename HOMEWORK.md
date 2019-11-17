@@ -37,9 +37,9 @@ This project is based on the [Women Tech Makers Berlin - JavaScript Crash Course
 - [x] 1. Extend your NodeJS application by implemeting a web server using Express.js framework
 - [x] 2. Expose the capabilities of your application through URLs
 - [x] 3. Make sure to add as many URLs as possible for creating / fetching / deleting resources
-- [ ] 4. Add at least one URL which does a complex operation. Examples: Make a user attend a meetup, make a user comment on a movie
-- [ ] 5. Add layout.pug file in your application under views folder
-- [ ] 6. Display the data in the browser using pug files. Extend your pug templates from layout.pug.
+- [x] 4. Add at least one URL which does a complex operation. Examples: Make a user attend a meetup, make a user comment on a movie
+- [x] 5. Add layout.pug file in your application under views folder
+- [x] 6. Display the data in the browser using pug files. Extend your pug templates from layout.pug.
 
 **Video: [Women Techmakers Berlin JS Crash Course Vol 3 Lecture 4 — HTTP APIs with Express.js](https://www.youtube.com/watch?v=ISjAVIy2VEA)**
 
