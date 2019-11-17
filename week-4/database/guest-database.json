@@ -4,9 +4,7 @@
     "lastName": "Deyin",
     "name": "Riley Deyin",
     "email": "rileyd@example.org",
-    "popups": [
-      "Barber Shop Vol. 11"
-    ],
+    "popups": ["Barber Shop Vol. 11"],
     "role": "guest",
     "id": 1
   },
@@ -15,9 +13,7 @@
     "lastName": "Watson",
     "name": "Jami Watson",
     "email": "jamiw@example.org",
-    "popups": [
-      "Barber Shop Vol. 11"
-    ],
+    "popups": ["Barber Shop Vol. 11"],
     "role": "guest",
     "id": 2
   },
@@ -26,9 +22,7 @@
     "lastName": "Yourg",
     "name": "Mhisa Yourg",
     "email": "mhisaw@example.org",
-    "popups": [
-      "Barber Shop Vol. 11"
-    ],
+    "popups": ["Barber Shop Vol. 11"],
     "role": "guest",
     "id": 3
   },
@@ -37,9 +31,7 @@
     "lastName": "Lala",
     "name": "Fabienne Lala",
     "email": "fabienne@example.org",
-    "popups": [
-      "Pony and Clyde #23"
-    ],
+    "popups": ["Pony and Clyde #23"],
     "role": "guest",
     "id": 4
   },
@@ -48,9 +40,7 @@
     "lastName": "Deyin",
     "name": "Riley Deyin",
     "email": "rileyd@example.org",
-    "popups": [
-      "Barber Shop Vol. 11"
-    ],
+    "popups": ["Barber Shop Vol. 11"],
     "role": "guest",
     "id": 5
   },
@@ -59,9 +49,7 @@
     "lastName": "Watson",
     "name": "Jami Watson",
     "email": "jamiw@example.org",
-    "popups": [
-      "Barber Shop Vol. 11"
-    ],
+    "popups": ["Barber Shop Vol. 11"],
     "role": "guest",
     "id": 6
   },
@@ -70,9 +58,7 @@
     "lastName": "Yourg",
     "name": "Mhisa Yourg",
     "email": "mhisaw@example.org",
-    "popups": [
-      "Barber Shop Vol. 11"
-    ],
+    "popups": ["Barber Shop Vol. 11"],
     "role": "guest",
     "id": 7
   },
@@ -81,9 +67,7 @@
     "lastName": "Lala",
     "name": "Fabienne Lala",
     "email": "fabienne@example.org",
-    "popups": [
-      "Pony and Clyde #23"
-    ],
+    "popups": ["Pony and Clyde #23"],
     "role": "guest",
     "id": 8
   }

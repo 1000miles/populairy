@@ -19,10 +19,7 @@
     "location": "Neukoelln Kunterbunt",
     "date": "2019-02-21T20:00 (CET)",
     "host": "Food Coop Berlin",
-    "popups": [
-      "Kitchen for all",
-      "Food Corner"
-    ],
+    "popups": ["Kitchen for all", "Food Corner"],
     "organizers": [],
     "id": 2
   },
@@ -46,10 +43,7 @@
     "location": "Neukoelln Kunterbunt",
     "date": "2019-02-21T20:00 (CET)",
     "host": "Food Coop Berlin",
-    "popups": [
-      "Kitchen for all",
-      "Food Corner"
-    ],
+    "popups": ["Kitchen for all", "Food Corner"],
     "organizers": [],
     "id": 4
   }

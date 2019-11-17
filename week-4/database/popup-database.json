@@ -13,10 +13,7 @@
         "lastName": "Toggendorf",
         "email": "georgia@example.org",
         "phoneNumber": "+33 124 566 63 64",
-        "popups": [
-          "Barber Shop Vol. 11",
-          "Pony and Clyde #23"
-        ],
+        "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
         "role": "host",
         "id": 1
       },
@@ -25,9 +22,7 @@
         "lastName": "Deyin",
         "name": "Riley Deyin",
         "email": "rileyd@example.org",
-        "popups": [
-          "Barber Shop Vol. 11"
-        ],
+        "popups": ["Barber Shop Vol. 11"],
         "role": "guest",
         "id": 1
       },
@@ -36,9 +31,7 @@
         "lastName": "Watson",
         "name": "Jami Watson",
         "email": "jamiw@example.org",
-        "popups": [
-          "Barber Shop Vol. 11"
-        ],
+        "popups": ["Barber Shop Vol. 11"],
         "role": "guest",
         "id": 2
       },
@@ -47,16 +40,12 @@
         "lastName": "Yourg",
         "name": "Mhisa Yourg",
         "email": "mhisaw@example.org",
-        "popups": [
-          "Barber Shop Vol. 11"
-        ],
+        "popups": ["Barber Shop Vol. 11"],
         "role": "guest",
         "id": 3
       }
     ],
-    "organizers": [
-      "X Event Collective"
-    ],
+    "organizers": ["X Event Collective"],
     "id": 1
   },
   {
@@ -73,10 +62,7 @@
         "lastName": "Toggendorf",
         "email": "georgia@example.org",
         "phoneNumber": "+33 124 566 63 64",
-        "popups": [
-          "Barber Shop Vol. 11",
-          "Pony and Clyde #23"
-        ],
+        "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
         "role": "host",
         "id": 1
       },
@@ -85,16 +71,12 @@
         "lastName": "Lala",
         "name": "Fabienne Lala",
         "email": "fabienne@example.org",
-        "popups": [
-          "Pony and Clyde #23"
-        ],
+        "popups": ["Pony and Clyde #23"],
         "role": "guest",
         "id": 4
       }
     ],
-    "organizers": [
-      "X Event Collective"
-    ],
+    "organizers": ["X Event Collective"],
     "id": 2
   },
   {
@@ -105,9 +87,7 @@
     "space": "Neukoelln Kunterbunt",
     "date": "2019-02-21T19:00:00.000Z",
     "attendees": "Kitchen for all",
-    "organizers": [
-      "Food Coop Berlin"
-    ],
+    "organizers": ["Food Coop Berlin"],
     "id": 3
   },
   {
@@ -124,10 +104,7 @@
         "lastName": "Toggendorf",
         "email": "georgia@example.org",
         "phoneNumber": "+33 124 566 63 64",
-        "popups": [
-          "Barber Shop Vol. 11",
-          "Pony and Clyde #23"
-        ],
+        "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
         "role": "host",
         "id": 2
       },
@@ -136,9 +113,7 @@
         "lastName": "Deyin",
         "name": "Riley Deyin",
         "email": "rileyd@example.org",
-        "popups": [
-          "Barber Shop Vol. 11"
-        ],
+        "popups": ["Barber Shop Vol. 11"],
         "role": "guest",
         "id": 5
       },
@@ -147,9 +122,7 @@
         "lastName": "Watson",
         "name": "Jami Watson",
         "email": "jamiw@example.org",
-        "popups": [
-          "Barber Shop Vol. 11"
-        ],
+        "popups": ["Barber Shop Vol. 11"],
         "role": "guest",
         "id": 6
       },
@@ -158,16 +131,12 @@
         "lastName": "Yourg",
         "name": "Mhisa Yourg",
         "email": "mhisaw@example.org",
-        "popups": [
-          "Barber Shop Vol. 11"
-        ],
+        "popups": ["Barber Shop Vol. 11"],
         "role": "guest",
         "id": 7
       }
     ],
-    "organizers": [
-      "X Event Collective"
-    ],
+    "organizers": ["X Event Collective"],
     "id": 4
   },
   {
@@ -184,10 +153,7 @@
         "lastName": "Toggendorf",
         "email": "georgia@example.org",
         "phoneNumber": "+33 124 566 63 64",
-        "popups": [
-          "Barber Shop Vol. 11",
-          "Pony and Clyde #23"
-        ],
+        "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
         "role": "host",
         "id": 2
       },
@@ -196,16 +162,12 @@
         "lastName": "Lala",
         "name": "Fabienne Lala",
         "email": "fabienne@example.org",
-        "popups": [
-          "Pony and Clyde #23"
-        ],
+        "popups": ["Pony and Clyde #23"],
         "role": "guest",
         "id": 8
       }
     ],
-    "organizers": [
-      "X Event Collective"
-    ],
+    "organizers": ["X Event Collective"],
     "id": 5
   },
   {
@@ -216,9 +178,7 @@
     "space": "Neukoelln Kunterbunt",
     "date": "2019-02-21T19:00:00.000Z",
     "attendees": "Kitchen for all",
-    "organizers": [
-      "Food Coop Berlin"
-    ],
+    "organizers": ["Food Coop Berlin"],
     "id": 6
   }
 ]

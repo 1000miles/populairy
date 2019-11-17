@@ -8,7 +8,7 @@ const GuestService = require('./../services/guest-service');
 
 // GET `/popup/all`
 router.get('/all', async (req, res) => {
-	const events = await EventService.findAll();
+  const events = await EventService.findAll();
   const popups = await PopupService.findAll();
   const guests = await GuestService.findAll();
   const hosts = await HostService.findAll();
