@@ -1,9 +1,9 @@
 const BaseService = require('./base-service');
-const EventModel = require('../models/Event');
+const EventModel = require('./../../models/archived-old/Event');
 
 class EventService extends BaseService {
   constructor() {
-    super(EventModel, `${__dirname}/../database/event-database.json`);
+    super(EventModel, `${__dirname}/../../database/archived/event-database.json`);
   }
 }
 

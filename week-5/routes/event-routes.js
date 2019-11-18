@@ -9,7 +9,9 @@ const PersonService = require('../services/person-service');
 router.get('/all', async (req, res) => {
   const events = await EventService.findAll();
   const popups = await PopupService.findAll();
-  const persons = await PersonService.findAll();
+	const persons = await PersonService.findAll();
+	const popup = await PopupService.find(req.params.popup)
+	await EventService.hasPopups(popup)
 
   res.render('event', { events, popups, persons });
 });

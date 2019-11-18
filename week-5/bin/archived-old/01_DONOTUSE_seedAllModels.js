@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
 
-const Event = require('../models/Event');
-const Popup = require('../models/archived/Popup');
-const Host = require('../models/archived/Person');
-const Guest = require('../models/archived/Guest');
+const Event = require('../../models/archived-old/Event');
+const Popup = require('../../models/archived-old/Popup');
+const Host = require('../../models/archived-old/Host');
+const Guest = require('../../models/archived-old/Guest');
 
-const EventService = require('../services/event-service');
-const PopupService = require('../services/popup-service');
-// const HostService = require('../services/host-service');
-const GuestService = require('../services/person-service');
+const EventService = require('../../services/archived/popup-service');
+const PopupService = require('../../services/archived/popup-service');
+const HostService = require('../../services/archived/host-service');
+const GuestService = require('../../services/archived/guest-service');
+
+// ATTENTION: This does not work anymore since the models and paths have changed.
 
 async function seed() {
   mongoose

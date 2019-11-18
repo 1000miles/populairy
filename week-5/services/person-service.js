@@ -1,38 +1,30 @@
 const BaseService = require('./base-service')
+
+// New
 const Person = require('../models/with-mongoose/PersonNEW');
 
 class PersonService extends BaseService {
 	model = Person
 
-	async attend(person, popup) {
-			this.popups.push(popup);
+	async attendPopup(person, popup) {
+		person.popups.push(popup)
+		popup.guests.push(person)
+		await person.save()
+		await popup.save()
+	}
 
-			if (person.role === "host") {
-				console.log(`This:`, this)
-				popup.hosts.push(person);
-			} else if (person.role === "organizer") {
-				popup.organizers.push(person);
-			} else {
-				person.role = "guest";
-				popup.guests.push(person)
-			}
-
-			await person.save();
-			await popup.save();
-		}
-
-	getPersonInfo(person, popup) {
-		switch (role) {
-			case "host":
-			case "organizer":
-				console.log(
-					`The ${person.role} ${person.name} organizes ${popup} and can be contacted via ${person.email} or ${person.phoneNumber}.`
-				);
-			case "guest":
-				console.log(
-					`The ${person.role} ${person.name} organizes ${popup} and can be contacted via ${person.email}.`
-				);
-		}
+	async getPersonInfo(person, popup) {
+		console.log(`Person: ${person}`)
+		console.log(`Person: ${popup}`);
+		// if (person.role === "host" || person.role === "organizer") {
+		// 	console.log(
+		// 		`The ${person.role} ${person.firstName} ${person.lastName} organizes ${popup.title} and can be contacted via ${person.email} or ${person.phoneNumber}.`,
+		// 	);
+		// } else {
+		// 	console.log(
+		// 		`The ${person.role} ${person.firstName} ${person.lastName} organizes ${popup.title} and can be contacted via ${person.email}.`,
+		// 	);
+		// }
 	}
 }
 

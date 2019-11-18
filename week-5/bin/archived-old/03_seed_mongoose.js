@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-const Event = require('../models/with-mongoose/EventNEW');
-const Popup = require('../models/with-mongoose/PopupNEW');
-const Person = require('../models/with-mongoose/PersonNEW');
+const Event = require('../../models/with-mongoose/EventNEW');
+const Popup = require('../../models/with-mongoose/PopupNEW');
+const Person = require('../../models/with-mongoose/PersonNEW');
 
-const EventService = require('../services/event-service');
-const PopupService = require('../services/popup-service');
-const PersonService = require('../services/person-service');
+const EventService = require('../../services/event-service');
+const PopupService = require('../../services/popup-service');
+const PersonService = require('../../services/person-service');
 
 async function seed() {
   mongoose
@@ -147,9 +147,11 @@ async function seed() {
 
     // const popupsAll = await PopupService.findAll();
     // console.log(`Number of events:`, popupsAll.length);
-  } catch (err) {
+	} catch (err) {
     console.log(`ERROR while seeding DB`, err);
   }
 }
+
+mongoose.disconnect();
 
 seed();

@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const Popup = require('../models/with-mongoose/PopupNew');
-const Person = require('../models/with-mongoose/PersonNew');
-// const PopupService = require('../services/popup-service');
 
 let popups = [];
 
@@ -21,9 +19,10 @@ const seedPopups = async () => {
 		});
 
 	try {
-    Popup.deleteMany();
+    // Using await ensures the previous records are deleted
+    await Popup.deleteMany();
 
-    const barberShop = await new Popup({
+    const barberShop = new Popup({
       category: 'barber',
       title: 'Barber Shop Vol. 11',
       joinedEvent: 'OnHair Night',
@@ -32,7 +31,7 @@ const seedPopups = async () => {
       space: 'Neukoelln Kunterbunt',
     });
 
-    const barberShop2 = await new Popup({
+    const barberShop2 = new Popup({
       category: 'barber',
       title: 'Pony and Clyde #23',
       joinedEvent: 'OnHair Night',
@@ -41,7 +40,7 @@ const seedPopups = async () => {
       space: 'Neukoelln Kunterbunt',
     });
 
-    const foodCorner = await new Popup({
+    const foodCorner = new Popup({
       category: 'food',
       title: 'Food Corner',
       joinedEvent: 'Soup & Music',
@@ -54,13 +53,13 @@ const seedPopups = async () => {
 
     await Popup.create(popups);
 
-    console.log(popups.map(popup => popup._id));
+    popups.map(popup => console.log(`CREATED Id: ${popup._id} - Popup title: ${popup.title}`));
 
     await mongoose.disconnect();
 
   } catch(err) {
-      console.log(`ERROR while seeding DB with popups`, err);
       mongoose.disconnect();
+      console.log(`ERROR while seeding DB with popups`, err);
   }
 }
 
