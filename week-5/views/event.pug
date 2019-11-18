@@ -12,11 +12,9 @@ block content
     each popup in popups
       ul
         li #[strong #{popup.title}] performed by #[em #{popup.host}]
-    p Organizer:
-    each host in hosts
+    p Attendees:
+    each attendee in persons
       ul
-        li #[strong #{host.firstName} #{host.lastName}], Phone: #{host.phoneNumber}, Email: #{host.email}
-    p Guests:
-    each guest in guests
-      ul
-        li #[strong #{guest.firstName} #{guest.lastName}], Email: #{guest.email}
+        li #[strong #{attendee.firstName} #{attendee.lastName}], Email: #{attendee.email}, Role: #{attendee.role}
+    p.
+      #{newPopup}
