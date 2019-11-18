@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 
-const Event = require('../models/EventNew');
-const Popup = require('../models/PopupNew');
-const Host = require('../models/HostNew');
-const Guest = require('../models/GuestNew');
+const Event = require('../models/new/EventNEW');
+const Popup = require('../models/new/PopupNEW');
+const Host = require('../models/new/HostNew');
+const Guest = require('../models/new/PersonNEW');
 
 const EventService = require('../services/event-service');
 const PopupService = require('../services/popup-service');
-const HostService = require('../services/host-service');
-const GuestService = require('../services/guest-service');
+const GuestService = require('../services/person-service');
 
 async function seed() {
   mongoose
@@ -142,4 +141,7 @@ async function seed() {
   }
 }
 
+mongoose.connection.close();
+
 seed();
+

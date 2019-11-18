@@ -1,10 +1,8 @@
-const BaseService = require('./base-service');
-const PopupModel = require('../models/Popup');
+const BaseService = require('./base-service')
+const Popup = require('../models/with-mongoose/PopupNEW')
 
 class PopupService extends BaseService {
-  constructor() {
-    super(PopupModel, `${__dirname}/../database/popup-database.json`);
-  }
+    model = Popup
 }
 
-module.exports = new PopupService();
+module.exports = new PopupService()

@@ -11,6 +11,7 @@ require('./package.json').name;
 const indexRoutes = require('./routes/index-routes');
 const eventRoutes = require('./routes/event-routes');
 const popupRoutes = require('./routes/popup-routes');
+const personRoutes = require('./routes/person-routes');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', indexRoutes);
 app.use('/event', eventRoutes);
 app.use('/popup', popupRoutes);
+app.use('/person', personRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server listening at ${process.env.PORT}`);

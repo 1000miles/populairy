@@ -7,9 +7,6 @@ block content
   each popup in popups
     li #[strong #{popup.title}] performed by #[em #{popup.host}]
   p Organizer:
-  each host in hosts
-    li Name: #{host.firstName} #{host.lastName},
-      | Email: #{host.email}, Phone: #{host.phoneNumber}
-  p Guests:
-  each guest in guests
-    li Name: #{guest.firstName} #{guest.lastName}, Email: #{guest.email}
+  each person in persons
+    li Name: #{person.firstName} #{person.lastName},
+      | Email: #{person.email}, Phone: #{person.phoneNumber}

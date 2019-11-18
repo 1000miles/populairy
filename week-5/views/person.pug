@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1 #[u #{people}] persons listed and counting...
+
+  each person in people
+    li Name: #{person.firstName} #{person.lastName}, Email: #{person.email}, Phone: #{person.phoneNumber}

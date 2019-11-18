@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 
 const Event = require('../models/Event');
-const Popup = require('../models/Popup');
-const Host = require('../models/Host');
-const Guest = require('../models/Guest');
+const Popup = require('../models/archived/Popup');
+const Host = require('../models/archived/Person');
+const Guest = require('../models/archived/Guest');
 
 const EventService = require('../services/event-service');
 const PopupService = require('../services/popup-service');
-const HostService = require('../services/host-service');
-const GuestService = require('../services/guest-service');
+// const HostService = require('../services/host-service');
+const GuestService = require('../services/person-service');
 
 async function seed() {
   mongoose

@@ -12,7 +12,7 @@ const eventSchema = new mongoose.Schema(
       type: String,
       // required: true
     },
-    date: Date,
+    date: String,
     host: {
       type: String,
       // required: true
@@ -21,15 +21,6 @@ const eventSchema = new mongoose.Schema(
       {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Popup',
-        autopopulate: {
-          maxDepth: 1,
-        },
-      },
-    ],
-    organizers: [
-      {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Host',
         autopopulate: {
           maxDepth: 1,
         },

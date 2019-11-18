@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const guestSchema = mongoose.Schema(
+const personSchema = mongoose.Schema(
   {
     firstName: {
       type: String,
@@ -10,7 +10,9 @@ const guestSchema = mongoose.Schema(
       type: String,
       // required: true
     },
-    email: String,
+		email: String,
+		role: String,
+		phoneNumber: String,
     popups: [
       {
         type: mongoose.SchemaTypes.ObjectId,
@@ -20,8 +22,25 @@ const guestSchema = mongoose.Schema(
         },
       },
     ],
-    role: String,
-    attendees: [
+		hosts: [
+      {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Popup',
+        autopopulate: {
+          maxDepth: 1,
+        },
+      },
+    ],
+		organizers: [
+      {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Popup',
+        autopopulate: {
+          maxDepth: 1,
+        },
+      },
+    ],
+    guests: [
       {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Popup',
@@ -39,8 +58,9 @@ const guestSchema = mongoose.Schema(
   },
 );
 
-guestSchema.plugin(require('mongoose-autopopulate'));
 
-const Guest = mongoose.model('Guest', guestSchema);
+personSchema.plugin(require('mongoose-autopopulate'));
 
-module.exports = Guest;
+const Person = mongoose.model('Person', personSchema);
+
+module.exports = Person;

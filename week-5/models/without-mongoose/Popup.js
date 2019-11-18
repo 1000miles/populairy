@@ -4,22 +4,24 @@ module.exports = class Popup {
   constructor(
     category,
     title,
-    joinedEvent,
-    host,
-    date,
-    space,
-    attendees = [],
+		joinedEvent,
+		date,
+		host,
+		space,
+		hosts = [],
     organizers = [],
+    guests = [],
     id,
   ) {
     this.category = category;
     this.title = title;
-    this.joinedEvent = joinedEvent;
-    this.host = host;
-    this.space = space;
-    this.date = date;
-    this.attendees = attendees;
+		this.joinedEvent = joinedEvent;
+		this.date = date;
+		this.host = host;
+		this.space = space;
+		this.hosts = hosts;
     this.organizers = organizers;
+    this.guests = guests;
     this.id = id;
   }
 
@@ -32,10 +34,12 @@ module.exports = class Popup {
       `The pop-up`,
       Chalk.bgMagenta.white(this.title),
       `belongs to the satellite event`,
-      Chalk.magenta(this.joinedEvent),
+			Chalk.magenta(this.joinedEvent),
+			`is hosted by`,
+			Chalk.green(this.hosts),
       `and is organized by`,
-      Chalk.blue(this.host),
-      `. It has ${this.attendees.length} attendee(s).`,
+      Chalk.blue(this.organizers),
+      `. It has ${this.guests.length} guest(s).`,
     );
   }
 
@@ -43,22 +47,24 @@ module.exports = class Popup {
     category,
     title,
     joinedEvent,
-    host,
-    date,
-    space,
-    attendees,
+		date,
+		host,
+		space,
+		hosts,
     organizers,
+		guests,
     id,
   }) {
     return new Popup(
       category,
       title,
       joinedEvent,
-      host,
-      date,
-      space,
-      attendees,
+			date,
+			host,
+			space,
+			hosts,
       organizers,
+      guests,
       id,
     );
   }

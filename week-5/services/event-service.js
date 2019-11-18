@@ -1,10 +1,8 @@
-const BaseService = require('./base-service');
-const EventModel = require('../models/Event');
+const BaseService = require('./base-service')
+const Event = require('../models/with-mongoose/EventNEW')
 
 class EventService extends BaseService {
-  constructor() {
-    super(EventModel, `${__dirname}/../database/event-database.json`);
-  }
+    model = Event
 }
 
-module.exports = new EventService();
+module.exports = new EventService()

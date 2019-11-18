@@ -11,7 +11,7 @@ module.exports = class Guest {
 
   attend(popup) {
     this.popups.push(popup.title);
-    popup.attendees.push(this);
+    popup.guests.push(this);
   }
 
   getGuestInfo() {

@@ -14,19 +14,23 @@ const popupSchema = mongoose.Schema(
       type: String,
       // required: true
     },
-    host: {
-      type: String,
-      // required: true
-    },
     date: {
       type: String,
       // startDateTime: Date,
       // endDateTime: Date
     },
-    attendees: [
+    host: {
+      type: String,
+      // required: true
+		},
+		space: {
+      type: String,
+      // required: true
+		},
+    hosts: [
       {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Guest',
+        ref: 'Person',
         autopopulate: {
           maxDepth: 1,
         },
@@ -35,7 +39,16 @@ const popupSchema = mongoose.Schema(
     organizers: [
       {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Host',
+        ref: 'Person',
+        autopopulate: {
+          maxDepth: 1,
+        },
+      },
+		],
+		guests: [
+      {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Person',
         autopopulate: {
           maxDepth: 1,
         },

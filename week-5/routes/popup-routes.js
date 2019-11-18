@@ -3,28 +3,26 @@ const router = express.Router();
 
 const EventService = require('../services/event-service');
 const PopupService = require('../services/popup-service');
-const HostService = require('../services/host-service');
-const GuestService = require('../services/guest-service');
+const PersonService = require('../services/person-service');
 
 // GET `/popup/all`
 router.get('/all', async (req, res) => {
   const events = await EventService.findAll();
   const popups = await PopupService.findAll();
-  const guests = await GuestService.findAll();
-  const hosts = await HostService.findAll();
+  const persons = await PersonService.findAll();
 
-  res.render('popup', { events, popups, guests, hosts });
+  res.render('popup', { events, popups, persons });
 });
 
 // GET `/popup/:id`
 router.get('/:id', async (req, res) => {
   const popup = await PopupService.find(req.params.id);
-  res.send(popup);
+  res.render('data', { data: popup })
 });
 
 // POST `/popup` w/ req.body
 router.post('/', async (req, res) => {
-  const popup = await PopupService.add(req.body);
+	const popup = await PopupService.add(req.body);
   res.send(popup);
 });
 
