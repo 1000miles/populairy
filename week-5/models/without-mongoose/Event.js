@@ -1,32 +1,24 @@
 const Chalk = require('chalk');
 
 module.exports = class Event {
-  constructor(
-    eventType,
-    name,
-    location,
-    date,
-    host,
-    popups = [],
-    id,
-  ) {
+  constructor(eventType, name, location, date, host, popups = [], id) {
     this.eventType = eventType;
     this.name = name;
     this.location = location;
     this.date = date;
-		this.host = host;
+    this.host = host;
     this.popups = popups;
     this.id = id;
-	}
+  }
 
-	hasPopups(popup) {
-		let count = 0;
+  hasPopups(popup) {
+    let count = 0;
 
-		if (popup) {
-			this.popups.push(popup);
-			count = count + 1;
-			return;
-		}
+    if (popup) {
+      this.popups.push(popup);
+      count = count + 1;
+      return;
+    }
   }
 
   getEventInfo() {

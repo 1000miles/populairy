@@ -15,10 +15,7 @@
         "lastName": "Toggendorf",
         "email": "georgia@example.org",
         "phoneNumber": "+33 124 566 63 64",
-        "popups": [
-          "Barber Shop Vol. 11",
-          "Pony and Clyde #23"
-        ],
+        "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
         "role": "host",
         "id": 2
       },
@@ -42,10 +39,7 @@
         "lastName": "Toggendorf",
         "email": "georgia@example.org",
         "phoneNumber": "+33 124 566 63 64",
-        "popups": [
-          "Barber Shop Vol. 11",
-          "Pony and Clyde #23"
-        ],
+        "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
         "role": "host",
         "id": 2
       },
@@ -69,9 +63,7 @@
         "lastName": "Nexus",
         "email": "tamy@example.org",
         "phoneNumber": "+33 857 97 33 94",
-        "popups": [
-          "Food Corner"
-        ],
+        "popups": ["Food Corner"],
         "role": "host"
       },
       "Food Coop Berlin"
@@ -102,9 +94,7 @@
     "space": "Neukoelln Kunterbunt",
     "date": "2019-02-21T20:00",
     "hosts": [],
-    "organizers": [
-      "X Event Collective"
-    ],
+    "organizers": ["X Event Collective"],
     "guests": [
       {
         "name": "Georgia Toggendorf",
@@ -112,10 +102,7 @@
         "lastName": "Toggendorf",
         "email": "georgia@example.org",
         "phoneNumber": "+33 124 566 63 64",
-        "popups": [
-          "Barber Shop Vol. 11",
-          "Pony and Clyde #23"
-        ],
+        "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
         "role": "guest",
         "id": 4
       },
@@ -124,9 +111,7 @@
         "lastName": "Deyin",
         "name": "Riley Deyin",
         "email": "rileyd@example.org",
-        "popups": [
-          "Barber Shop Vol. 11"
-        ],
+        "popups": ["Barber Shop Vol. 11"],
         "role": "guest",
         "id": 5
       },
@@ -135,9 +120,7 @@
         "lastName": "Watson",
         "name": "Jami Watson",
         "email": "jamiw@example.org",
-        "popups": [
-          "Barber Shop Vol. 11"
-        ],
+        "popups": ["Barber Shop Vol. 11"],
         "role": "guest",
         "id": 6
       }
@@ -159,10 +142,7 @@
         "lastName": "Toggendorf",
         "email": "georgia@example.org",
         "phoneNumber": "+33 124 566 63 64",
-        "popups": [
-          "Barber Shop Vol. 11",
-          "Pony and Clyde #23"
-        ],
+        "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
         "role": "guest",
         "id": 4
       },
@@ -171,16 +151,12 @@
         "lastName": "Yourg",
         "name": "Mhisa Yourg",
         "email": "mhisaw@example.org",
-        "popups": [
-          "Pony and Clyde #23"
-        ],
+        "popups": ["Pony and Clyde #23"],
         "role": "guest",
         "id": 7
       }
     ],
-    "guests": [
-      "X Event Collective"
-    ],
+    "guests": ["X Event Collective"],
     "id": 7
   },
   {
@@ -191,9 +167,7 @@
     "space": "Astra Stuben",
     "date": "2019-03-15T20:00:00",
     "hosts": [],
-    "organizers": [
-      "Food Coop Berlin"
-    ],
+    "organizers": ["Food Coop Berlin"],
     "guests": [
       {
         "name": "Tamy Nexus",
@@ -201,9 +175,7 @@
         "lastName": "Nexus",
         "email": "tamy@example.org",
         "phoneNumber": "+33 857 97 33 94",
-        "popups": [
-          "Food Corner"
-        ],
+        "popups": ["Food Corner"],
         "role": "guest"
       },
       {
@@ -211,9 +183,7 @@
         "lastName": "Lala",
         "name": "Fabienne Lala",
         "email": "fabienne@example.org",
-        "popups": [
-          "Food Corner"
-        ],
+        "popups": ["Food Corner"],
         "role": "guest",
         "id": 8
       }

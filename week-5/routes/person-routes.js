@@ -1,46 +1,46 @@
 const express = require('express');
 const router = express.Router();
 
-const PersonService = require('../services/person-service');
+const UserService = require('../services/user-service');
 const PopupService = require('../services/popup-service');
 
-// GET http://localhost:3000/person/all
+// GET http://localhost:3000/user/all
 router.get('/all', async (req, res) => {
-	const people = await PersonService.findAll();
-	res.render('persons', { items: people });
+  const people = await UserService.findAll();
+  res.render('persons', { items: people });
 });
 
-// GET http://localhost:3000/person/list
+// GET http://localhost:3000/user/list
 router.get('/list', async (req, res) => {
-	const people = await PersonService.findAll();
-	res.render('personlistJSON', { items: people });
+  const people = await UserService.findAll();
+  res.render('personlistJSON', { items: people });
 });
 
-// GET http://localhost:3000/person/objectId
+// GET http://localhost:3000/user/objectId
 router.get('/:id', async (req, res) => {
-	const person = await PersonService.findById(req.params.id);
-	await console.log(PersonService.getPersonInfo());
+  const user = await UserService.findById(req.params.id);
+  await console.log(UserService.getUserInfo());
 
-	res.render('data', { data: person });
+  res.render('data', { data: user });
 });
 
 router.post('/', async (req, res) => {
-	const person = await PersonService.add(req.body);
-	res.send(person);
+  const user = await UserService.add(req.body);
+  res.send(user);
 });
 
 router.delete('/:id', async (req, res) => {
-	const person = await PersonService.del(req.params.id);
-	res.send(person);
+  const user = await UserService.del(req.params.id);
+  res.send(user);
 });
 
 router.post('/:id/popups', async (req, res) => {
-	const person = await PersonService.findById(req.params.id);
-	const popup = await PopupService.findById(req.body.popup);
+  const user = await UserService.findById(req.params.id);
+  const popup = await PopupService.findById(req.body.popup);
 
-	await PersonService.attendPopup(person, popup);
+  await UserService.attendPopup(user, popup);
 
-	res.send(person);
+  res.send(user);
 });
 
 module.exports = router;

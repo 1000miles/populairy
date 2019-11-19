@@ -16,9 +16,9 @@ const seedPopups = async () => {
     })
     .catch(err => {
       console.error('Error connecting to mongo', err);
-		});
+    });
 
-	try {
+  try {
     // Using await ensures the previous records are deleted
     await Popup.deleteMany();
 
@@ -53,18 +53,15 @@ const seedPopups = async () => {
 
     await Popup.create(popups);
 
-    popups.map(popup => console.log(`CREATED Id: ${popup._id} - Popup title: ${popup.title}`));
+    popups.map(popup =>
+      console.log(`CREATED Id: ${popup._id} - Popup title: ${popup.title}`),
+    );
 
     await mongoose.disconnect();
-
-  } catch(err) {
-      mongoose.disconnect();
-      console.log(`ERROR while seeding DB with popups`, err);
+  } catch (err) {
+    mongoose.disconnect();
+    console.log(`ERROR while seeding DB with popups`, err);
   }
-}
+};
 
 seedPopups();
-
-
-
-

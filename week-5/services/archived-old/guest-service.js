@@ -3,7 +3,10 @@ const GuestModel = require('./../../models/archived-old/Guest');
 
 class GuestService extends BaseService {
   constructor() {
-    super(GuestModel, `${__dirname}/../../database/archived/guest-database.json`);
+    super(
+      GuestModel,
+      `${__dirname}/../../database/archived/guest-database.json`,
+    );
   }
 }
 

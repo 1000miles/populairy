@@ -1,38 +1,38 @@
-const BaseService = require('./base-service')
+const BaseService = require('./base-service');
 
 // New
-const Person = require('../models/with-mongoose/PersonNEW');
+const User = require('../models/with-mongoose/UserNEW');
 
-class PersonService extends BaseService {
-	model = Person
+class UserService extends BaseService {
+  model = User;
 
-	async attendPopup(person, popup) {
-		console.log(`DEBUG popup 1:`, popup)
-		console.log(`DEBUG person 1:`, person);
+  async attendPopup(user, popup) {
+    console.log(`DEBUG popup 1:`, popup);
+    console.log(`DEBUG user 1:`, user);
 
-		person.popups.push(popup)
-		popup.guests.push(person)
-		await person.save()
-		await popup.save()
+    user.popups.push(popup);
+    popup.guests.push(user);
+    await user.save();
+    await popup.save();
 
-		console.log(`DEBUG popup 2:`, popup);
-		console.log(`DEBUG person 2:`, person);
-	}
+    console.log(`DEBUG popup 2:`, popup);
+    console.log(`DEBUG user 2:`, user);
+  }
 
-	async getPersonInfo(person, popup) {
-		console.log(`Person: ${person}`)
-		console.log(`Popup: ${popup}`);
-		
-		if (person.role === "host" || person.role === "organizer") {
-			console.log(
-				`The ${person.role} ${person.firstName} ${person.lastName} organizes ${popup.title} and can be contacted via ${person.email} or ${person.phoneNumber}.`,
-			);
-		} else {
-			console.log(
-				`The ${person.role} ${person.firstName} ${person.lastName} organizes ${popup.title} and can be contacted via ${person.email}.`,
-			);
-		}
-	}
+  async getUserInfo(user, popup) {
+    console.log(`User: ${user}`);
+    console.log(`Popup: ${popup}`);
+
+    if (user.role === 'host' || user.role === 'organizer') {
+      console.log(
+        `The ${user.role} ${user.firstName} ${user.lastName} organizes ${popup.title} and can be contacted via ${user.email} or ${user.phoneNumber}.`,
+      );
+    } else {
+      console.log(
+        `The ${user.role} ${user.firstName} ${user.lastName} organizes ${popup.title} and can be contacted via ${user.email}.`,
+      );
+    }
+  }
 }
 
-module.exports = new PersonService()
+module.exports = new UserService();

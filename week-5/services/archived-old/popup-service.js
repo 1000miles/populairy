@@ -3,7 +3,10 @@ const PopupModel = require('./../../models/archived-old/Popup');
 
 class PopupService extends BaseService {
   constructor() {
-    super(PopupModel, `${__dirname}/../../database/archived/popup-database.json`);
+    super(
+      PopupModel,
+      `${__dirname}/../../database/archived/popup-database.json`,
+    );
   }
 }
 

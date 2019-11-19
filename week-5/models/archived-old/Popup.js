@@ -8,9 +8,9 @@ module.exports = class Popup {
     host,
     date,
     space,
-		hosts = [],
+    hosts = [],
     guests = [],
-		organizers = [],
+    organizers = [],
     id,
   ) {
     this.category = category;
@@ -19,8 +19,8 @@ module.exports = class Popup {
     this.host = host;
     this.space = space;
     this.date = date;
-		this.hosts = hosts;
-		this.organizers = organizers;
+    this.hosts = hosts;
+    this.organizers = organizers;
     this.guests = guests;
     this.id = id;
   }
@@ -48,9 +48,9 @@ module.exports = class Popup {
     host,
     date,
     space,
-		hosts,
-		organizers,
-		guests,
+    hosts,
+    organizers,
+    guests,
     id,
   }) {
     return new Popup(
@@ -59,8 +59,8 @@ module.exports = class Popup {
       joinedEvent,
       host,
       date,
-			space,
-			hosts,
+      space,
+      hosts,
       organizers,
       guests,
       id,

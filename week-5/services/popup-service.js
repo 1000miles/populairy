@@ -1,10 +1,10 @@
-const BaseService = require('./base-service')
+const BaseService = require('./base-service');
 
 // New
-const Popup = require('../models/with-mongoose/PopupNEW')
+const Popup = require('../models/with-mongoose/PopupNEW');
 
 class PopupService extends BaseService {
-    model = Popup
+  model = Popup;
 }
 
-module.exports = new PopupService()
+module.exports = new PopupService();
