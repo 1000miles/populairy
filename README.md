@@ -39,23 +39,30 @@ Examples
 
 ## 2. Technical Requirements
 
-- NodeJS (Backend JS)
-- ExpressJS (Backend Framework)
-- MongoDB (Database)
-- Mongoose (Schema)
-- Pug (views)
-- Nodemon (Dev Live Server)
-- Prettier (Formatting)
-- Axios (HTTP requests)
+- [x] NodeJS (Backend JS)
+- [x] ExpressJS (Backend Framework)
+- [x] MongoDB (Database)
+- [x] Mongoose (Schema)
+- [x] Pug (views) => be changed to React later
+- [x] Nodemon (Dev Live Server)
+- [x] Prettier (Formatting)
+- [x] Axios (HTTP requests)
+- [ ] Heroku || Netlify (Hosting)
+- [ ] ReactJS (Frontend Framework)
+- [ ] Babel (JS Compiler)
+- [ ] Eslint (JS Linter)
+- [ ] Mocha && Enzyme (Testing)
 
 ## 3. Features
 
-- [ ] Event calendar
 - [ ] Task Manager
+- [ ] Event calendar
 - [ ] Addressbook
+- [ ] Sign-up/Login
 - [ ] Emailing
 - [ ] Newsletter
 - [ ] Solidarity pot
+- [ ] Search
 
 ## 4. Data Model
 
@@ -85,7 +92,7 @@ Examples
 	- guest
 	- **Event**: main host (eventHost) || co-host (joinedHosts)
 	- **Pop-up**: main organizer (organizer) || co-organizer (popupOrganizers)
-	- [ ] A user can join a group or can act as a single person.
+- [ ] A user can join a group or can act as a single person.
 
 Offline / Before authentication:
 - [ ] A first name, last name, email is required as a `guest`.
