@@ -118,19 +118,19 @@ $ cd week-4/
 $ npm install
 ```
 
-2. Copy `env.SAMPLE` and rename it to `.env` and make sure the `.env` file is listed in `.gitignore`.
+3. Copy `env.SAMPLE` and rename it to `.env` and make sure the `.env` file is listed in `.gitignore`.
 
 ```shell
 $ cp env.SAMPLE .env
 ```
 
-3. Seed initial data
+4. Seed initial data
 
 ```js
 $ node bin/seedAllModels.js
 ```
 
-4. Start up the server:
+5. Start up the server:
 
 ```shell
 # in dev mode with nodemon
@@ -140,7 +140,7 @@ $ npm run dev
 $ npm start
 ```
 
-5. Use prettier to format your code:
+6. Use prettier to format your code:
 
 ```shell
 $ npm run format
