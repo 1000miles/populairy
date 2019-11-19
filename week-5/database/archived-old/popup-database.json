@@ -1,0 +1,193 @@
+[
+  {
+    "category": "barber",
+    "title": "Barber Shop Vol. 11",
+    "joinedEvent": "OnHair Night",
+    "host": "RooArr Pop-up Collective",
+    "space": "Neukoelln Kunterbunt",
+    "date": "2019-02-21T20:00",
+    "hosts": [],
+    "organizers": [],
+    "guests": [
+      {
+        "name": "Georgia Toggendorf",
+        "firstName": "Georgia",
+        "lastName": "Toggendorf",
+        "email": "georgia@example.org",
+        "phoneNumber": "+33 124 566 63 64",
+        "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
+        "role": "host",
+        "id": 2
+      },
+      "X Event Collective"
+    ],
+    "id": 1
+  },
+  {
+    "category": "barber",
+    "title": "Pony and Clyde #23",
+    "joinedEvent": "OnHair Night",
+    "host": "Bored Panda",
+    "space": "Neukoelln Kunterbunt",
+    "date": "2019-02-21T20:00",
+    "hosts": [],
+    "organizers": [],
+    "guests": [
+      {
+        "name": "Georgia Toggendorf",
+        "firstName": "Georgia",
+        "lastName": "Toggendorf",
+        "email": "georgia@example.org",
+        "phoneNumber": "+33 124 566 63 64",
+        "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
+        "role": "host",
+        "id": 2
+      },
+      "X Event Collective"
+    ],
+    "id": 2
+  },
+  {
+    "category": "food",
+    "title": "Food Corner",
+    "joinedEvent": "Soup & Music",
+    "host": "KreuzKoelln Collective",
+    "space": "Astra Stuben",
+    "date": "2019-03-15T20:00:00",
+    "hosts": [],
+    "organizers": [],
+    "guests": [
+      {
+        "name": "Tamy Nexus",
+        "firstName": "Tamy",
+        "lastName": "Nexus",
+        "email": "tamy@example.org",
+        "phoneNumber": "+33 857 97 33 94",
+        "popups": ["Food Corner"],
+        "role": "host"
+      },
+      "Food Coop Berlin"
+    ],
+    "id": 3
+  },
+  {
+    "host": "X Event Collective",
+    "date": "2019-02-21T20:00",
+    "hosts": [],
+    "organizers": [],
+    "guests": [],
+    "id": 4
+  },
+  {
+    "host": "Food Coop Berlin",
+    "date": "2019-02-21T20:00",
+    "hosts": [],
+    "organizers": [],
+    "guests": [],
+    "id": 5
+  },
+  {
+    "category": "barber",
+    "title": "Barber Shop Vol. 11",
+    "joinedEvent": "OnHair Night",
+    "host": "RooArr Pop-up Collective",
+    "space": "Neukoelln Kunterbunt",
+    "date": "2019-02-21T20:00",
+    "hosts": [],
+    "organizers": ["X Event Collective"],
+    "guests": [
+      {
+        "name": "Georgia Toggendorf",
+        "firstName": "Georgia",
+        "lastName": "Toggendorf",
+        "email": "georgia@example.org",
+        "phoneNumber": "+33 124 566 63 64",
+        "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
+        "role": "guest",
+        "id": 4
+      },
+      {
+        "firstName": "Riley",
+        "lastName": "Deyin",
+        "name": "Riley Deyin",
+        "email": "rileyd@example.org",
+        "popups": ["Barber Shop Vol. 11"],
+        "role": "guest",
+        "id": 5
+      },
+      {
+        "firstName": "Jami",
+        "lastName": "Watson",
+        "name": "Jami Watson",
+        "email": "jamiw@example.org",
+        "popups": ["Barber Shop Vol. 11"],
+        "role": "guest",
+        "id": 6
+      }
+    ],
+    "id": 6
+  },
+  {
+    "category": "barber",
+    "title": "Pony and Clyde #23",
+    "joinedEvent": "OnHair Night",
+    "host": "Bored Panda",
+    "space": "Neukoelln Kunterbunt",
+    "date": "2019-02-21T20:00",
+    "hosts": [],
+    "organizers": [
+      {
+        "name": "Georgia Toggendorf",
+        "firstName": "Georgia",
+        "lastName": "Toggendorf",
+        "email": "georgia@example.org",
+        "phoneNumber": "+33 124 566 63 64",
+        "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
+        "role": "guest",
+        "id": 4
+      },
+      {
+        "firstName": "Mhisa",
+        "lastName": "Yourg",
+        "name": "Mhisa Yourg",
+        "email": "mhisaw@example.org",
+        "popups": ["Pony and Clyde #23"],
+        "role": "guest",
+        "id": 7
+      }
+    ],
+    "guests": ["X Event Collective"],
+    "id": 7
+  },
+  {
+    "category": "food",
+    "title": "Food Corner",
+    "joinedEvent": "Soup & Music",
+    "host": "KreuzKoelln Collective",
+    "space": "Astra Stuben",
+    "date": "2019-03-15T20:00:00",
+    "hosts": [],
+    "organizers": ["Food Coop Berlin"],
+    "guests": [
+      {
+        "name": "Tamy Nexus",
+        "firstName": "Tamy",
+        "lastName": "Nexus",
+        "email": "tamy@example.org",
+        "phoneNumber": "+33 857 97 33 94",
+        "popups": ["Food Corner"],
+        "role": "guest"
+      },
+      {
+        "firstName": "Fabienne",
+        "lastName": "Lala",
+        "name": "Fabienne Lala",
+        "email": "fabienne@example.org",
+        "popups": ["Food Corner"],
+        "role": "guest",
+        "id": 8
+      }
+    ],
+    "id": 8
+  }
+]

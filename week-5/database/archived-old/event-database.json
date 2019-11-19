@@ -1,0 +1,20 @@
+[
+  {
+    "type": "haircraft",
+    "name": "OnHair Night",
+    "location": "Neukoelln Kunterbunt",
+    "date": "2019-02-21T20:00",
+    "host": "X Event Collective",
+    "popups": ["Barber Shop Vol. 11", "Pony and Clyde #23"],
+    "id": 1
+  },
+  {
+    "type": "food",
+    "name": "Soup & Music",
+    "location": "Neukoelln Kunterbunt",
+    "date": "2019-02-21T20:00",
+    "host": "Food Coop Berlin",
+    "popups": ["Food Corner"],
+    "id": 2
+  }
+]
