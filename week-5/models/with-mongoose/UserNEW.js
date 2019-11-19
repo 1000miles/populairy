@@ -63,7 +63,7 @@ const userSchema = new Schema(
   },
 );
 
-personSchema.plugin(require('mongoose-autopopulate'));
+userSchema.plugin(require('mongoose-autopopulate'));
 
 const User = mongoose.model('User', userSchema);
 

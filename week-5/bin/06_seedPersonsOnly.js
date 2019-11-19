@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const User = require('../models/with-mongoose/UserNew');
 
-let persons = [];
+let users = [];
 
 const seedUsers = async () => {
   mongoose
@@ -23,23 +23,23 @@ const seedUsers = async () => {
     // Using await ensures the previous records are deleted
     await User.deleteMany();
 
-    const person1 = new User({
+    const user1 = new User({
       firstName: 'Riley',
       lastName: 'Deyin',
       email: 'rileyd@example.org',
     });
-    const person2 = new User({
+    const user2 = new User({
       firstName: 'Jami',
       lastName: 'Watson',
       email: 'jamiw@example.org',
       role: 'guest',
     });
-    const person3 = new User({
+    const user3 = new User({
       firstName: 'Jenny',
       lastName: 'Morgan',
       email: 'jenw@example.org',
     });
-    const person4 = new User({
+    const user4 = new User({
       firstName: 'Chris',
       lastName: 'Stuff',
       email: 'chris@example.org',
@@ -75,20 +75,20 @@ const seedUsers = async () => {
       phoneNumbeer: '+49 123 456 78 90',
     });
 
-    await persons.push(
-      person1,
-      person2,
-      person3,
-      person4,
+    await users.push(
+      user1,
+      user2,
+      user3,
+      user4,
       host1,
       host2,
       organizer1,
       organizer2,
     );
 
-    await User.create(persons);
+    await User.create(users);
 
-    persons.map(user =>
+    users.map(user =>
       console.log(
         `CREATED Id: ${user._id} - user name: ${user.firstName} ${user.lastName} = ${user.role}`,
       ),
@@ -97,7 +97,7 @@ const seedUsers = async () => {
     await mongoose.disconnect();
   } catch (err) {
     mongoose.disconnect();
-    console.log(`ERROR while seeding DB with persons`, err);
+    console.log(`ERROR while seeding DB with users`, err);
   }
 };
 

@@ -9,18 +9,18 @@ const UserService = require('../services/user-service');
 router.get('/all', async (req, res) => {
   const events = await EventService.findAll();
   const popups = await PopupService.findAll();
-  const persons = await UserService.findAll();
+  const users = await UserService.findAll();
 
-  res.render('popup', { events, popups, persons });
+  res.render('popup', { events, popups, users });
 });
 
 // GET http://localhost:3000/popup/list (JSON)
 router.get('/list', async (req, res) => {
   const events = await EventService.findAll();
   const popups = await PopupService.findAll();
-  const persons = await UserService.findAll();
+  const users = await UserService.findAll();
 
-  const options = [events, popups, persons];
+  const options = [events, popups, users];
 
   res.render('popuplistJSON', { items: options });
 });

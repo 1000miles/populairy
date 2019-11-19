@@ -9,7 +9,7 @@ const UserService = require('../services/user-service');
 router.get('/all', async (req, res) => {
   const events = await EventService.findAll();
   const popups = await PopupService.findAll();
-  const persons = await UserService.findAll();
+  const users = await UserService.findAll();
   const popup = await PopupService.findById(req.params.id);
 
   const newPopup = await EventService.add(popup);
@@ -17,7 +17,7 @@ router.get('/all', async (req, res) => {
 
   // await EventService.hasPopups(popups)
 
-  res.render('event', { events, popups, persons, popup, newPopup });
+  res.render('event', { events, popups, users, popup, newPopup });
 });
 
 // GET `/event/:id`

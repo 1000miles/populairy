@@ -7,6 +7,6 @@ block content
   each popup in popups
     li #[strong #{popup.title}] performed by #[em #{popup.host}]
   p Organizer:
-  each user in persons
+  each user in users
     li Name: #{user.firstName} #{user.lastName},
       | Email: #{user.email}, Phone: #{user.phoneNumber}

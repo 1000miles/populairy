@@ -36,7 +36,7 @@ module.exports = class Service {
   /* Shorthand for findOneAndDelete({ _id: id }) */
   async findByIdAndDelete(itemId) {
     console.log(`DEBUG item`, Chalk.green(itemId));
-    return this.model.findByIdAandDelete(itemId._id);
+    return this.model.findByIdAndDelete(itemId._id);
   }
 
   async findOneAndDelete(query) {

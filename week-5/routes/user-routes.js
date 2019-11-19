@@ -7,13 +7,13 @@ const PopupService = require('../services/popup-service');
 // GET http://localhost:3000/user/all
 router.get('/all', async (req, res) => {
   const people = await UserService.findAll();
-  res.render('persons', { items: people });
+  res.render('users', { items: people });
 });
 
 // GET http://localhost:3000/user/list
 router.get('/list', async (req, res) => {
   const people = await UserService.findAll();
-  res.render('personlistJSON', { items: people });
+  res.render('userlistJSON', { items: people });
 });
 
 // GET http://localhost:3000/user/objectId

@@ -15,7 +15,7 @@ const UserService = require('../services/popup-service');
 
 let events = [];
 let popups = [];
-let persons = [];
+let users = [];
 
 const seedUsers = async () => {
   mongoose
@@ -242,26 +242,26 @@ const seedUsers = async () => {
 
     await User.deleteMany();
 
-    const person1 = new User({
+    const user1 = new User({
       _id: ObjectId(),
       firstName: 'Riley',
       lastName: 'Deyin',
       email: 'rileyd@example.org',
     });
-    const person2 = new User({
+    const user2 = new User({
       _id: ObjectId(),
       firstName: 'Jami',
       lastName: 'Watson',
       email: 'jamiw@example.org',
       role: 'guest',
     });
-    const person3 = new User({
+    const user3 = new User({
       _id: ObjectId(),
       firstName: 'Jenny',
       lastName: 'Morgan',
       email: 'jenw@example.org',
     });
-    const person4 = new User({
+    const user4 = new User({
       _id: ObjectId(),
       firstName: 'Chris',
       lastName: 'Stuff',
@@ -302,20 +302,20 @@ const seedUsers = async () => {
       phoneNumbeer: '+49 123 456 78 90',
     });
 
-    await persons.push(
-      person1,
-      person2,
-      person3,
-      person4,
+    await users.push(
+      user1,
+      user2,
+      user3,
+      user4,
       host1,
       host2,
       organizer1,
       organizer2,
     );
 
-    await User.create(persons);
+    await User.create(users);
 
-    await persons.map(user =>
+    await users.map(user =>
       console.log(
         `CREATED Id: ${user._id} - user name: ${user.firstName} ${user.lastName} = ${user.role}`,
       ),
@@ -324,7 +324,7 @@ const seedUsers = async () => {
     await mongoose.disconnect();
   } catch (err) {
     mongoose.disconnect();
-    console.log(`ERROR while seeding DB with persons`, err);
+    console.log(`ERROR while seeding DB with users`, err);
   }
 };
 
