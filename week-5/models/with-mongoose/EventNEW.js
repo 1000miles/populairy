@@ -4,7 +4,7 @@ const eventSchema = new mongoose.Schema(
   {
     _id: mongoose.Schema.Types.ObjectId,
     eventType: String,
-    name: {
+    eventName: {
       type: String,
       required: true,
     },
@@ -49,14 +49,15 @@ const eventSchema = new mongoose.Schema(
     // Host can be a group or a single user w/ first and last name
     eventHost: {
       name: String,
-      firstName: String,
-      lastName: String,
+      // firstName: String,
+      // lastName: String,
     },
     joinedHosts: [
       {
         user: {
           firstName: String,
           lastName: String,
+          email: String,
           status: {
             type: String,
             enum: ['pending', 'accepted', 'declined', null],
@@ -65,6 +66,7 @@ const eventSchema = new mongoose.Schema(
         },
         group: {
           name: String,
+          email: String,
           status: {
             type: String,
             enum: ['pending', 'accepted', 'declined', null],
@@ -76,11 +78,24 @@ const eventSchema = new mongoose.Schema(
     // required: true
     popups: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Popup',
-        autopopulate: {
-          maxDepth: 1,
+        title: String,
+        slots: {
+          day: {
+            from: String,
+            to: String,
+          },
+          time: {
+            from: String,
+            to: String,
+          },
         },
+      },
+    ],
+    guests: [
+      {
+        firstName: String,
+        lastName: String,
+        email: String,
       },
     ],
   },

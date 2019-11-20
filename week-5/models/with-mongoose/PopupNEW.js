@@ -8,11 +8,11 @@ const popupSchema = new Schema(
       type: String,
       required: true,
     },
-    title: {
+    popupTitle: {
       type: String,
       required: true,
     },
-    joinedEvent: {
+    eventName: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Event',
       autopopulate: {
@@ -20,12 +20,11 @@ const popupSchema = new Schema(
       },
     },
     date: {
-      type: {
-        week_day: String,
-        start_time: Date,
-        end_time: Date,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Event',
+      autopopulate: {
+        maxDepth: 1,
       },
-      required: true,
     },
     // Pop-up main organizer
     popupOrganizer: {
@@ -46,7 +45,6 @@ const popupSchema = new Schema(
     },
     location: {
       type: mongoose.Schema.Types.ObjectId,
-      name: String,
       ref: 'Event',
       autopopulate: {
         maxDepth: 1,
@@ -74,15 +72,13 @@ const popupSchema = new Schema(
         },
       },
     ],
-    guests: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        autopopulate: {
-          maxDepth: 1,
-        },
+    guests: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Event',
+      autopopulate: {
+        maxDepth: 1,
       },
-    ],
+    },
   },
   {
     timestamps: {

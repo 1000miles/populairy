@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 // This is to generate objectId when inserting items
 let ObjectId = mongoose.Types.ObjectId;
 
-console.log(ObjectId);
+// console.log(ObjectId);
 
 const Event = require('../models/with-mongoose/EventNEW');
-const Popup = require('../models/with-mongoose/PopupNew');
-const User = require('../models/with-mongoose/UserNew');
+const Popup = require('../models/with-mongoose/PopupNEW');
+const User = require('../models/with-mongoose/UserNEW');
 
 const EventService = require('../services/event-service');
 const PopupService = require('../services/popup-service');
@@ -41,7 +41,7 @@ const seedUsers = async () => {
     const event1 = new Event({
       _id: ObjectId(),
       eventType: 'haircraft',
-      name: 'OnHair Night',
+      eventName: 'OnHair Night',
       location: {
         name: 'Neukoelln Kunterbunt',
         address: {
@@ -76,12 +76,70 @@ const seedUsers = async () => {
           },
         },
       ],
+      popups: [
+        {
+          title: 'Repair Store',
+          slots: {
+            day: {
+              from: 'Friday',
+              to: 'Friday',
+            },
+            time: {
+              from: '10:00 AM',
+              to: '6:00 PM',
+            },
+          },
+        },
+        {
+          title: 'Tattoo X Flash',
+          slots: {
+            day: {
+              from: 'Friday',
+              to: 'Friday',
+            },
+            time: {
+              from: '11:00 AM',
+              to: '9:00 PM',
+            },
+          },
+        },
+        {
+          title: 'Feijoada Vegan',
+          slots: {
+            day: {
+              from: 'Friday',
+              to: 'Friday',
+            },
+            time: {
+              from: '1:00 PM',
+              to: '8:00 PM',
+            },
+          },
+        },
+      ],
+      guests: [
+        {
+          firstName: 'Rami',
+          lastName: 'Muller',
+          email: 'rami@example.org',
+        },
+        {
+          firstName: 'Henriette',
+          lastName: 'Willms',
+          email: 'henriette@example.org',
+        },
+        {
+          firstName: 'Gordon',
+          lastName: 'Subway',
+          email: 'gordon@example.org',
+        },
+      ],
     });
 
     const event2 = new Event({
       _id: ObjectId(),
       eventType: 'food',
-      name: 'Soup & Music',
+      eventName: 'Soup & Music',
       location: {
         name: 'Astra Stuben',
         address: {
@@ -101,6 +159,69 @@ const seedUsers = async () => {
       eventHost: {
         name: 'Food Coop Berlin',
       },
+      joinedHosts: [
+        {
+          user: {
+            firstName: 'Louisa',
+            lastName: 'Wiza',
+            email: 'louisa@example.org',
+            status: 'accepted',
+          },
+        },
+      ],
+      popups: [
+        {
+          title: 'Barber Shop Vol. 11',
+          slots: {
+            day: {
+              from: 'Friday',
+              to: 'Friday',
+            },
+            time: {
+              from: '12:00 AM',
+              to: '6:00 PM',
+            },
+          },
+        },
+        {
+          title: 'Tattoo X Flash',
+          slots: {
+            day: {
+              from: 'Friday',
+              to: 'Friday',
+            },
+            time: {
+              from: '11:00 AM',
+              to: '9:00 PM',
+            },
+          },
+        },
+        {
+          title: 'Food around the clock',
+          slots: {
+            day: {
+              from: 'Friday',
+              to: 'Friday',
+            },
+            time: {
+              from: '9:00 AM',
+              to: '10:00 PM',
+            },
+          },
+        },
+      ],
+      guests: [
+        {
+          firstName: 'Wyatt',
+          lastName: 'Thurman',
+          email: 'Wyatt@example.org',
+        },
+        {
+          firstName: 'Ruth',
+          lastName: 'Kassulke',
+          email: 'ruth@example.org',
+        },
+      ],
     });
 
     await events.push(event1, event2);
@@ -119,28 +240,10 @@ const seedUsers = async () => {
     const barberShop = new Popup({
       _id: ObjectId(),
       category: 'barber',
-      title: 'Barber Shop Vol. 11',
-      joinedEvent: 'OnHair Night',
-      date: {
-        week_day: 'Friday',
-        start_time: new Date('2019-02-25T19:00:00'),
-        end_time: new Date('2019-02-26T02:00:00'),
-      },
+      popupTitle: 'Barber Shop Vol. 11',
       popupOrganizer: {
         name: 'RooArr Pop-up Collective',
       },
-      // FIXME: Ref to Event
-      // location: {
-      // 	name: 'Neukoelln Kunterbunt',
-      // 	address: {
-      // 		additionalInfo: '3rd floor left',
-      // 		streetName: 'Weserstr.',
-      // 		houseNumber: '234',
-      // 		postCode: '12345',
-      // 		city: 'Berlin',
-      // 		country: 'Germany',
-      // 	},
-      // },
       joinedOrganizers: [
         {
           user: {
@@ -160,28 +263,10 @@ const seedUsers = async () => {
     const barberShop2 = new Popup({
       _id: ObjectId(),
       category: 'barber',
-      title: 'Pony and Clyde #23',
-      joinedEvent: 'OnHair Night',
-      date: {
-        week_day: 'Friday',
-        start_time: new Date('2019-02-25T19:00:00'),
-        end_time: new Date('2019-02-26T02:00:00'),
-      },
+      popupTitle: 'Pony and Clyde #23',
       popupOrganizer: {
         name: 'Bored Panda',
       },
-      // FIXME: Ref to Event
-      // location: {
-      // 	name: 'Neukoelln Kunterbunt',
-      // 	address: {
-      // 		additionalInfo: '3rd floor left',
-      // 		streetName: 'Weserstr.',
-      // 		houseNumber: '234',
-      // 		postCode: '12345',
-      // 		city: 'Berlin',
-      // 		country: 'Germany',
-      // 	},
-      // },
       joinedOrganizers: [
         {
           group: {
@@ -195,31 +280,10 @@ const seedUsers = async () => {
     const foodCorner = new Popup({
       _id: ObjectId(),
       category: 'food',
-      title: 'Food Corner',
-      joinedEvent: 'Soup & Music',
-      date: {
-        week_day: 'Friday',
-        start_time: new Date('2019-03-10T19:00:00'),
-        end_time: new Date('2019-03-13T05:00:00'),
-      },
+      popupTitle: 'Food around the clock',
       popupOrganizer: {
         name: 'KreuzKoelln Collective',
       },
-      // FIXME: Ref to Event
-      eventHost: {
-        name: 'Food Coop Berlin',
-      },
-      // location: {
-      // 	name: 'Astra Stuben',
-      // 	address: {
-      // 		additionalInfo: '2nd floor next to Cocktailbar',
-      // 		streetName: 'Rigaer Str.',
-      // 		houseNumber: '643',
-      // 		postCode: '12321',
-      // 		city: 'Berlin',
-      // 		country: 'Germany',
-      // 	},
-      // },
       joinedOrganizers: [
         {
           group: {

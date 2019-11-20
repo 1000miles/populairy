@@ -36,7 +36,7 @@ const userSchema = new Schema(
         },
       },
     ],
-    organizers: [
+    joinedOrganizers: [
       {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Popup',
