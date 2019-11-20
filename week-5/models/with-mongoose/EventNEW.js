@@ -8,7 +8,6 @@ const eventSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    // TODO: Add address later
     location: {
       name: {
         type: String,
@@ -48,9 +47,12 @@ const eventSchema = new mongoose.Schema(
     },
     // Host can be a group or a single user w/ first and last name
     eventHost: {
-      name: String,
-      // firstName: String,
-      // lastName: String,
+      type: {
+        name: String,
+        firstName: String,
+        lastName: String,
+      },
+      required: true,
     },
     joinedHosts: [
       {
@@ -75,7 +77,6 @@ const eventSchema = new mongoose.Schema(
         },
       },
     ],
-    // required: true
     popups: [
       {
         title: String,

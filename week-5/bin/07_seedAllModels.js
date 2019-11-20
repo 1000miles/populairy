@@ -59,7 +59,8 @@ const seedUsers = async () => {
         end_time: new Date('2019-02-26T02:00:00'),
       },
       eventHost: {
-        name: 'X Event Collective',
+        firstName: 'Jaunita',
+        lastName: 'Hicks',
       },
       joinedHosts: [
         {
@@ -78,7 +79,7 @@ const seedUsers = async () => {
       ],
       popups: [
         {
-          title: 'Repair Store',
+          title: 'Barber Shop Vol. 11',
           slots: {
             day: {
               from: 'Friday',
@@ -91,7 +92,7 @@ const seedUsers = async () => {
           },
         },
         {
-          title: 'Tattoo X Flash',
+          title: 'Pony annd Clyde #23',
           slots: {
             day: {
               from: 'Friday',
@@ -104,7 +105,7 @@ const seedUsers = async () => {
           },
         },
         {
-          title: 'Feijoada Vegan',
+          title: 'Food around the clock',
           slots: {
             day: {
               from: 'Friday',
@@ -184,19 +185,6 @@ const seedUsers = async () => {
           },
         },
         {
-          title: 'Tattoo X Flash',
-          slots: {
-            day: {
-              from: 'Friday',
-              to: 'Friday',
-            },
-            time: {
-              from: '11:00 AM',
-              to: '9:00 PM',
-            },
-          },
-        },
-        {
           title: 'Food around the clock',
           slots: {
             day: {
@@ -229,7 +217,7 @@ const seedUsers = async () => {
     await Event.create(events);
 
     await events.map(event =>
-      console.log(`CREATED Id: ${event._id} - Event name: ${event.name}`),
+      console.log(`CREATED Id: ${event._id} - Event name: ${event.eventName}`),
     );
 
     // Popups
@@ -299,7 +287,9 @@ const seedUsers = async () => {
     await Popup.create(popups);
 
     await popups.map(popup =>
-      console.log(`CREATED Id: ${popup._id} - Popup title: ${popup.title}`),
+      console.log(
+        `CREATED Id: ${popup._id} - Popup title: ${popup.popupTitle}`,
+      ),
     );
 
     // Users
@@ -381,7 +371,7 @@ const seedUsers = async () => {
 
     await users.map(user =>
       console.log(
-        `CREATED Id: ${user._id} - user name: ${user.firstName} ${user.lastName} = ${user.role}`,
+        `CREATED Id: ${user._id} - user name: ${user.firstName} ${user.lastName} (${user.role})`,
       ),
     );
 
