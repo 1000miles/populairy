@@ -73,27 +73,28 @@ Examples
 - [ ] An event can have multiple hosts (joinedHosts) that are confirmed as hosts.
 - [ ] An event has a date with a day and time range (from, to) each.
 - [ ] An event has a location with address, postcode, city and country info.
+- [] An event has one or many guests attending.
 
 ### Pop-up
 
 - [ ] A pop-up has 1 main organizer that can be a group or a person.
 - [ ] A pop-up can have multiple organizers that are confirmed as organizers.
-- [ ] A pop-up's has by default the same location data as the event it joins but can have additional info.
-- [ ] A pop-up has the same date (day and time range) as the event it joins but can be modified later.
+- [ ] A pop-up has the same location of an event that it joins (reference).
+- [ ] A pop-up has the same date (day and time) is the same date of an event that it joins (reference).
 - [ ] A pop-up can only have 1 main host that can be a group or a single person.
-- [ ] A pop-up can only join 1 event at a time that acts as satellite event.
-- [ ] A pop-up can have one or many guests attending.
+- [ ] A pop-up can only join 1 event (satellite) that it joins.
+- [ ] A pop-up can have one or many guests subscribed from an event that it joins.
 
 ### User
 
 - [ ] A user is by default a `guest` unless confirmed as an `event host` or `pop-up organizer`.
-- [ ] A user can attend one or more pop-ups but can not attend an event directly.
+- [ ] A user can attend one event at a time.
+- [ ] A user can attend one or many pop-ups of an event that the user subscribed for.
 - [ ] A user can have one of these roles at a time:
 	- guest
 	- **Event**: main host (eventHost) || co-host (joinedHosts)
 	- **Pop-up**: main organizer (organizer) || co-organizer (popupOrganizers)
-- [ ] A user can join a group or can act as a single person.
-
+- [ ] A user can act as a group or as a single person.
 Offline / Before authentication:
 - [ ] A first name, last name, email is required as a `guest`.
 - [ ] A first name, last name, email and phone number is required as a Pop-up `organizer`.
