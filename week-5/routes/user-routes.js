@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const UserService = require('../services/user-service');
+const EventService = require('../services/event-service');
 const PopupService = require('../services/popup-service');
+const UserService = require('../services/user-service');
 
 // GET http://localhost:3000/user/all
 router.get('/all', async (req, res) => {
@@ -12,8 +13,9 @@ router.get('/all', async (req, res) => {
 
 // GET http://localhost:3000/user/list
 router.get('/list', async (req, res) => {
-  const people = await UserService.findAll();
-  res.render('userlistJSON', { items: people });
+  const users = await UserService.findAll();
+
+  res.render('userlistJSON', { items: users });
 });
 
 // GET http://localhost:3000/user/objectId
@@ -34,11 +36,15 @@ router.delete('/:id', async (req, res) => {
   res.send(user);
 });
 
-router.post('/:id/popups', async (req, res) => {
+router.post('/:id/events', async (req, res) => {
   const user = await UserService.findById(req.params.id);
-  const popup = await PopupService.findById(req.body.popup);
 
-  await UserService.attendPopup(user, popup);
+  console.log(`[user-routs] user`, user);
+  const event = await EventService.findById(req.body.event);
+
+  console.log(`[user-routs] event`, event);
+
+  await UserService.attendEvent(user, event);
 
   res.send(user);
 });

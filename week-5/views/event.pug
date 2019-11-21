@@ -12,9 +12,7 @@ block content
     each popup in popups
       ul
         li #[strong #{popup.title}] performed by #[em #{popup.host}]
-    p Attendees:
-    each attendee in users
+    p Guests:
+    each user in users
       ul
-        li #[strong #{attendee.firstName} #{attendee.lastName}], Email: #{attendee.email}, Role: #{attendee.role}
-    p.
-#{newPopup}
+        li #[strong #{user.firstName} #{user.lastName}], Email: #{user.email}, Role: #{user.role}

@@ -10,19 +10,22 @@ router.get('/all', async (req, res) => {
   const events = await EventService.findAll();
   const popups = await PopupService.findAll();
   const users = await UserService.findAll();
+
   const popup = await PopupService.findById(req.params.id);
 
-  const newPopup = await EventService.add(popup);
-  console.log(newPopup);
+  res.render('event', { events, popups, users, popup });
+});
 
-  // await EventService.hasPopups(popups)
+// GET http://localhost:3000/event/list
+router.get('/list', async (req, res) => {
+  const events = await EventService.findAll();
 
-  res.render('event', { events, popups, users, popup, newPopup });
+  res.render('eventlistJSON', { items: events });
 });
 
 // GET `/event/:id`
 router.get('/:id', async (req, res) => {
-  const event = await EventService.find(req.params.id);
+  const event = await EventService.findById(req.params.id);
   res.send(event);
 });
 
@@ -31,6 +34,17 @@ router.post('/', async (req, res) => {
   const event = await EventService.add(req.body);
 
   console.log(`[event-routes] /post`, event);
+  res.send(event);
+});
+
+// GET `/event/:id`
+router.post('/:id/invitation', async (req, res) => {
+  const event = await EventService.findById(req.params.id);
+  const popup = await PopupService.findById(req.body.popup);
+
+  console.log(`[event-routes.js]: Popup`, popup);
+
+  await EventService.sendInvitation(popup);
   res.send(event);
 });
 

@@ -29,7 +29,9 @@ const popupSchema = new Schema(
     // Pop-up main organizer
     popupOrganizer: {
       type: {
-        name: String,
+        group: {
+          name: String,
+        },
         firstName: String,
         lastName: String,
       },

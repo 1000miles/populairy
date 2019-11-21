@@ -2,17 +2,22 @@ const Chalk = require('chalk');
 
 module.exports = class Service {
   async findById(itemId) {
-    console.log(`DEBUG itemId`, Chalk.green(itemId));
+    console.log(`[base-service findById()] DEBUG itemId`, Chalk.green(itemId));
     return this.model.findById(itemId);
   }
 
   async findAll(item) {
-    console.log(`DEBUG item`, Chalk.blue(item));
+    console.log(`[base-service findAlll()] DEBUG item`, Chalk.blue(item));
     return this.model.find(item);
   }
 
+  async findOneAndUpdate(query) {
+    console.log(`DEBUG query`, Chalk.blue(query));
+    return this.model.findOneAndUpdate(query);
+  }
+
   async add(item) {
-    console.log(`DEBUG item`, Chalk.green(item));
+    console.log(`[base-service DEBUG item`, Chalk.green(item));
     return this.model.create(item);
   }
 
@@ -20,11 +25,6 @@ module.exports = class Service {
   async insertMany(items) {
     console.log(`DEBUG items`, Chalk.green(items));
     this.model.insertMany(items);
-  }
-
-  async findOneAndUpdate(query) {
-    console.log(`DEBUG query`, Chalk.blue(query));
-    return this.model.findOneAndUpdate(query);
   }
 
   /** Updates all documents that match filter */

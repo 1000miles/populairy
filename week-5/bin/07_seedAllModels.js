@@ -1,17 +1,15 @@
 const mongoose = require('mongoose');
 
-// This is to generate objectId when inserting items
-let ObjectId = mongoose.Types.ObjectId;
-
-// console.log(ObjectId);
+// This is to generate ObjectId() when inserting items
+const ObjectId = mongoose.Types.ObjectId;
 
 const Event = require('../models/with-mongoose/EventNEW');
 const Popup = require('../models/with-mongoose/PopupNEW');
 const User = require('../models/with-mongoose/UserNEW');
 
-const EventService = require('../services/event-service');
-const PopupService = require('../services/popup-service');
-const UserService = require('../services/popup-service');
+// const EventService = require('../services/event-service');
+// const PopupService = require('../services/popup-service');
+// const UserService = require('../services/popup-service');
 
 let events = [];
 let popups = [];
@@ -61,18 +59,21 @@ const seedUsers = async () => {
       eventHost: {
         firstName: 'Jaunita',
         lastName: 'Hicks',
+        email: 'jhicks@example.org',
       },
       joinedHosts: [
         {
           user: {
             firstName: 'Kelly',
             lastName: 'Hacky',
+            email: 'khacky@example.org',
             status: 'accepted',
           },
         },
         {
           group: {
             name: 'Als gaebe es keinen Morgen',
+            email: 'agekm@example.org',
             status: 'pending',
           },
         },
@@ -158,7 +159,11 @@ const seedUsers = async () => {
         end_time: new Date('2019-03-13T05:00:00'),
       },
       eventHost: {
-        name: 'Food Coop Berlin',
+        group: {
+          name: 'Food Coop Berlin',
+          email: 'foodcoopsers@example.org',
+          websiteUrl: 'https://www.fooodcoopsers.org',
+        },
       },
       joinedHosts: [
         {
@@ -230,7 +235,9 @@ const seedUsers = async () => {
       category: 'barber',
       popupTitle: 'Barber Shop Vol. 11',
       popupOrganizer: {
-        name: 'RooArr Pop-up Collective',
+        group: {
+          name: 'RooArr Pop-up Collective',
+        },
       },
       joinedOrganizers: [
         {
@@ -253,7 +260,9 @@ const seedUsers = async () => {
       category: 'barber',
       popupTitle: 'Pony and Clyde #23',
       popupOrganizer: {
-        name: 'Bored Panda',
+        group: {
+          name: 'Board Panda',
+        },
       },
       joinedOrganizers: [
         {
@@ -270,7 +279,8 @@ const seedUsers = async () => {
       category: 'food',
       popupTitle: 'Food around the clock',
       popupOrganizer: {
-        name: 'KreuzKoelln Collective',
+        firstName: 'Colin',
+        lastName: 'Brenston',
       },
       joinedOrganizers: [
         {

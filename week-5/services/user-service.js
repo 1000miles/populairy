@@ -6,14 +6,14 @@ const User = require('../models/with-mongoose/UserNEW');
 class UserService extends BaseService {
   model = User;
 
-  async attendPopup(user, popup) {
-    console.log(`DEBUG popup 1:`, popup);
-    console.log(`DEBUG user 1:`, user);
+  async attendEvent(user, event) {
+    console.log(`DEBUG [user-service.js] event 1:`, event);
+    console.log(`DEBUG [user-service.js] user 1:`, user);
 
-    user.popups.push(popup);
-    popup.guests.push(user);
+    user.events.push(event);
+    event.guests.push(user);
     await user.save();
-    await popup.save();
+    await event.save();
 
     console.log(`DEBUG popup 2:`, popup);
     console.log(`DEBUG user 2:`, user);

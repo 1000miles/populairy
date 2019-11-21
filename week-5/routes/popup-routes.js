@@ -7,22 +7,19 @@ const UserService = require('../services/user-service');
 
 // GET http://localhost:3000/popup/all
 router.get('/all', async (req, res) => {
+  const event = await EventService.findById();
   const events = await EventService.findAll();
   const popups = await PopupService.findAll();
   const users = await UserService.findAll();
 
-  res.render('popup', { events, popups, users });
+  res.render('popup', { popups, users, event, events });
 });
 
 // GET http://localhost:3000/popup/list (JSON)
 router.get('/list', async (req, res) => {
-  const events = await EventService.findAll();
   const popups = await PopupService.findAll();
-  const users = await UserService.findAll();
 
-  const options = [events, popups, users];
-
-  res.render('popuplistJSON', { items: options });
+  res.render('popuplistJSON', { items: popups });
 });
 
 // GET http://localhost:3000/popup/ObjectId

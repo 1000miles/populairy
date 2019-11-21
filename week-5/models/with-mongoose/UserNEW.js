@@ -18,39 +18,25 @@ const userSchema = new Schema(
       default: 'guest',
     },
     phoneNumber: String,
+    events: [
+      {
+        eventName: {
+          type: mongoose.SchemaTypes.ObjectId,
+          ref: 'Event',
+          autopopulate: {
+            maxDepth: 1,
+          },
+        },
+      },
+    ],
     popups: [
       {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Popup',
-        autopopulate: {
-          maxDepth: 1,
-        },
-      },
-    ],
-    hosts: [
-      {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Popup',
-        autopopulate: {
-          maxDepth: 1,
-        },
-      },
-    ],
-    joinedOrganizers: [
-      {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Popup',
-        autopopulate: {
-          maxDepth: 1,
-        },
-      },
-    ],
-    guests: [
-      {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Popup',
-        autopopulate: {
-          maxDepth: 1,
+        popupTitle: {
+          type: mongoose.SchemaTypes.ObjectId,
+          ref: 'Popup',
+          autopopulate: {
+            maxDepth: 1,
+          },
         },
       },
     ],

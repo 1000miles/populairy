@@ -48,7 +48,10 @@ const eventSchema = new mongoose.Schema(
     // Host can be a group or a single user w/ first and last name
     eventHost: {
       type: {
-        name: String,
+        group: {
+          name: String,
+          websiteUrl: String,
+        },
         firstName: String,
         lastName: String,
       },
