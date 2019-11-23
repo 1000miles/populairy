@@ -1,18 +1,22 @@
 extends layout
 
 block content
-  h4 #[u #{events.length}] Event(s) with #[u #{popups.length}] Pop-up(s) listed and counting...
-  each event in events
-    h3 Event # #{event.id}: #{event.name}
-    p #[strong Location]: #{event.location}
-    p #[strong Date]: #{event.date}
-    p #[strong Space Host]: #{event.host}
+	h4 #[u #{events.length}] Event(s) with #[u #{popups.length}] Pop-up(s) listed and counting...
+	each event in events
+		h2 #{event.eventName}
+			h4 #[strong Location]:
+			| #{event.location.name}, #{event.location.address.streetName} #{event.location.address.houseNumber}, #{event.location.address.postCode} #{event.location.address.city}, #{event.location.address.country}
+		//- p #[strong Date]: #{event.date}
+		//- p #[strong Space Host]: #{event.host}
 
-    h3 Pop-ups:
-    each popup in popups
-      ul
-        li #[strong #{popup.title}] performed by #[em #{popup.host}]
-    p Guests:
-    each user in users
-      ul
-        li #[strong #{user.firstName} #{user.lastName}], Email: #{user.email}, Role: #{user.role}
+		h3 Pop-ups:
+		each popup in popups
+			ul
+				if popup.popupOrganizer.name.group
+					li #[strong #{popup.popupTitle}] offered by #[em #{popup.popupOrganizer.name.group.name}]
+				else if popup.popupOrganizer.name.user
+					li #[strong #{popup.popupTitle}] offered by #[em #{popup.popupOrganizer.name.user.firstName} #{popup.popupOrganizer.name.user.lastName}]
+		p Guests:
+		each user in users
+			ul
+				li #[strong #{user.firstName} #{user.lastName}], Email: #{user.email}, Role: #{user.role}

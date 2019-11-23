@@ -6,11 +6,11 @@ const popupSchema = new Schema(
     _id: mongoose.Types.ObjectId,
     category: {
       type: String,
-      required: true,
+      required: [true, "Category can't be blank."],
     },
     popupTitle: {
       type: String,
-      required: true,
+      required: [true, "Pop-up title can't be blank."],
     },
     eventName: {
       type: mongoose.Schema.Types.ObjectId,
@@ -28,14 +28,15 @@ const popupSchema = new Schema(
     },
     // Pop-up main organizer
     popupOrganizer: {
-      type: {
+      name: {
         group: {
           name: String,
         },
-        firstName: String,
-        lastName: String,
+        user: {
+          firstName: String,
+          lastName: String,
+        },
       },
-      required: true,
     },
     // Main event host
     eventHost: {

@@ -1,14 +1,14 @@
 const Chalk = require('chalk');
 
 module.exports = class Service {
+  async findAll() {
+    console.log(`[base-service findAll()] DEBUG this.model`, this.model);
+    return this.model.find();
+  }
+
   async findById(itemId) {
     console.log(`[base-service findById()] DEBUG itemId`, Chalk.green(itemId));
     return this.model.findById(itemId);
-  }
-
-  async findAll(item) {
-    console.log(`[base-service findAlll()] DEBUG item`, Chalk.blue(item));
-    return this.model.find(item);
   }
 
   async findOneAndUpdate(query) {
@@ -24,13 +24,13 @@ module.exports = class Service {
   /* Faster than .create() and validates before inserting */
   async insertMany(items) {
     console.log(`DEBUG items`, Chalk.green(items));
-    this.model.insertMany(items);
+    return this.model.insertMany(items);
   }
 
   /** Updates all documents that match filter */
   async upateMany(query) {
     console.log(`DEBUG query`, Chalk.blue(query));
-    this.model.updateMany(query);
+    return this.model.updateMany(query);
   }
 
   /* Shorthand for findOneAndDelete({ _id: id }) */
@@ -47,11 +47,11 @@ module.exports = class Service {
   /* Delete one item */
   async deleteOne(item) {
     console.log(`DEBUG item`, Chalk.green(item));
-    this.model.deleteOne(item);
+    return this.model.deleteOne(item);
   }
 
   /* Deletes all documents that match conditions from collection */
   async deleteMany() {
-    this.model.deleteMany();
+    return this.model.deleteMany();
   }
 };

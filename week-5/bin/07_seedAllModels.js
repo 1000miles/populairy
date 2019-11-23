@@ -57,9 +57,13 @@ const seedUsers = async () => {
         end_time: new Date('2019-02-26T02:00:00'),
       },
       eventHost: {
-        firstName: 'Jaunita',
-        lastName: 'Hicks',
-        email: 'jhicks@example.org',
+        person: {
+          name: {
+            firstName: 'Jaunita',
+            lastName: 'Hicks',
+          },
+          email: 'jaunita@example.org',
+        },
       },
       joinedHosts: [
         {
@@ -161,15 +165,17 @@ const seedUsers = async () => {
       eventHost: {
         group: {
           name: 'Food Coop Berlin',
-          email: 'foodcoopsers@example.org',
           websiteUrl: 'https://www.fooodcoopsers.org',
+          email: 'foodcoopsers@example.org',
         },
       },
       joinedHosts: [
         {
           user: {
-            firstName: 'Louisa',
-            lastName: 'Wiza',
+            name: {
+              firstName: 'Louisa',
+              lastName: 'Wiza',
+            },
             email: 'louisa@example.org',
             status: 'accepted',
           },
@@ -235,8 +241,10 @@ const seedUsers = async () => {
       category: 'barber',
       popupTitle: 'Barber Shop Vol. 11',
       popupOrganizer: {
-        group: {
-          name: 'RooArr Pop-up Collective',
+        name: {
+          group: {
+            name: 'RooArr Pop-up Collective',
+          },
         },
       },
       joinedOrganizers: [
@@ -260,8 +268,10 @@ const seedUsers = async () => {
       category: 'barber',
       popupTitle: 'Pony and Clyde #23',
       popupOrganizer: {
-        group: {
-          name: 'Board Panda',
+        name: {
+          group: {
+            name: 'Board Panda',
+          },
         },
       },
       joinedOrganizers: [
@@ -279,8 +289,12 @@ const seedUsers = async () => {
       category: 'food',
       popupTitle: 'Food around the clock',
       popupOrganizer: {
-        firstName: 'Colin',
-        lastName: 'Brenston',
+        name: {
+          user: {
+            firstName: 'Colin',
+            lastName: 'Brenston',
+          },
+        },
       },
       joinedOrganizers: [
         {

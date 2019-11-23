@@ -30,6 +30,8 @@ class EventService extends BaseService {
           break;
       }
 
+      obj.save();
+
       await send(messagePopup);
     }
   }

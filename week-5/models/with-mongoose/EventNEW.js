@@ -6,34 +6,34 @@ const eventSchema = new mongoose.Schema(
     eventType: String,
     eventName: {
       type: String,
-      required: true,
+      required: [true, "Event name can't be blank."],
     },
     location: {
       name: {
         type: String,
-        required: true,
+        required: [true, "Location can't be blank."],
       },
       address: {
         additionalInfo: String,
         streetName: {
           type: String,
-          required: true,
+          required: [true, "Street name can't be blank."],
         },
         houseNumber: {
           type: String,
-          required: true,
+          required: [true, "House number can't be blank."],
         },
         postCode: {
           type: String,
-          required: true,
+          required: [true, "Postcode can't be blank."],
         },
         city: {
           type: String,
-          required: true,
+          required: [true, "City can't be blank."],
         },
         country: {
           type: String,
-          required: true,
+          required: [true, "Country can't be blank."],
         },
       },
     },
@@ -43,25 +43,30 @@ const eventSchema = new mongoose.Schema(
         start_time: Date,
         end_time: Date,
       },
-      required: true,
+      required: [true, "Event date can't be blank."],
     },
     // Host can be a group or a single user w/ first and last name
     eventHost: {
-      type: {
-        group: {
-          name: String,
-          websiteUrl: String,
-        },
-        firstName: String,
-        lastName: String,
+      group: {
+        name: String,
+        websiteUrl: String,
+        email: String,
       },
-      required: true,
+      user: {
+        name: {
+          firstName: String,
+          lastName: String,
+        },
+        email: String,
+      },
     },
     joinedHosts: [
       {
         user: {
-          firstName: String,
-          lastName: String,
+          name: {
+            firstName: String,
+            lastName: String,
+          },
           email: String,
           status: {
             type: String,
