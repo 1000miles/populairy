@@ -101,9 +101,46 @@ Offline / Before authentication:
 - [ ] A first name, last name, email and phone number is required as an `event host`.
 
 
-## Roadmap
+## Axios
 
-- [Barber Shop](docs/BARBERSHOP.md)
+## User
+
+1. Get all useers
+
+```js
+axios.get('/user/all').then(console.log)
+```
+
+2. Get single user
+
+```js
+// GET http://localhost:3000/:id
+axios.get('/user/5dd93e067689550c4a89fc03').then(console.log)
+```
+
+3. Create a new user
+
+```js
+// POST http://localhost:3000/user
+axios.post('/user', {firstName: "Jonny", lastName: "Crush", email: "jonny@example.org"}).then(console.log)
+```
+
+4. Update single user
+
+```js
+
+// PATCH http://localhost:3000/user/:id
+axios.patch('/user/5dd93e067689550c4a89fc03', {lastName: 'Another Lastname'}).then(console.log)
+```
+
+Delete a user
+```js
+// DEL http://localhost:3000/user/:id
+axios.delete('/user/5dd92e87f94cd40612c0783d').then(console.log)
+```
+
+
+```
 
 ## Getting started
 

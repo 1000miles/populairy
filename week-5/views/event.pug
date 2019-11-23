@@ -9,14 +9,14 @@ block content
 		//- p #[strong Date]: #{event.date}
 		//- p #[strong Space Host]: #{event.host}
 
-		h3 Pop-ups:
-		each popup in popups
-			ul
-				if popup.popupOrganizer.name.group
-					li #[strong #{popup.popupTitle}] offered by #[em #{popup.popupOrganizer.name.group.name}]
-				else if popup.popupOrganizer.name.user
-					li #[strong #{popup.popupTitle}] offered by #[em #{popup.popupOrganizer.name.user.firstName} #{popup.popupOrganizer.name.user.lastName}]
-		p Guests:
-		each user in users
-			ul
-				li #[strong #{user.firstName} #{user.lastName}], Email: #{user.email}, Role: #{user.role}
+		//- h3 Pop-ups:
+		//- each popup in popups
+		//- 	ul
+		//- 		if popup.popupOrganizer.name.group
+		//- 			li #[strong #{popup.popupTitle}] offered by #[em #{popup.popupOrganizer.name.group.name}]
+		//- 		else if popup.popupOrganizer.name.user
+		//- 			li #[strong #{popup.popupTitle}] offered by #[em #{popup.popupOrganizer.name.user.firstName} #{popup.popupOrganizer.name.user.lastName}]
+		//- p Guests:
+		//- each user in users
+		//- 	ul
+		//- 		li #[strong #{user.firstName} #{user.lastName}], Email: #{user.email}, Role: #{user.role}

@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 const popupSchema = new Schema(
   {
-    _id: mongoose.Types.ObjectId,
     category: {
       type: String,
       required: [true, "Category can't be blank."],
@@ -51,6 +50,15 @@ const popupSchema = new Schema(
       ref: 'Event',
       autopopulate: {
         maxDepth: 1,
+      },
+    },
+    popups: {
+      slots: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Event',
+        autopopulate: {
+          maxDepth: 1,
+        },
       },
     },
     // Pop-up co-organizers

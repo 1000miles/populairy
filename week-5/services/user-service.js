@@ -1,6 +1,6 @@
 const BaseService = require('./base-service');
 
-// New
+const Event = require('../models/with-mongoose/EventNEW');
 const User = require('../models/with-mongoose/UserNEW');
 
 class UserService extends BaseService {

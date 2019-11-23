@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const ObjectId = mongoose.Types.ObjectId;
 
 const userSchema = new Schema(
   {
-    _id: mongoose.Types.ObjectId,
     firstName: {
       type: String,
       // required: true
@@ -18,17 +18,7 @@ const userSchema = new Schema(
       default: 'guest',
     },
     phoneNumber: String,
-    events: [
-      {
-        eventName: {
-          type: mongoose.SchemaTypes.ObjectId,
-          ref: 'Event',
-          autopopulate: {
-            maxDepth: 1,
-          },
-        },
-      },
-    ],
+    events: [],
     popups: [
       {
         popupTitle: {

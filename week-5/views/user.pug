@@ -1,6 +1,6 @@
 extends layout
 
 block content
-  h1 #[u #{people.length}] users listed and counting..
-  each user in people
-    li Name: #{user}
+	h1 Guest Details:
+	p #[strong UserId]: #{user._id}
+	p #[strong Name]: #{user.firstName} #{user.lastName}, #[strong E-Mail]: #{user.email}

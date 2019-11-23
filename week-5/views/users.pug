@@ -1,4 +1,7 @@
 extends layout
 
 block content
-  h4 #[u #{items.length}] People attending...
+	h3 #[u #{users.length}] People attending...
+
+	each user in users
+		li #[strong Name]: #{user.firstName} #{user.lastName}, #[strong E-Mail]: #{user.email}

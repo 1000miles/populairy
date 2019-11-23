@@ -37,7 +37,6 @@ const seedUsers = async () => {
     await Event.deleteMany();
 
     const event1 = new Event({
-      _id: ObjectId(),
       eventType: 'haircraft',
       eventName: 'OnHair Night',
       location: {
@@ -57,7 +56,7 @@ const seedUsers = async () => {
         end_time: new Date('2019-02-26T02:00:00'),
       },
       eventHost: {
-        person: {
+        user: {
           name: {
             firstName: 'Jaunita',
             lastName: 'Hicks',
@@ -68,8 +67,10 @@ const seedUsers = async () => {
       joinedHosts: [
         {
           user: {
-            firstName: 'Kelly',
-            lastName: 'Hacky',
+            name: {
+              firstName: 'Kelly',
+              lastName: 'Hacky',
+            },
             email: 'khacky@example.org',
             status: 'accepted',
           },
@@ -143,7 +144,6 @@ const seedUsers = async () => {
     });
 
     const event2 = new Event({
-      _id: ObjectId(),
       eventType: 'food',
       eventName: 'Soup & Music',
       location: {
@@ -237,7 +237,6 @@ const seedUsers = async () => {
     await Popup.deleteMany();
 
     const barberShop = new Popup({
-      _id: ObjectId(),
       category: 'barber',
       popupTitle: 'Barber Shop Vol. 11',
       popupOrganizer: {
@@ -264,7 +263,6 @@ const seedUsers = async () => {
     });
 
     const barberShop2 = new Popup({
-      _id: ObjectId(),
       category: 'barber',
       popupTitle: 'Pony and Clyde #23',
       popupOrganizer: {
@@ -285,7 +283,6 @@ const seedUsers = async () => {
     });
 
     const foodCorner = new Popup({
-      _id: ObjectId(),
       category: 'food',
       popupTitle: 'Food around the clock',
       popupOrganizer: {
@@ -321,33 +318,28 @@ const seedUsers = async () => {
     await User.deleteMany();
 
     const user1 = new User({
-      _id: ObjectId(),
       firstName: 'Riley',
       lastName: 'Deyin',
       email: 'rileyd@example.org',
     });
     const user2 = new User({
-      _id: ObjectId(),
       firstName: 'Jami',
       lastName: 'Watson',
       email: 'jamiw@example.org',
       role: 'guest',
     });
     const user3 = new User({
-      _id: ObjectId(),
       firstName: 'Jenny',
       lastName: 'Morgan',
       email: 'jenw@example.org',
     });
     const user4 = new User({
-      _id: ObjectId(),
       firstName: 'Chris',
       lastName: 'Stuff',
       email: 'chris@example.org',
     });
 
     const host1 = new User({
-      _id: ObjectId(),
       firstName: 'Mhisa',
       lastName: 'Yourg',
       email: 'mhisaw@example.org',
@@ -355,7 +347,6 @@ const seedUsers = async () => {
       phoneNumber: '+44 8484 34 22 55',
     });
     const host2 = new User({
-      _id: ObjectId(),
       firstName: 'Nana',
       lastName: 'Nooo',
       email: 'nanoo@example.org',
@@ -364,7 +355,6 @@ const seedUsers = async () => {
     });
 
     const organizer1 = new User({
-      _id: ObjectId(),
       firstName: 'Xaya',
       lastName: 'Hey',
       email: 'Xaya@example.org',
@@ -372,7 +362,6 @@ const seedUsers = async () => {
       phoneNumber: '+49 056 78 34 21',
     });
     const organizer2 = new User({
-      _id: ObjectId(),
       firstName: 'Fabienne',
       lastName: 'Lala',
       email: 'fabienne@example.org',

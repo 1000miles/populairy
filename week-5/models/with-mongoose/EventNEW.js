@@ -2,38 +2,39 @@ const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema(
   {
-    _id: mongoose.Schema.Types.ObjectId,
     eventType: String,
     eventName: {
       type: String,
       required: [true, "Event name can't be blank."],
     },
     location: {
-      name: {
-        type: String,
-        required: [true, "Location can't be blank."],
-      },
-      address: {
-        additionalInfo: String,
-        streetName: {
+      type: {
+        name: {
           type: String,
-          required: [true, "Street name can't be blank."],
+          required: [true, "Location can't be blank."],
         },
-        houseNumber: {
-          type: String,
-          required: [true, "House number can't be blank."],
-        },
-        postCode: {
-          type: String,
-          required: [true, "Postcode can't be blank."],
-        },
-        city: {
-          type: String,
-          required: [true, "City can't be blank."],
-        },
-        country: {
-          type: String,
-          required: [true, "Country can't be blank."],
+        address: {
+          additionalInfo: String,
+          streetName: {
+            type: String,
+            required: [true, "Street name can't be blank."],
+          },
+          houseNumber: {
+            type: String,
+            required: [true, "House number can't be blank."],
+          },
+          postCode: {
+            type: String,
+            required: [true, "Postcode can't be blank."],
+          },
+          city: {
+            type: String,
+            required: [true, "City can't be blank."],
+          },
+          country: {
+            type: String,
+            required: [true, "Country can't be blank."],
+          },
         },
       },
     },
