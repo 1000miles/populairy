@@ -55,9 +55,9 @@ const seedUsers = async () => {
       },
       date: {
         week_day: {
-					from: 'Friday',
-					to: "Friday",
-				},
+          from: 'Friday',
+          to: 'Friday',
+        },
         start_datetime: 'Dec 29, 2019, 11:00 AM',
         end_datetime: 'Dec 29, 2019, 11:00 PM',
       },
@@ -91,9 +91,9 @@ const seedUsers = async () => {
       },
       date: {
         week_day: {
-					from: 'Thursday',
-					to: "Thursday",
-				},
+          from: 'Thursday',
+          to: 'Thursday',
+        },
         start_datetime: 'May 28, 2020, 10:00 AM',
         end_datetime: 'May 28, 2020, 10:00 PM',
       },
@@ -125,11 +125,11 @@ const seedUsers = async () => {
     const barberShop1 = new Popup({
       category: 'barber',
       popupTitle: 'Barber Shop Vol. 11',
-			slots: {
-				week_day: "Friday",
-	      from: 'Dec 29, 2019, 11:00 AM',
-	      to: 'Dec 29, 2019, 6:00 PM',
-			},
+      slots: {
+        week_day: 'Friday',
+        from: 'Dec 29, 2019, 11:00 AM',
+        to: 'Dec 29, 2019, 6:00 PM',
+      },
       popupOrganizer: {
         name: {
           group: {

@@ -36,20 +36,24 @@ const userSchema = new Schema(
         },
       },
     ],
-    eventCohosting: [{
-			status: {
-        type: String,
-        enum: ['pending', 'accepted', 'declined', null],
-        default: null,
+    eventCohosting: [
+      {
+        status: {
+          type: String,
+          enum: ['pending', 'accepted', 'declined', null],
+          default: null,
+        },
       },
-		}],
-		popupCoorganizing: [{
-			status: {
-        type: String,
-        enum: ['pending', 'accepted', 'declined', null],
-        default: null,
+    ],
+    popupCoorganizing: [
+      {
+        status: {
+          type: String,
+          enum: ['pending', 'accepted', 'declined', null],
+          default: null,
+        },
       },
-		}],
+    ],
   },
   {
     timestamps: {

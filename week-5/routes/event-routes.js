@@ -138,7 +138,7 @@ router.put(
           status: 'Fail. Event not created.',
         });
       } else {
-	      const updatedEvent = await EventService.findByIdAndUpdate(
+        const updatedEvent = await EventService.findByIdAndUpdate(
           req.params.id,
           {
             eventType,
@@ -151,19 +151,19 @@ router.put(
             guests,
           },
           {
-						new: true,
-						runValidators: true
-					},
+            new: true,
+            runValidators: true,
+          },
         );
 
-				console.log(`updatedEvent`, updatedEvent);
+        console.log(`updatedEvent`, updatedEvent);
 
         return res.status(201).json({
           status: 'Success. Event updated.',
           // FIXME: returns null
           data: updatedEvent,
         });
-			}
+      }
     } catch (err) {
       return next(err);
     }
