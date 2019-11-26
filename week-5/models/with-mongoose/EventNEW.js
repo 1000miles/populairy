@@ -1,50 +1,48 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose').set('debug', true);
 
+// Validations happen in the /controllers/eventController
 const eventSchema = new mongoose.Schema(
   {
     eventType: String,
     eventName: {
       type: String,
-      required: [true, "Event name can't be blank."],
     },
     location: {
-      type: {
-        name: {
+      name: {
+        type: String,
+      },
+      address: {
+        additionalInfo: String,
+        streetName: {
           type: String,
-          required: [true, "Location can't be blank."],
         },
-        address: {
-          additionalInfo: String,
-          streetName: {
-            type: String,
-            required: [true, "Street name can't be blank."],
-          },
-          houseNumber: {
-            type: String,
-            required: [true, "House number can't be blank."],
-          },
-          postCode: {
-            type: String,
-            required: [true, "Postcode can't be blank."],
-          },
-          city: {
-            type: String,
-            required: [true, "City can't be blank."],
-          },
-          country: {
-            type: String,
-            required: [true, "Country can't be blank."],
-          },
+        houseNumber: {
+          type: String,
+        },
+        postCode: {
+          type: Number,
+        },
+        city: {
+          type: String,
+        },
+        country: {
+          type: String,
         },
       },
     },
     date: {
-      type: {
-        week_day: String,
-        start_time: Date,
-        end_time: Date,
+      week_day: {
+        from: String,
+        to: String,
       },
-      required: [true, "Event date can't be blank."],
+      start_datetime: {
+        // TODO: Change to date later
+        type: String,
+      },
+      end_datetime: {
+        // TODO: Change to date later
+        type: String,
+      },
     },
     // Host can be a group or a single user w/ first and last name
     eventHost: {
@@ -63,49 +61,29 @@ const eventSchema = new mongoose.Schema(
     },
     joinedHosts: [
       {
-        user: {
-          name: {
-            firstName: String,
-            lastName: String,
-          },
-          email: String,
-          status: {
-            type: String,
-            enum: ['pending', 'accepted', 'declined', null],
-            default: null,
-          },
-        },
-        group: {
-          name: String,
-          email: String,
-          status: {
-            type: String,
-            enum: ['pending', 'accepted', 'declined', null],
-            default: null,
-          },
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'User',
+        autopopulate: {
+          maxDepth: 1,
         },
       },
     ],
     popups: [
       {
-        title: String,
-        slots: {
-          day: {
-            from: String,
-            to: String,
-          },
-          time: {
-            from: String,
-            to: String,
-          },
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Popup',
+        autopopulate: {
+          maxDepth: 1,
         },
       },
     ],
     guests: [
       {
-        firstName: String,
-        lastName: String,
-        email: String,
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'User',
+        autopopulate: {
+          maxDepth: 1,
+        },
       },
     ],
   },

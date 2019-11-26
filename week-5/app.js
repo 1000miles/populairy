@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
 
 require('pug');
 require('./mongo-connection');
@@ -14,6 +15,10 @@ const popupRoutes = require('./routes/popup-routes');
 const userRoutes = require('./routes/user-routes');
 
 const app = express();
+
+// FIXME: TypeError: expressValidator is not a function => √
+// downgrade express-validator to @5.3.1 (workaround)
+app.use(expressValidator());
 
 // Views
 app.set('view engine', 'pug');

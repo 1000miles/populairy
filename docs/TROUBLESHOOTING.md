@@ -2,7 +2,7 @@
 
 ## 1.1 Indentation with pug and vscode
 
-- [ ] FIXME: Invalid indentation, you can use tabs or spaces but not both
+- [x] FIXME: Invalid indentation, you can use tabs or spaces but not both
 
 This issue seems to happen a lot with vscode users:
 
@@ -29,9 +29,13 @@ It seems something is conflicting at the moment. Tried this out but it does not 
 ```
 https://github.com/Microsoft/vscode/issues/15316
 
+Solution:
+
+- As a workaround I installed a `Pug beautify` for VSCode that I run at the end.
+
 ## 1.2 Can not overwrite model once compiled
 
-- [ ] FIXME: overwriting error: 'Cannot overwrite `Popup` model once compiled.'
+- [x] FIXME: overwriting error: 'Cannot overwrite `Popup` model once compiled.'
 
 ```javascript
 // popup-service.js
@@ -113,3 +117,50 @@ ERROR while seeding DB with persons Error [ValidationError]: Popup validation fa
   name: 'ValidationError'
   ```
 
+## 1.4 Casting error on `required:true` set in Event Schema
+
+- [x] FIXME: Cast to ObjectId failed for value "new" at path "_id" for model "Event"
+
+Description:
+
+- on POST method when trying to create a new event with required fields set to true I get cast error.
+- expected behavior: it should allow me to create a new event if i fill in the required fields correctly.
+- actual behavior:
+	- it does not allow me to create a new event if i fill in the required fields correctly. It shows me the error messages of the required fields: `Event name can't be blank.`
+	- it jumps into GET method (instead of POST method) and tries to find item by id but passing in `new` and therefore returns a casting error
+
+no required fields set
+
+- expected behavior: if i remove the required validations from the schema fields it should create a new event with all key-value-pairs i provide.
+- actual behavior: it creates a new event and omits all the properties that did not have the `required:true`
+
+```shell
+[base-service.js findById()]: itemId new
+Error while loading event MongooseError [CastError]: Cast to ObjectId failed for value "new" at path "_id" for model "Event"
+    at new CastError (/Users/thuyle/workspace/private/thuy/populairy/week-5/node_modules/mongoose/lib/error/cast.js:29:11)
+    at ObjectId.cast (/Users/thuyle/workspace/private/thuy/populairy/week-5/node_modules/mongoose/lib/schema/objectid.js:246:11)
+    at ObjectId.SchemaType.applySetters (/Users/thuyle/workspace/private/thuy/populairy/week-5/node_modules/mongoose/lib/schematype.js:969:12)
+    at ObjectId.SchemaType._castForQuery (/Users/thuyle/workspace/private/thuy/populairy/week-5/node_modules/mongoose/lib/schematype.js:1383:15)
+    at ObjectId.SchemaType.castForQuery (/Users/thuyle/workspace/private/thuy/populairy/week-5/node_modules/mongoose/lib/schematype.js:1373:15)
+    at ObjectId.SchemaType.castForQueryWrapper (/Users/thuyle/workspace/private/thuy/populairy/week-5/node_modules/mongoose/lib/schematype.js:1352:15)
+    at cast (/Users/thuyle/workspace/private/thuy/populairy/week-5/node_modules/mongoose/lib/cast.js:315:32)
+    at model.Query.Query.cast (/Users/thuyle/workspace/private/thuy/populairy/week-5/node_modules/mongoose/lib/query.js:4644:12)
+    at model.Query.Query._castConditions (/Users/thuyle/workspace/private/thuy/populairy/week-5/node_modules/mongoose/lib/query.js:1842:10)
+    at model.Query.<anonymous> (/Users/thuyle/workspace/private/thuy/populairy/week-5/node_modules/mongoose/lib/query.js:2097:8)
+    at model.Query._wrappedThunk [as _findOne] (/Users/thuyle/workspace/private/thuy/populairy/week-5/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /Users/thuyle/workspace/private/thuy/populairy/week-5/node_modules/kareem/index.js:278:20
+    at /Users/thuyle/workspace/private/thuy/populairy/week-5/node_modules/kareem/index.js:77:15
+    at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+  message: 'Cast to ObjectId failed for value "new" at path "_id" for model "Event"',
+  name: 'CastError',
+  stringValue: '"new"',
+  kind: 'ObjectId',
+  value: 'new',
+  path: '_id',
+  reason: undefined,
+  model: Model { Event }
+```
+
+Solution:
+
+- Use [express-validator](https://www.npmjs.com/package/express-validator) and create a separate function to validate the schema fields in `controllers/eventsController.js`. This way you have a clean and adjustable function for validations.

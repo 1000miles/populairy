@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose').set('debug', true);
 const Schema = mongoose.Schema;
 
 const popupSchema = new Schema(
@@ -7,22 +7,25 @@ const popupSchema = new Schema(
       type: String,
       required: [true, "Category can't be blank."],
     },
-    popupTitle: {
-      type: String,
-      required: [true, "Pop-up title can't be blank."],
-    },
-    eventName: {
+    event: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Event',
       autopopulate: {
         maxDepth: 1,
       },
     },
-    date: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Event',
-      autopopulate: {
-        maxDepth: 1,
+    popupTitle: {
+      type: String,
+      required: [true, "Pop-up title can't be blank."],
+    },
+    slots: {
+      day: {
+        from: String,
+        to: String,
+      },
+      time: {
+        from: String,
+        to: String,
       },
     },
     // Pop-up main organizer
@@ -34,30 +37,6 @@ const popupSchema = new Schema(
         user: {
           firstName: String,
           lastName: String,
-        },
-      },
-    },
-    // Main event host
-    eventHost: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Event',
-      autopopulate: {
-        maxDepth: 1,
-      },
-    },
-    location: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Event',
-      autopopulate: {
-        maxDepth: 1,
-      },
-    },
-    popups: {
-      slots: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Event',
-        autopopulate: {
-          maxDepth: 1,
         },
       },
     },

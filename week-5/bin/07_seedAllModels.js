@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 // This is to generate ObjectId() when inserting items
 const ObjectId = mongoose.Types.ObjectId;
@@ -7,9 +8,9 @@ const Event = require('../models/with-mongoose/EventNEW');
 const Popup = require('../models/with-mongoose/PopupNEW');
 const User = require('../models/with-mongoose/UserNEW');
 
-// const EventService = require('../services/event-service');
-// const PopupService = require('../services/popup-service');
-// const UserService = require('../services/popup-service');
+const EventService = require('../services/event-service');
+const PopupService = require('../services/popup-service');
+const UserService = require('../services/user-service');
 
 let events = [];
 let popups = [];
@@ -20,6 +21,8 @@ const seedUsers = async () => {
     .connect(process.env.MONGODB_URI || 'mongodb://localhost/populairy', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
     })
     .then(x => {
       console.log(
@@ -38,7 +41,7 @@ const seedUsers = async () => {
 
     const event1 = new Event({
       eventType: 'haircraft',
-      eventName: 'OnHair Night',
+      eventName: 'OnHair Night 2',
       location: {
         name: 'Neukoelln Kunterbunt',
         address: {
@@ -51,9 +54,12 @@ const seedUsers = async () => {
         },
       },
       date: {
-        week_day: 'Friday',
-        start_time: new Date('2019-02-25T19:00:00'),
-        end_time: new Date('2019-02-26T02:00:00'),
+        week_day: {
+					from: 'Friday',
+					to: "Friday",
+				},
+        start_datetime: 'Dec 29, 2019, 11:00 AM',
+        end_datetime: 'Dec 29, 2019, 11:00 PM',
       },
       eventHost: {
         user: {
@@ -64,83 +70,9 @@ const seedUsers = async () => {
           email: 'jaunita@example.org',
         },
       },
-      joinedHosts: [
-        {
-          user: {
-            name: {
-              firstName: 'Kelly',
-              lastName: 'Hacky',
-            },
-            email: 'khacky@example.org',
-            status: 'accepted',
-          },
-        },
-        {
-          group: {
-            name: 'Als gaebe es keinen Morgen',
-            email: 'agekm@example.org',
-            status: 'pending',
-          },
-        },
-      ],
-      popups: [
-        {
-          title: 'Barber Shop Vol. 11',
-          slots: {
-            day: {
-              from: 'Friday',
-              to: 'Friday',
-            },
-            time: {
-              from: '10:00 AM',
-              to: '6:00 PM',
-            },
-          },
-        },
-        {
-          title: 'Pony annd Clyde #23',
-          slots: {
-            day: {
-              from: 'Friday',
-              to: 'Friday',
-            },
-            time: {
-              from: '11:00 AM',
-              to: '9:00 PM',
-            },
-          },
-        },
-        {
-          title: 'Food around the clock',
-          slots: {
-            day: {
-              from: 'Friday',
-              to: 'Friday',
-            },
-            time: {
-              from: '1:00 PM',
-              to: '8:00 PM',
-            },
-          },
-        },
-      ],
-      guests: [
-        {
-          firstName: 'Rami',
-          lastName: 'Muller',
-          email: 'rami@example.org',
-        },
-        {
-          firstName: 'Henriette',
-          lastName: 'Willms',
-          email: 'henriette@example.org',
-        },
-        {
-          firstName: 'Gordon',
-          lastName: 'Subway',
-          email: 'gordon@example.org',
-        },
-      ],
+      joinedHosts: [],
+      popups: [],
+      guests: [],
     });
 
     const event2 = new Event({
@@ -158,9 +90,12 @@ const seedUsers = async () => {
         },
       },
       date: {
-        week_day: 'Friday',
-        start_time: new Date('2019-03-10T19:00:00'),
-        end_time: new Date('2019-03-13T05:00:00'),
+        week_day: {
+					from: 'Thursday',
+					to: "Thursday",
+				},
+        start_datetime: 'May 28, 2020, 10:00 AM',
+        end_datetime: 'May 28, 2020, 10:00 PM',
       },
       eventHost: {
         group: {
@@ -169,58 +104,9 @@ const seedUsers = async () => {
           email: 'foodcoopsers@example.org',
         },
       },
-      joinedHosts: [
-        {
-          user: {
-            name: {
-              firstName: 'Louisa',
-              lastName: 'Wiza',
-            },
-            email: 'louisa@example.org',
-            status: 'accepted',
-          },
-        },
-      ],
-      popups: [
-        {
-          title: 'Barber Shop Vol. 11',
-          slots: {
-            day: {
-              from: 'Friday',
-              to: 'Friday',
-            },
-            time: {
-              from: '12:00 AM',
-              to: '6:00 PM',
-            },
-          },
-        },
-        {
-          title: 'Food around the clock',
-          slots: {
-            day: {
-              from: 'Friday',
-              to: 'Friday',
-            },
-            time: {
-              from: '9:00 AM',
-              to: '10:00 PM',
-            },
-          },
-        },
-      ],
-      guests: [
-        {
-          firstName: 'Wyatt',
-          lastName: 'Thurman',
-          email: 'Wyatt@example.org',
-        },
-        {
-          firstName: 'Ruth',
-          lastName: 'Kassulke',
-          email: 'ruth@example.org',
-        },
-      ],
+      joinedHosts: [],
+      popups: [],
+      guests: [],
     });
 
     await events.push(event1, event2);
@@ -236,9 +122,14 @@ const seedUsers = async () => {
     // Using await ensures the previous records are deleted
     await Popup.deleteMany();
 
-    const barberShop = new Popup({
+    const barberShop1 = new Popup({
       category: 'barber',
       popupTitle: 'Barber Shop Vol. 11',
+			slots: {
+				week_day: "Friday",
+	      from: 'Dec 29, 2019, 11:00 AM',
+	      to: 'Dec 29, 2019, 6:00 PM',
+			},
       popupOrganizer: {
         name: {
           group: {
@@ -265,6 +156,16 @@ const seedUsers = async () => {
     const barberShop2 = new Popup({
       category: 'barber',
       popupTitle: 'Pony and Clyde #23',
+      slots: {
+        day: {
+          from: 'Friday',
+          to: 'Friday',
+        },
+        time: {
+          from: 'May 29, 2019, 11:00 AM',
+          to: 'May 29, 2019, 7:00 PM',
+        },
+      },
       popupOrganizer: {
         name: {
           group: {
@@ -272,19 +173,22 @@ const seedUsers = async () => {
           },
         },
       },
-      joinedOrganizers: [
-        {
-          group: {
-            name: 'Why not? & Co.',
-            status: 'pending',
-          },
-        },
-      ],
+      joinedOrganizers: [],
     });
 
-    const foodCorner = new Popup({
+    const foodCorner1 = new Popup({
       category: 'food',
       popupTitle: 'Food around the clock',
+      slots: {
+        day: {
+          from: 'Thursday',
+          to: 'Thursday',
+        },
+        time: {
+          from: 'May 28, 2020, 12:00 PM',
+          to: 'May 28, 2020, 10:00 PM',
+        },
+      },
       popupOrganizer: {
         name: {
           user: {
@@ -293,17 +197,10 @@ const seedUsers = async () => {
           },
         },
       },
-      joinedOrganizers: [
-        {
-          group: {
-            name: 'Glorious Fivee',
-            status: 'accepted',
-          },
-        },
-      ],
+      joinedOrganizers: [],
     });
 
-    await popups.push(barberShop, barberShop2, foodCorner);
+    await popups.push(barberShop1, barberShop2, foodCorner1);
 
     await Popup.create(popups);
 
@@ -321,7 +218,9 @@ const seedUsers = async () => {
       firstName: 'Riley',
       lastName: 'Deyin',
       email: 'rileyd@example.org',
+      events: [],
     });
+
     const user2 = new User({
       firstName: 'Jami',
       lastName: 'Watson',
@@ -345,6 +244,7 @@ const seedUsers = async () => {
       email: 'mhisaw@example.org',
       role: 'host',
       phoneNumber: '+44 8484 34 22 55',
+      events: [],
     });
     const host2 = new User({
       firstName: 'Nana',
@@ -360,6 +260,7 @@ const seedUsers = async () => {
       email: 'Xaya@example.org',
       role: 'organizer',
       phoneNumber: '+49 056 78 34 21',
+      events: [],
     });
     const organizer2 = new User({
       firstName: 'Fabienne',
@@ -381,6 +282,15 @@ const seedUsers = async () => {
     );
 
     await User.create(users);
+
+    // console.log(`364:`, `${user1.firstName} ${user1.lastName}`);
+    // console.log(`365:`, event1.eventName)
+
+    // const addUserToEvent = await UserService.attendEvent(user1, event1);
+    // const addHostToEvent = await UserService.attendEvent(host1, event2);
+
+    // console.log(`addUserToEvent`, addUserToEvent)
+    // console.log(`addHostToEvent`, addHostToEvent);
 
     await users.map(user =>
       console.log(
