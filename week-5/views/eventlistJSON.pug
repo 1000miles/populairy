@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1 #[u #{items.length}] events listed and counting...
+  each item in items
+    p #{item.name}
+  pre #{JSON.stringify(items, null, 4)}

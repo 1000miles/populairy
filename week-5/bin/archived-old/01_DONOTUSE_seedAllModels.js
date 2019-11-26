@@ -104,20 +104,20 @@ async function seed() {
     event1.hasPopups(barberShop2);
     event2.hasPopups(foodCorner);
 
-    await EventService.add(event1);
-    await EventService.add(event2);
+    await EventService.create(event1);
+    await EventService.create(event2);
 
-    await HostService.add(host);
-    await HostService.add(host);
+    await HostService.create(host);
+    await HostService.create(host);
 
-    await GuestService.add(guest1);
-    await GuestService.add(guest2);
-    await GuestService.add(guest3);
-    await GuestService.add(guest4);
+    await GuestService.create(guest1);
+    await GuestService.create(guest2);
+    await GuestService.create(guest3);
+    await GuestService.create(guest4);
 
-    await PopupService.add(barberShop);
-    await PopupService.add(barberShop2);
-    await PopupService.add(foodCorner);
+    await PopupService.create(barberShop);
+    await PopupService.create(barberShop2);
+    await PopupService.create(foodCorner);
 
     host.getHostInfo();
     host2.getHostInfo();

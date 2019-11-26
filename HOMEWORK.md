@@ -51,3 +51,18 @@ This project is based on the [Women Tech Makers Berlin - JavaScript Crash Course
 - [ ] Add a readme on which axios.get and axios.post calls to make, in order to run your application
 
 **Video: [Women Techmakers Berlin JS Crash Course Vol 3 Lecture 5 — Adding a MongoDB Datastore](https://www.youtube.com/watch?v=mRQ-I5E-QHc)**
+
+## Homework for week 6
+
+- [ ] Install [ava](https://www.npmjs.com/package/ava), [nyc](https://www.npmjs.com/package/nyc), [supertest](https://www.npmjs.com/package/supertest) for testing
+- [ ] Config `package.json` with:
+
+	```js
+  "scripts": {
+   	"test": "ava --verbose --watch",
+    "test-coverage": "nyc ava --verbose"
+  },
+	```
+- [ ] Create tests for all routes and ensure all tests are covered by 100%
+
+**Video: [Women Techmakers Berlin JS Crash Course Vol 3 Lecture 6 — Testing](https://www.youtube.com/watch?v=sQVhP5q5CVY)**

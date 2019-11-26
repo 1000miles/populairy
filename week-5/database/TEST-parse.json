@@ -1,0 +1,26 @@
+{
+  "eventType": "haircraft",
+  "eventName": "onHair 3 Night",
+  "location": {
+    "name": "Madame Rossi",
+    "address": {
+      "additionalString": "2nd floor, next to bar",
+      "streetName": "Wegbereiter 21",
+      "houseNumber": "234a",
+      "postCode": "12345",
+      "city": "Berlin",
+      "country": "Germany"
+    }
+  },
+  "date": {
+    "week_day": "Saturday",
+    "start_datetime": "May 5, 2020, 11:00AM",
+    "end_datetime": "May 5, 2020, 9:00PM"
+  },
+  "eventHost": {
+    "group": {
+      "name": "Barbery X Collective",
+      "email": "barberyx@example.org"
+    }
+  }
+}

@@ -1,17 +1,16 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 
-// This is to generate objectId when inserting items
-let ObjectId = mongoose.Types.ObjectId;
-
-console.log(ObjectId);
+// This is to generate ObjectId() when inserting items
+const ObjectId = mongoose.Types.ObjectId;
 
 const Event = require('../models/with-mongoose/EventNEW');
-const Popup = require('../models/with-mongoose/PopupNew');
-const User = require('../models/with-mongoose/UserNew');
+const Popup = require('../models/with-mongoose/PopupNEW');
+const User = require('../models/with-mongoose/UserNEW');
 
 const EventService = require('../services/event-service');
 const PopupService = require('../services/popup-service');
-const UserService = require('../services/popup-service');
+const UserService = require('../services/user-service');
 
 let events = [];
 let popups = [];
@@ -22,6 +21,8 @@ const seedUsers = async () => {
     .connect(process.env.MONGODB_URI || 'mongodb://localhost/populairy', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
     })
     .then(x => {
       console.log(
@@ -39,9 +40,8 @@ const seedUsers = async () => {
     await Event.deleteMany();
 
     const event1 = new Event({
-      _id: ObjectId(),
       eventType: 'haircraft',
-      name: 'OnHair Night',
+      eventName: 'OnHair Night 2',
       location: {
         name: 'Neukoelln Kunterbunt',
         address: {
@@ -54,34 +54,30 @@ const seedUsers = async () => {
         },
       },
       date: {
-        week_day: 'Friday',
-        start_time: new Date('2019-02-25T19:00:00'),
-        end_time: new Date('2019-02-26T02:00:00'),
+        week_day: {
+          from: 'Friday',
+          to: 'Friday',
+        },
+        start_datetime: 'Dec 29, 2019, 11:00 AM',
+        end_datetime: 'Dec 29, 2019, 11:00 PM',
       },
       eventHost: {
-        name: 'X Event Collective',
+        user: {
+          name: {
+            firstName: 'Jaunita',
+            lastName: 'Hicks',
+          },
+          email: 'jaunita@example.org',
+        },
       },
-      joinedHosts: [
-        {
-          user: {
-            firstName: 'Kelly',
-            lastName: 'Hacky',
-            status: 'accepted',
-          },
-        },
-        {
-          group: {
-            name: 'Als gaebe es keinen Morgen',
-            status: 'pending',
-          },
-        },
-      ],
+      joinedHosts: [],
+      popups: [],
+      guests: [],
     });
 
     const event2 = new Event({
-      _id: ObjectId(),
       eventType: 'food',
-      name: 'Soup & Music',
+      eventName: 'Soup & Music',
       location: {
         name: 'Astra Stuben',
         address: {
@@ -94,13 +90,23 @@ const seedUsers = async () => {
         },
       },
       date: {
-        week_day: 'Friday',
-        start_time: new Date('2019-03-10T19:00:00'),
-        end_time: new Date('2019-03-13T05:00:00'),
+        week_day: {
+          from: 'Thursday',
+          to: 'Thursday',
+        },
+        start_datetime: 'May 28, 2020, 10:00 AM',
+        end_datetime: 'May 28, 2020, 10:00 PM',
       },
       eventHost: {
-        name: 'Food Coop Berlin',
+        group: {
+          name: 'Food Coop Berlin',
+          websiteUrl: 'https://www.fooodcoopsers.org',
+          email: 'foodcoopsers@example.org',
+        },
       },
+      joinedHosts: [],
+      popups: [],
+      guests: [],
     });
 
     await events.push(event1, event2);
@@ -108,7 +114,7 @@ const seedUsers = async () => {
     await Event.create(events);
 
     await events.map(event =>
-      console.log(`CREATED Id: ${event._id} - Event name: ${event.name}`),
+      console.log(`CREATED Id: ${event._id} - Event name: ${event.eventName}`),
     );
 
     // Popups
@@ -116,31 +122,21 @@ const seedUsers = async () => {
     // Using await ensures the previous records are deleted
     await Popup.deleteMany();
 
-    const barberShop = new Popup({
-      _id: ObjectId(),
+    const barberShop1 = new Popup({
       category: 'barber',
-      title: 'Barber Shop Vol. 11',
-      joinedEvent: 'OnHair Night',
-      date: {
+      popupTitle: 'Barber Shop Vol. 11',
+      slots: {
         week_day: 'Friday',
-        start_time: new Date('2019-02-25T19:00:00'),
-        end_time: new Date('2019-02-26T02:00:00'),
+        from: 'Dec 29, 2019, 11:00 AM',
+        to: 'Dec 29, 2019, 6:00 PM',
       },
       popupOrganizer: {
-        name: 'RooArr Pop-up Collective',
+        name: {
+          group: {
+            name: 'RooArr Pop-up Collective',
+          },
+        },
       },
-      // FIXME: Ref to Event
-      // location: {
-      // 	name: 'Neukoelln Kunterbunt',
-      // 	address: {
-      // 		additionalInfo: '3rd floor left',
-      // 		streetName: 'Weserstr.',
-      // 		houseNumber: '234',
-      // 		postCode: '12345',
-      // 		city: 'Berlin',
-      // 		country: 'Germany',
-      // 	},
-      // },
       joinedOrganizers: [
         {
           user: {
@@ -158,84 +154,60 @@ const seedUsers = async () => {
     });
 
     const barberShop2 = new Popup({
-      _id: ObjectId(),
       category: 'barber',
-      title: 'Pony and Clyde #23',
-      joinedEvent: 'OnHair Night',
-      date: {
-        week_day: 'Friday',
-        start_time: new Date('2019-02-25T19:00:00'),
-        end_time: new Date('2019-02-26T02:00:00'),
+      popupTitle: 'Pony and Clyde #23',
+      slots: {
+        day: {
+          from: 'Friday',
+          to: 'Friday',
+        },
+        time: {
+          from: 'May 29, 2019, 11:00 AM',
+          to: 'May 29, 2019, 7:00 PM',
+        },
       },
       popupOrganizer: {
-        name: 'Bored Panda',
-      },
-      // FIXME: Ref to Event
-      // location: {
-      // 	name: 'Neukoelln Kunterbunt',
-      // 	address: {
-      // 		additionalInfo: '3rd floor left',
-      // 		streetName: 'Weserstr.',
-      // 		houseNumber: '234',
-      // 		postCode: '12345',
-      // 		city: 'Berlin',
-      // 		country: 'Germany',
-      // 	},
-      // },
-      joinedOrganizers: [
-        {
+        name: {
           group: {
-            name: 'Why not? & Co.',
-            status: 'pending',
+            name: 'Board Panda',
           },
         },
-      ],
+      },
+      joinedOrganizers: [],
     });
 
-    const foodCorner = new Popup({
-      _id: ObjectId(),
+    const foodCorner1 = new Popup({
       category: 'food',
-      title: 'Food Corner',
-      joinedEvent: 'Soup & Music',
-      date: {
-        week_day: 'Friday',
-        start_time: new Date('2019-03-10T19:00:00'),
-        end_time: new Date('2019-03-13T05:00:00'),
+      popupTitle: 'Food around the clock',
+      slots: {
+        day: {
+          from: 'Thursday',
+          to: 'Thursday',
+        },
+        time: {
+          from: 'May 28, 2020, 12:00 PM',
+          to: 'May 28, 2020, 10:00 PM',
+        },
       },
       popupOrganizer: {
-        name: 'KreuzKoelln Collective',
-      },
-      // FIXME: Ref to Event
-      eventHost: {
-        name: 'Food Coop Berlin',
-      },
-      // location: {
-      // 	name: 'Astra Stuben',
-      // 	address: {
-      // 		additionalInfo: '2nd floor next to Cocktailbar',
-      // 		streetName: 'Rigaer Str.',
-      // 		houseNumber: '643',
-      // 		postCode: '12321',
-      // 		city: 'Berlin',
-      // 		country: 'Germany',
-      // 	},
-      // },
-      joinedOrganizers: [
-        {
-          group: {
-            name: 'Glorious Fivee',
-            status: 'accepted',
+        name: {
+          user: {
+            firstName: 'Colin',
+            lastName: 'Brenston',
           },
         },
-      ],
+      },
+      joinedOrganizers: [],
     });
 
-    await popups.push(barberShop, barberShop2, foodCorner);
+    await popups.push(barberShop1, barberShop2, foodCorner1);
 
     await Popup.create(popups);
 
     await popups.map(popup =>
-      console.log(`CREATED Id: ${popup._id} - Popup title: ${popup.title}`),
+      console.log(
+        `CREATED Id: ${popup._id} - Popup title: ${popup.popupTitle}`,
+      ),
     );
 
     // Users
@@ -243,41 +215,38 @@ const seedUsers = async () => {
     await User.deleteMany();
 
     const user1 = new User({
-      _id: ObjectId(),
       firstName: 'Riley',
       lastName: 'Deyin',
       email: 'rileyd@example.org',
+      events: [],
     });
+
     const user2 = new User({
-      _id: ObjectId(),
       firstName: 'Jami',
       lastName: 'Watson',
       email: 'jamiw@example.org',
       role: 'guest',
     });
     const user3 = new User({
-      _id: ObjectId(),
       firstName: 'Jenny',
       lastName: 'Morgan',
       email: 'jenw@example.org',
     });
     const user4 = new User({
-      _id: ObjectId(),
       firstName: 'Chris',
       lastName: 'Stuff',
       email: 'chris@example.org',
     });
 
     const host1 = new User({
-      _id: ObjectId(),
       firstName: 'Mhisa',
       lastName: 'Yourg',
       email: 'mhisaw@example.org',
       role: 'host',
       phoneNumber: '+44 8484 34 22 55',
+      events: [],
     });
     const host2 = new User({
-      _id: ObjectId(),
       firstName: 'Nana',
       lastName: 'Nooo',
       email: 'nanoo@example.org',
@@ -286,15 +255,14 @@ const seedUsers = async () => {
     });
 
     const organizer1 = new User({
-      _id: ObjectId(),
       firstName: 'Xaya',
       lastName: 'Hey',
       email: 'Xaya@example.org',
       role: 'organizer',
       phoneNumber: '+49 056 78 34 21',
+      events: [],
     });
     const organizer2 = new User({
-      _id: ObjectId(),
       firstName: 'Fabienne',
       lastName: 'Lala',
       email: 'fabienne@example.org',
@@ -315,9 +283,18 @@ const seedUsers = async () => {
 
     await User.create(users);
 
+    // console.log(`364:`, `${user1.firstName} ${user1.lastName}`);
+    // console.log(`365:`, event1.eventName)
+
+    // const addUserToEvent = await UserService.attendEvent(user1, event1);
+    // const addHostToEvent = await UserService.attendEvent(host1, event2);
+
+    // console.log(`addUserToEvent`, addUserToEvent)
+    // console.log(`addHostToEvent`, addHostToEvent);
+
     await users.map(user =>
       console.log(
-        `CREATED Id: ${user._id} - user name: ${user.firstName} ${user.lastName} = ${user.role}`,
+        `CREATED Id: ${user._id} - user name: ${user.firstName} ${user.lastName} (${user.role})`,
       ),
     );
 

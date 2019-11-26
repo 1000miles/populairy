@@ -6,6 +6,8 @@ async function main() {
     .connect(process.env.MONGODB_URI || `mongodb://localhost/populairy`, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
+      useFindAndModify: false,
+      useCreateIndex: true,
     })
     .then(x => {
       console.log(

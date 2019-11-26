@@ -1,55 +1,43 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose').set('debug', true);
 const Schema = mongoose.Schema;
 
 const popupSchema = new Schema(
   {
-    _id: mongoose.Types.ObjectId,
     category: {
       type: String,
-      required: true,
+      required: [true, "Category can't be blank."],
     },
-    title: {
-      type: String,
-      required: true,
-    },
-    joinedEvent: {
+    event: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Event',
       autopopulate: {
         maxDepth: 1,
       },
     },
-    date: {
-      type: {
-        week_day: String,
-        start_time: Date,
-        end_time: Date,
+    popupTitle: {
+      type: String,
+      required: [true, "Pop-up title can't be blank."],
+    },
+    slots: {
+      day: {
+        from: String,
+        to: String,
       },
-      required: true,
+      time: {
+        from: String,
+        to: String,
+      },
     },
     // Pop-up main organizer
     popupOrganizer: {
-      type: {
-        name: String,
-        firstName: String,
-        lastName: String,
-      },
-      required: true,
-    },
-    // Main event host
-    eventHost: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Event',
-      autopopulate: {
-        maxDepth: 1,
-      },
-    },
-    location: {
-      type: mongoose.Schema.Types.ObjectId,
-      name: String,
-      ref: 'Event',
-      autopopulate: {
-        maxDepth: 1,
+      name: {
+        group: {
+          name: String,
+        },
+        user: {
+          firstName: String,
+          lastName: String,
+        },
       },
     },
     // Pop-up co-organizers
@@ -74,15 +62,13 @@ const popupSchema = new Schema(
         },
       },
     ],
-    guests: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        autopopulate: {
-          maxDepth: 1,
-        },
+    guests: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Event',
+      autopopulate: {
+        maxDepth: 1,
       },
-    ],
+    },
   },
   {
     timestamps: {

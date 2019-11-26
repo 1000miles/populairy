@@ -1,20 +1,9 @@
 extends layout
 
 block content
-  h4 #[u #{events.length}] Event(s) with #[u #{popups.length}] Pop-up(s) listed and counting...
-  each event in events
-    h3 Event # #{event.id}: #{event.name}
-    p #[strong Location]: #{event.location}
-    p #[strong Date]: #{event.date}
-    p #[strong Space Host]: #{event.host}
-
-    h3 Pop-ups:
-    each popup in popups
-      ul
-        li #[strong #{popup.title}] performed by #[em #{popup.host}]
-    p Attendees:
-    each attendee in users
-      ul
-        li #[strong #{attendee.firstName} #{attendee.lastName}], Email: #{attendee.email}, Role: #{attendee.role}
-    p.
-#{newPopup}
+	if !event
+		p No event found.
+	else
+		h1 Event: #{event.eventName}
+		h3 #[strong Location]:
+		p #{location.name}, #{location.address.additionalInfo}, #{location.address.streetName} #{location.address.houseNumber}, #{location.address.postCode} #{location.address.city}, #{location.address.country}

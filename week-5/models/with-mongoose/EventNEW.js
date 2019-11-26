@@ -1,83 +1,86 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose').set('debug', true);
 
+// Validations happen in the /controllers/eventController
 const eventSchema = new mongoose.Schema(
   {
-    _id: mongoose.Schema.Types.ObjectId,
     eventType: String,
-    name: {
+    eventName: {
       type: String,
-      required: true,
     },
-    // TODO: Add address later
     location: {
       name: {
         type: String,
-        required: true,
       },
       address: {
         additionalInfo: String,
         streetName: {
           type: String,
-          required: true,
         },
         houseNumber: {
           type: String,
-          required: true,
         },
         postCode: {
-          type: String,
-          required: true,
+          type: Number,
         },
         city: {
           type: String,
-          required: true,
         },
         country: {
           type: String,
-          required: true,
         },
       },
     },
     date: {
-      type: {
-        week_day: String,
-        start_time: Date,
-        end_time: Date,
+      week_day: {
+        from: String,
+        to: String,
       },
-      required: true,
+      start_datetime: {
+        // TODO: Change to date later
+        type: String,
+      },
+      end_datetime: {
+        // TODO: Change to date later
+        type: String,
+      },
     },
     // Host can be a group or a single user w/ first and last name
     eventHost: {
-      name: String,
-      firstName: String,
-      lastName: String,
+      group: {
+        name: String,
+        websiteUrl: String,
+        email: String,
+      },
+      user: {
+        name: {
+          firstName: String,
+          lastName: String,
+        },
+        email: String,
+      },
     },
     joinedHosts: [
       {
-        user: {
-          firstName: String,
-          lastName: String,
-          status: {
-            type: String,
-            enum: ['pending', 'accepted', 'declined', null],
-            default: null,
-          },
-        },
-        group: {
-          name: String,
-          status: {
-            type: String,
-            enum: ['pending', 'accepted', 'declined', null],
-            default: null,
-          },
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'User',
+        autopopulate: {
+          maxDepth: 1,
         },
       },
     ],
-    // required: true
     popups: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.SchemaTypes.ObjectId,
         ref: 'Popup',
+        autopopulate: {
+          maxDepth: 1,
+        },
+      },
+    ],
+    guests: [
+      {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'User',
         autopopulate: {
           maxDepth: 1,
         },

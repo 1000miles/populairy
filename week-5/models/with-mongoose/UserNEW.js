@@ -1,23 +1,32 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose').set('debug', true);
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    _id: mongoose.Types.ObjectId,
     firstName: {
       type: String,
-      // required: true
     },
     lastName: {
       type: String,
-      // required: true
     },
-    email: String,
+    email: {
+      type: String,
+      required: [true, "Email can't be blank."],
+    },
     role: {
       type: String,
       default: 'guest',
     },
     phoneNumber: String,
+    events: [
+      {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Event',
+        autopopulate: {
+          maxDepth: 1,
+        },
+      },
+    ],
     popups: [
       {
         type: mongoose.SchemaTypes.ObjectId,
@@ -27,30 +36,21 @@ const userSchema = new Schema(
         },
       },
     ],
-    hosts: [
+    eventCohosting: [
       {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Popup',
-        autopopulate: {
-          maxDepth: 1,
+        status: {
+          type: String,
+          enum: ['pending', 'accepted', 'declined', null],
+          default: null,
         },
       },
     ],
-    organizers: [
+    popupCoorganizing: [
       {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Popup',
-        autopopulate: {
-          maxDepth: 1,
-        },
-      },
-    ],
-    guests: [
-      {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Popup',
-        autopopulate: {
-          maxDepth: 1,
+        status: {
+          type: String,
+          enum: ['pending', 'accepted', 'declined', null],
+          default: null,
         },
       },
     ],

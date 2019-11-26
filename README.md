@@ -1,6 +1,5 @@
 # Populairy - Pop-up Event Organizer
 
-
 > This app is at the beginning and constantly a work-in-progress.
 
 ---
@@ -73,36 +72,182 @@ Examples
 - [ ] An event can have multiple hosts (joinedHosts) that are confirmed as hosts.
 - [ ] An event has a date with a day and time range (from, to) each.
 - [ ] An event has a location with address, postcode, city and country info.
+- [] An event has one or many guests attending.
 
 ### Pop-up
 
 - [ ] A pop-up has 1 main organizer that can be a group or a person.
 - [ ] A pop-up can have multiple organizers that are confirmed as organizers.
-- [ ] A pop-up's has by default the same location data as the event it joins but can have additional info.
-- [ ] A pop-up has the same date (day and time range) as the event it joins but can be modified later.
+- [ ] A pop-up has the same location of an event that it joins (reference).
+- [ ] A pop-up has the same date (day and time) is the same date of an event that it joins (reference).
 - [ ] A pop-up can only have 1 main host that can be a group or a single person.
-- [ ] A pop-up can only join 1 event at a time that acts as satellite event.
-- [ ] A pop-up can have one or many guests attending.
+- [ ] A pop-up can only join 1 event (satellite) that it joins.
+- [ ] A pop-up can have one or many guests subscribed from an event that it joins.
 
 ### User
 
 - [ ] A user is by default a `guest` unless confirmed as an `event host` or `pop-up organizer`.
-- [ ] A user can attend one or more pop-ups but can not attend an event directly.
-- [ ] A user can have one of these roles at a time:
-	- guest
-	- **Event**: main host (eventHost) || co-host (joinedHosts)
-	- **Pop-up**: main organizer (organizer) || co-organizer (popupOrganizers)
-- [ ] A user can join a group or can act as a single person.
-
-Offline / Before authentication:
+- [ ] A user can attend one event at a time.
+- [ ] A user can attend one or many pop-ups of an event that the user subscribed for.
+- [ ] A user can have one of these roles at a time: - guest - **Event**: main host (eventHost) || co-host (joinedHosts) - **Pop-up**: main organizer (organizer) || co-organizer (popupOrganizers)
+- [ ] A user can act as a group or as a single person.
+      Offline / Before authentication:
 - [ ] A first name, last name, email is required as a `guest`.
 - [ ] A first name, last name, email and phone number is required as a Pop-up `organizer`.
 - [ ] A first name, last name, email and phone number is required as an `event host`.
 
+## Axios - HTTP requests
 
-## Roadmap
+Debugging
 
-- [Barber Shop](docs/BARBERSHOP.md)
+Use `const mongoose = require('mongoose').set('debug', true);` on top of each model, e.g. `/models/Model.js` to get a verbose view of inserting/updating/deleting data in the console. Disable it again once you are done.
+
+### User
+
+1. Get all users
+
+```js
+axios.get("/user/all").then(console.log);
+```
+
+2. Get single user
+
+```js
+// GET http://localhost:3000/:id
+axios.get("/user/5dd93e067689550c4a89fc03").then(console.log);
+```
+
+3. Create a new user
+
+```js
+// POST http://localhost:3000/user
+axios
+  .post("/user", {
+    firstName: "Jonny",
+    lastName: "Crush",
+    email: "jonny@example.org",
+  })
+  .then(console.log);
+```
+
+4. Update single user
+
+```js
+// PATCH http://localhost:3000/user/:id
+axios
+  .patch("/user/5dd93e067689550c4a89fc03", { lastName: "Another Lastname" })
+  .then(console.log);
+```
+
+5. Delete a user
+
+```js
+// DEL http://localhost:3000/user/:id
+axios.delete("/user/5dd92e87f94cd40612c0783d").then(console.log);
+```
+
+### Event
+
+1. Get all events (template)
+
+```js
+// GET http://localhost:3000/event/all/
+axios.get("/event/all").then(console.log);
+```
+
+2. Get all events (JSON)
+
+```js
+// GET http://localhost:3000/event/all/json
+axios.get("/event/all/json").then(console.log);
+```
+
+3. Get an event
+
+```js
+// GET http://localhost:3000/event/:id
+axios.get("/event/5ddb1166f62c82203bafc8de").then(console.log);
+```
+
+4. Create an event
+
+```js
+// CREATE http://localhost:3000/event/new
+// Validations happen in /controllers/eventController.js
+axios
+  .post("/event/new", {
+		  "eventType": "haircraft",
+		  "eventName": "onHair 3 Night",
+		  "location": {
+		    "name": "Madame Rossi",
+		    "address": {
+		      "additionalString": "2nd floor, next to bar",
+		      "streetName": "Wegbereiter 21",
+		      "houseNumber": "234a",
+		      "postCode": "12345",
+		      "city": "Berlin",
+		      "country": "Germany"
+		    }
+		  },
+		  "date": {
+		    "week_day": "Saturday",
+		    "start_datetime": "May 5, 2020, 11:00AM",
+		    "end_datetime": "May 5, 2020, 9:00PM"
+		  },
+		  "eventHost": {
+		    "group": {
+		      "name": "Barbery X Collective",
+		      "email": "barberyx@example.org"
+		    }
+		  }
+		}
+	)
+	.then(console.log);
+```
+
+5. Update an event (PUT)
+
+```js
+// PUT http://localhost:3000/event/ObjectId
+axios
+  .put("/event/5ddb1166f62c82203bafc8de", {
+    eventType: "hair",
+    eventName: "onHair 2 Night",
+  })
+  .then(console.log);
+```
+
+6. Update an event (PATCH)
+
+```js
+// PUT http://localhost:3000/event/ObjectId
+axios
+  .patch("/event/5ddb1166f62c82203bafc8de", {
+    eventName: "onHair 3 Night",
+  })
+  .then(console.log);
+```
+
+7. Get all events (JSON)
+
+```js
+// GET http://localhost:3000/event/all/json
+axios.get("/event/all/json").then(console.log);
+```
+
+8. Get an event
+
+```js
+// GET http://localhost:3000/event/:id
+axios.get("/event/5ddb1166f62c82203bafc8de").then(console.log);
+```
+
+9. Delete an event
+
+```js
+// DEL http://localhost:3000/event/:id
+axios.delete("/event/5ddafbfe9a6e950ff63900a9").then(console.log);
+```
 
 ## Getting started
 
