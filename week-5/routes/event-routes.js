@@ -44,15 +44,11 @@ router.get('/:id', async (req, res) => {
 		const event = await EventService.findById(req.params.id);
 		const location = event.location;
 
-		console.log(`[event-routes.js] router.get`);
-
 	//	console.log(`[event-routes.js] router.get`, event);
+	
 		res.render('event', { event, location });
 	} catch (err) {
 		res.status(404).send({ msg: `Error. Event does not exist.` });
-
-		// TODO: Clean up
-		// console.log(`Error while loading event`, err);
 	}
 });
 
