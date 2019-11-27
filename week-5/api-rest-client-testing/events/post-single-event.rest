@@ -1,3 +1,8 @@
+// http://localhost:3000/event/:id
+
+POST http://localhost:3000/event/new
+content-type: application/json
+
 {
   "eventType": "haircraft",
   "eventName": "onHair 4 Night",
@@ -14,11 +19,11 @@
   },
   "date": {
     "week_day": {
-      "from": "Saturday",
-      "to": "Saturday"
-    },
-    "start_datetime": "May 5, ®2020, 11:00AM",
-    "end_datetime": "May 5, 2020, 9:00PM"
+			"from": "Saturday",
+			"to": "Saturday"
+		},
+    "start_datetime": "May 5, 2020, 11:00 AM",
+    "end_datetime": "May 5, 2020, 9:00 PM"
   },
   "eventHost": {
     "group": {

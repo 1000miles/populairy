@@ -1,16 +1,16 @@
 extends layout
 
 block content
-	if (user)
-		h1 Guest Details:
-		p #[strong UserId]: #{user._id}
-		p #[strong Name]: #{user.firstName} #{user.lastName}, #[strong E-Mail]: #{user.email}, #[strong Role]: #{user.role}
-		h3 #[strong #{user.firstName} is going to #[u #{user.events.length}] events and #[u #{user.popups.length}] pop-ups:]
-			h3 #[strong Events]:
-			- const eventsList = user.events.map(e => e.eventName)
-				if (user.events.length > 0)
-					li #{eventsList}
-				else
-					text("No events")
-	else
-		p User not found.
+  if (user)
+    h1 Guest Details:
+    p #[strong UserId]: #{user._id}
+    p #[strong Name]: #{user.firstName} #{user.lastName}, #[strong E-Mail]: #{user.email}, #[strong Role]: #{user.role}
+    h3 #[strong #{user.firstName} is going to #[u #{user.events.length}] events and #[u #{user.popups.length}] pop-ups:]
+      h3 #[strong Events]:
+      - const eventsList = user.events.map(e => e.eventName);
+        if (user.events.length > 0)
+          li #{eventsList}
+        else
+          text(No, events)
+  else
+    p User not found.

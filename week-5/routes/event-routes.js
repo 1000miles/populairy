@@ -22,16 +22,19 @@ router.get('/all', async (req, res) => {
 });
 
 // GET http://localhost:3000/event/all/json
-router.get('/all/json', async (req, res) => {
+router.get('/all/json', async (req, res, next) => {
   try {
     const events = await EventService.findAll();
 
-    res.render('eventlistJSON', { items: events });
-  } catch (err) {
-    res.status(404).json({
-      status: 'Fail. Users not loaded.',
-      message: err,
+    // res.render('eventlistJSON', { items: events });
+
+    res.status(200).json({
+      status: 'Success.',
+      result: events.length,
+      data: events,
     });
+  } catch (err) {
+    return next(err);
   }
 });
 
@@ -41,11 +44,11 @@ router.get('/:id', async (req, res) => {
     const event = await EventService.findById(req.params.id);
     const location = event.location;
 
-    console.log(`[event-routes.js] router.get`, event);
+    //	console.log(`[event-routes.js] router.get`, event);
+
     res.render('event', { event, location });
   } catch (err) {
-    res.end();
-    console.log(`Error while loading event`, err);
+    res.status(404).send({ msg: `Error. Event does not exist.` });
   }
 });
 
@@ -53,13 +56,14 @@ router.get('/:id', async (req, res) => {
 router.get('/:id/json', async (req, res) => {
   try {
     const event = await EventService.findById(req.params.id);
+
     res.status(200).json({
       status: 'Success.',
       data: event,
     });
   } catch (err) {
     res.status(404).json({
-      status: 'Fail. Event not loaded.',
+      status: 'Error. Event does not exist.',
       message: err,
     });
   }
@@ -75,7 +79,7 @@ router.post(
 
       if (!errors.isEmpty()) {
         return res.status(422).json({
-          status: 'Fail. Event not created.',
+          status: 'Error. Event not created.',
           errors: errors.array(),
         });
       }
@@ -91,7 +95,7 @@ router.post(
         guests,
       } = req.body;
 
-      // Creates a new event with required and optional values
+      // Create a new event with required and optional values
       const event = await EventService.add({
         eventType,
         eventName,
@@ -113,54 +117,40 @@ router.post(
   },
 );
 
-// PUT `/event/:id` w/ req.body
-router.put(
+/**
+ * PATCH `/event/:id` - Use patch over put
+ * In combination with `new: true` we prevent empty
+ * values for the other properties that haven't been updated
+ */
+
+router.patch(
   '/:id',
   eventController.validate('updateEvent'),
   async (req, res, next) => {
     try {
       const errors = validationResult(req);
 
-      const {
-        eventType,
-        eventName,
-        location,
-        date,
-        eventHost,
-        joinedHosts,
-        popups,
-        guests,
-      } = req.body;
-
       if (!errors.isEmpty()) {
         return res.status(422).json({
           errors: errors.array(),
-          status: 'Fail. Event not created.',
+          status: 'Error. Event not updated.',
         });
       } else {
         const updatedEvent = await EventService.findByIdAndUpdate(
           req.params.id,
-          {
-            eventType,
-            eventName,
-            location,
-            date,
-            eventHost,
-            joinedHosts,
-            popups,
-            guests,
-          },
+          req.body,
           {
             new: true,
             runValidators: true,
           },
         );
 
+        await updatedEvent.save();
+
         console.log(`updatedEvent`, updatedEvent);
 
         return res.status(201).json({
           status: 'Success. Event updated.',
-          // FIXME: returns null
           data: updatedEvent,
         });
       }

@@ -7,6 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
+    "pug": "prettier --write './**/*.pug'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

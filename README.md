@@ -96,7 +96,7 @@ Examples
 - [ ] A first name, last name, email and phone number is required as a Pop-up `organizer`.
 - [ ] A first name, last name, email and phone number is required as an `event host`.
 
-## Axios - HTTP requests
+## 5. Axios - HTTP requests
 
 Debugging
 
@@ -205,19 +205,7 @@ axios
 	.then(console.log);
 ```
 
-5. Update an event (PUT)
-
-```js
-// PUT http://localhost:3000/event/ObjectId
-axios
-  .put("/event/5ddb1166f62c82203bafc8de", {
-    eventType: "hair",
-    eventName: "onHair 2 Night",
-  })
-  .then(console.log);
-```
-
-6. Update an event (PATCH)
+5. Update an event (PATCH)
 
 ```js
 // PUT http://localhost:3000/event/ObjectId
@@ -228,21 +216,20 @@ axios
   .then(console.log);
 ```
 
-7. Get all events (JSON)
+6. Get all events (JSON)
 
 ```js
 // GET http://localhost:3000/event/all/json
 axios.get("/event/all/json").then(console.log);
 ```
 
-8. Get an event
+7. Get an event
 
 ```js
 // GET http://localhost:3000/event/:id
 axios.get("/event/5ddb1166f62c82203bafc8de").then(console.log);
 ```
-
-9. Delete an event
+8. Delete an event
 
 ```js
 // DEL http://localhost:3000/event/:id
