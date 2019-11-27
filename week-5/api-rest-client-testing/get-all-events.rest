@@ -1,0 +1,3 @@
+GET http://localhost:3000/event/all/json
+content-type: application/json
+

@@ -1,0 +1,4 @@
+// http://localhost:3000/event/:id
+
+GET http://localhost:3000/event/5ddeb14c9e430059fdd60359/json
+content-type: application/json

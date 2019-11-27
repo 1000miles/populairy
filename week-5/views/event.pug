@@ -1,9 +1,7 @@
 extends layout
 
 block content
-	if !event
-		p No event found.
-	else
-		h1 Event: #{event.eventName}
-		h3 #[strong Location]:
-		p #{location.name}, #{location.address.additionalInfo}, #{location.address.streetName} #{location.address.houseNumber}, #{location.address.postCode} #{location.address.city}, #{location.address.country}
+  if event
+  h1 Event: #{event.eventName}
+  h3 #[strong Location]
+  p #{location.name}, #{location.address.additionalInfo}, #{location.address.streetName} #{location.address.houseNumber}, #{location.address.postCode} #{location.address.city}, #{location.address.country}

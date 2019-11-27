@@ -29,7 +29,7 @@ exports.validate = method => {
           .isString(),
         check('location.address.postCode', "Post code can't be blank.")
           .exists()
-          .isPostalCode(),
+          .isString(),
         check('location.address.city', "City can't be blank.")
           .exists()
           .isString(),
