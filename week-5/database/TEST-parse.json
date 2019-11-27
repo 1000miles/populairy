@@ -14,9 +14,9 @@
   },
   "date": {
     "week_day": {
-			"from": "Saturday",
-			"to": "Saturday"
-		},
+      "from": "Saturday",
+      "to": "Saturday"
+    },
     "start_datetime": "May 5, ®2020, 11:00AM",
     "end_datetime": "May 5, 2020, 9:00PM"
   },
@@ -27,4 +27,3 @@
     }
   }
 }
-
