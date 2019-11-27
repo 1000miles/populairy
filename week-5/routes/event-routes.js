@@ -51,7 +51,8 @@ router.get('/:id', async (req, res) => {
 	} catch (err) {
 		res.status(404).send({ msg: `Error. Event does not exist.` });
 
-		console.log(`Error while loading event`, err);
+		// TODO: Clean up
+		// console.log(`Error while loading event`, err);
 	}
 });
 
@@ -120,54 +121,40 @@ router.post(
 	},
 );
 
-// PUT `/event/:id` w/ req.body
-router.put(
+/**
+ * PATCH `/event/:id` - Use patch over put
+ * In combination with `new: true` we prevent empty
+ * values for the other properties that haven't been updated
+ */
+
+router.patch(
 	'/:id',
 	eventController.validate('updateEvent'),
 	async (req, res, next) => {
 		try {
 			const errors = validationResult(req);
 
-			const {
-				eventType,
-				eventName,
-				location,
-				date,
-				eventHost,
-				joinedHosts,
-				popups,
-				guests,
-			} = req.body;
-
 			if (!errors.isEmpty()) {
 				return res.status(422).json({
 					errors: errors.array(),
-					status: 'Fail. Event not created.',
+					status: 'Error. Event not updated.',
 				});
 			} else {
 				const updatedEvent = await EventService.findByIdAndUpdate(
 					req.params.id,
-					{
-						eventType,
-						eventName,
-						location,
-						date,
-						eventHost,
-						joinedHosts,
-						popups,
-						guests,
-					},
+					req.body,
 					{
 						new: true,
 						runValidators: true,
 					},
 				);
 
+				await updatedEvent.save();
+
 				console.log(`updatedEvent`, updatedEvent);
 
 				return res.status(201).json({
 					status: 'Success. Event updated.',
-					// FIXME: returns null
 					data: updatedEvent,
 				});
 			}
