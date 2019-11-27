@@ -11,15 +11,9 @@ exports.validate = method => {
           .isString(),
         check('eventName', "Event name can't be blank.")
           .exists()
-          .isString(),
-        check('eventHost.group.name')
-          .optional({ nullable: true })
-          .isString(),
-        check('eventHost.user.name')
-          .optional({ nullable: true })
-          .isString(),
+					.isString(),
         check('location.address.additionalInfo')
-          .optional({ nullable: true })
+          .optional()
           .isString(),
         check('location.address.streetName', "Street name can't be blank.")
           .exists()
@@ -41,21 +35,45 @@ exports.validate = method => {
           .isString(),
         check('date.week_day.to', "Week day to can't be blank.")
           .exists()
-          .isString(),
+					.isString(),
+				// TODO: Change to .isISO8601() later
         check('date.start_datetime', "Start date and time can't be blank.")
-          .exists()
-          .isString(),
+					.exists()
+					.isString(),
+				// TODO: Change to .isISO8601() later
         check('date.end_datetime', "End date and time can't be blank.")
-          .exists()
-          .isString(),
+					.exists()
+					.isString(),
+				// TODO: Check if event host is group or user and apply corresponding properties
+				check('eventHost.group.name')
+					.optional()
+					.isString(),
+				// TODO: Should be url
+				check('eventHost.group.websiteUrl', "Must be a valid URL.")
+					.optional()
+					.isURL({protocols: ['http','https'], require_tld: true, require_protocol: true }),
+				// TODO: Should be unique
+				check('eventHost.group.email', "Must be a valid email address.")
+					.optional()
+					.isString(),
+				check('eventHost.user.name.firstName')
+					.optional()
+					.isString(),
+				check('eventHost.user.name.lastName')
+					.optional()
+					.isString(),
+				// TODO: Should be unique
+				check('eventHost.user.email', "Must be a valid email address.")
+					.optional()
+					.isEmail(),
         check('joinedHosts')
-          .optional({ nullable: true })
+          .optional()
           .isArray(),
         check('popups')
-          .optional({ nullable: true })
+          .optional()
           .isArray(),
         check('guests')
-          .optional({ nullable: true })
+          .optional()
           .isArray(),
       ];
     }
@@ -63,52 +81,69 @@ exports.validate = method => {
       return [
         check('eventType', 'Event type must be a string.')
           .isString()
-          .optional({ nullable: true }),
+					.optional(),
         check('eventName', 'Event name must be a string.')
           .isString()
-          .optional({ nullable: true }),
-        check('eventHost.group.name')
-          .isString()
-          .optional({ nullable: true }),
-        check('eventHost.user.name')
-          .isString()
-          .optional({ nullable: true }),
+          .optional(),
         check('location.address.additionalInfo')
           .isString()
-          .optional({ nullable: true }),
+          .optional(),
         check('location.address.streetName', 'Street name must be a string.')
           .isString()
-          .optional({ nullable: true }),
+          .optional(),
         check('location.address.houseNumber', 'House number must be a string.')
           .isString()
-          .optional({ nullable: true }),
+          .optional(),
         check('location.address.postCode', 'Post code must be a string.')
           .isPostalCode()
-          .optional({ nullable: true }),
+          .optional(),
         check('location.address.city', 'City must be a string.')
           .isString()
-          .optional({ nullable: true }),
+          .optional(),
         check('location.address.country', 'Country must be a string.')
           .isString()
-          .optional({ nullable: true }),
+          .optional(),
         check('date.week_day', 'Week day must be a string.')
           .isString()
-          .optional({ nullable: true }),
-        check('date.start_datetime', 'Start date and time must be a date.')
-          .isISO8601()
-          .optional({ nullable: true }),
+					.optional(),
+				// TODO: Change to .isISO8601() later
+				check('date.start_datetime', 'Start date and time must be a date.')
+					.isString()
+					.optional(),
+				// TODO: Change to .isISO8601() later
         check('date.end_datetime', 'End date and time must be a date.')
-          .isISO8601()
-          .optional({ nullable: true }),
+					.optional(),
+				// TODO: Check if event host is group or user and apply corresponding properties
+        check('eventHost.group.name')
+          .optional()
+					.isString(),
+				// TODO: Should be url
+				check('eventHost.group.websiteUrl')
+          .optional()
+					.isString(),
+				// TODO: Should be unique
+				check('eventHost.group.email', "Must be a valid email address.")
+          .optional()
+          .isString(),
+				check('eventHost.user.name.firstName')
+          .optional()
+					.isString(),
+				check('eventHost.user.name.lastName')
+          .optional()
+					.isString(),
+				// TODO: Should be unique
+				check('eventHost.user.email', "Must be a valid email address.")
+          .optional()
+          .isEmail(),
         check('joinedHosts', 'Joined hosts must be an array of strings.')
           .isArray()
-          .optional({ nullable: true }),
+          .optional(),
         check('popups', 'Pop-ups must be an array of strings.')
           .isArray()
-          .optional({ nullable: true }),
+          .optional(),
         check('guests', 'Guests must be an array of strings.')
           .isArray()
-          .optional({ nullable: true }),
+          .optional(),
       ];
     }
   }

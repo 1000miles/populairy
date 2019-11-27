@@ -1,8 +1,11 @@
 // http://localhost:3000/event/:id
 
-PATCH http://localhost:3000/event/5ddec3f3f0bda66fba6c3cf0
+PATCH http://localhost:3000/event/5ddf05b0aae918288eee8980
 content-type: application/json
 
 {
-  "eventName": "Noise Bike Workshop"
+	"eventHost.user.name.firstName": "Stella",
+	"eventHost.user.email": "stella@example.org",
+	"date.week_day": "Monday",
+	"date.start_datetime": "Dec 29, 2019, 10:00 AM"
 }
