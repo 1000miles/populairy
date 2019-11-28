@@ -1,4 +1,4 @@
-const mongoose = require('mongoose').set('debug', true);
+const mongoose = require("mongoose").set("debug", true);
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
@@ -15,13 +15,13 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
-      default: 'guest',
+      default: "guest",
     },
     phoneNumber: String,
     events: [
       {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Event',
+        ref: "Event",
         autopopulate: {
           maxDepth: 1,
         },
@@ -30,7 +30,7 @@ const userSchema = new Schema(
     popups: [
       {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Popup',
+        ref: "Popup",
         autopopulate: {
           maxDepth: 1,
         },
@@ -40,7 +40,7 @@ const userSchema = new Schema(
       {
         status: {
           type: String,
-          enum: ['pending', 'accepted', 'declined', null],
+          enum: ["pending", "accepted", "declined", null],
           default: null,
         },
       },
@@ -49,7 +49,7 @@ const userSchema = new Schema(
       {
         status: {
           type: String,
-          enum: ['pending', 'accepted', 'declined', null],
+          enum: ["pending", "accepted", "declined", null],
           default: null,
         },
       },
@@ -57,14 +57,14 @@ const userSchema = new Schema(
   },
   {
     timestamps: {
-      createdAt: 'created_at',
-      updatedAt: 'updated_at',
+      createdAt: "created_at",
+      updatedAt: "updated_at",
     },
   },
 );
 
-userSchema.plugin(require('mongoose-autopopulate'));
+userSchema.plugin(require("mongoose-autopopulate"));
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;

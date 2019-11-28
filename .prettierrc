@@ -4,6 +4,6 @@
   "jsxBracketSameLine": false,
   "endOfLine": "lf",
   "semi": true,
-  "singleQuote": true,
+  "singleQuote": false,
   "trailingComma": "all"
 }

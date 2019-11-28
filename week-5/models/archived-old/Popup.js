@@ -1,4 +1,4 @@
-const Chalk = require('chalk');
+const Chalk = require("chalk");
 
 module.exports = class Popup {
   constructor(

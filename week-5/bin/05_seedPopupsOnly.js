@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
-const Popup = require('../models/with-mongoose/PopupNew');
+const mongoose = require("mongoose");
+const Popup = require("../models/with-mongoose/PopupNew");
 
 let popups = [];
 
 const seedPopups = async () => {
   mongoose
-    .connect(process.env.MONGODB_URI || 'mongodb://localhost/populairy', {
+    .connect(process.env.MONGODB_URI || "mongodb://localhost/populairy", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
@@ -15,7 +15,7 @@ const seedPopups = async () => {
       );
     })
     .catch(err => {
-      console.error('Error connecting to mongo', err);
+      console.error("Error connecting to mongo", err);
     });
 
   try {
@@ -23,30 +23,30 @@ const seedPopups = async () => {
     await Popup.deleteMany();
 
     const barberShop = new Popup({
-      category: 'barber',
-      title: 'Barber Shop Vol. 11',
-      joinedEvent: 'OnHair Night',
-      date: '2019-02-21T20:00',
-      host: 'RooArr Pop-up Collective',
-      space: 'Neukoelln Kunterbunt',
+      category: "barber",
+      title: "Barber Shop Vol. 11",
+      joinedEvent: "OnHair Night",
+      date: "2019-02-21T20:00",
+      host: "RooArr Pop-up Collective",
+      space: "Neukoelln Kunterbunt",
     });
 
     const barberShop2 = new Popup({
-      category: 'barber',
-      title: 'Pony and Clyde #23',
-      joinedEvent: 'OnHair Night',
-      date: '2019-02-21T20:00',
-      host: 'Bored Panda',
-      space: 'Neukoelln Kunterbunt',
+      category: "barber",
+      title: "Pony and Clyde #23",
+      joinedEvent: "OnHair Night",
+      date: "2019-02-21T20:00",
+      host: "Bored Panda",
+      space: "Neukoelln Kunterbunt",
     });
 
     const foodCorner = new Popup({
-      category: 'food',
-      title: 'Food Corner',
-      joinedEvent: 'Soup & Music',
-      date: '2019-03-15T20:00:00',
-      host: 'KreuzKoelln Collective',
-      space: 'Astra Stuben',
+      category: "food",
+      title: "Food Corner",
+      joinedEvent: "Soup & Music",
+      date: "2019-03-15T20:00:00",
+      host: "KreuzKoelln Collective",
+      space: "Astra Stuben",
     });
 
     await popups.push(barberShop, barberShop2, foodCorner);

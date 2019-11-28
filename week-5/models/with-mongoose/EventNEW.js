@@ -1,4 +1,4 @@
-const mongoose = require('mongoose').set('debug', true);
+const mongoose = require("mongoose").set("debug", true);
 
 // Validations happen in the /controllers/eventController
 const eventSchema = new mongoose.Schema(
@@ -62,7 +62,7 @@ const eventSchema = new mongoose.Schema(
     joinedHosts: [
       {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'User',
+        ref: "User",
         autopopulate: {
           maxDepth: 1,
         },
@@ -71,7 +71,7 @@ const eventSchema = new mongoose.Schema(
     popups: [
       {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Popup',
+        ref: "Popup",
         autopopulate: {
           maxDepth: 1,
         },
@@ -80,7 +80,7 @@ const eventSchema = new mongoose.Schema(
     guests: [
       {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'User',
+        ref: "User",
         autopopulate: {
           maxDepth: 1,
         },
@@ -89,14 +89,14 @@ const eventSchema = new mongoose.Schema(
   },
   {
     timestamps: {
-      createdAt: 'created_at',
-      updatedAt: 'updated_at',
+      createdAt: "created_at",
+      updatedAt: "updated_at",
     },
   },
 );
 
-eventSchema.plugin(require('mongoose-autopopulate'));
+eventSchema.plugin(require("mongoose-autopopulate"));
 
-const Event = mongoose.model('Event', eventSchema);
+const Event = mongoose.model("Event", eventSchema);
 
 module.exports = Event;

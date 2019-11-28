@@ -1,4 +1,4 @@
-const mongoose = require('mongoose').set('debug', true);
+const mongoose = require("mongoose").set("debug", true);
 const Schema = mongoose.Schema;
 
 const popupSchema = new Schema(
@@ -9,7 +9,7 @@ const popupSchema = new Schema(
     },
     event: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Event',
+      ref: "Event",
       autopopulate: {
         maxDepth: 1,
       },
@@ -48,7 +48,7 @@ const popupSchema = new Schema(
           lastName: String,
           status: {
             type: String,
-            enum: ['pending', 'accepted', 'declined', null],
+            enum: ["pending", "accepted", "declined", null],
             default: null,
           },
         },
@@ -56,7 +56,7 @@ const popupSchema = new Schema(
           name: String,
           status: {
             type: String,
-            enum: ['pending', 'accepted', 'declined', null],
+            enum: ["pending", "accepted", "declined", null],
             default: null,
           },
         },
@@ -64,7 +64,7 @@ const popupSchema = new Schema(
     ],
     guests: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Event',
+      ref: "Event",
       autopopulate: {
         maxDepth: 1,
       },
@@ -72,13 +72,13 @@ const popupSchema = new Schema(
   },
   {
     timestamps: {
-      createdAt: 'created_at',
-      updatedAt: 'updated_at',
+      createdAt: "created_at",
+      updatedAt: "updated_at",
     },
   },
 );
 
-popupSchema.plugin(require('mongoose-autopopulate'));
+popupSchema.plugin(require("mongoose-autopopulate"));
 
 // const Popup = mongoose.model('Popup', popupSchema);
 
@@ -88,4 +88,4 @@ popupSchema.plugin(require('mongoose-autopopulate'));
 module.exports =
   mongoose.models && mongoose.models.Popup
     ? mongoose.models.Popup
-    : mongoose.model('Popup', popupSchema);
+    : mongoose.model("Popup", popupSchema);

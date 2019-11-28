@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
-const Event = require('../models/with-mongoose/EventNEW');
+const mongoose = require("mongoose");
+const Event = require("../models/with-mongoose/EventNEW");
 // const EventService = require('../services/event-service');
 
 let events = [];
 
 const seedEvents = async () => {
   mongoose
-    .connect(process.env.MONGODB_URI || 'mongodb://localhost/populairy', {
+    .connect(process.env.MONGODB_URI || "mongodb://localhost/populairy", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
@@ -16,7 +16,7 @@ const seedEvents = async () => {
       );
     })
     .catch(err => {
-      console.error('Error connecting to mongo', err);
+      console.error("Error connecting to mongo", err);
     });
 
   try {
@@ -25,34 +25,34 @@ const seedEvents = async () => {
 
     const event1 = new Event({
       _id: ObjectId(),
-      eventType: 'haircraft',
-      name: 'OnHair Night',
+      eventType: "haircraft",
+      name: "OnHair Night",
       location: {
-        name: 'Neukoelln Kunterbunt',
+        name: "Neukoelln Kunterbunt",
         address: {
-          streetName: 'Weserstr.',
+          streetName: "Weserstr.",
           houseNumber: 234,
           postCode: 12345,
-          city: 'Berlin',
-          country: 'Germany',
+          city: "Berlin",
+          country: "Germany",
         },
       },
-      date: '2019-02-21T20:00',
+      date: "2019-02-21T20:00",
       host: {
-        name: 'X Event Collective',
+        name: "X Event Collective",
       },
       joinedHosts: [
         {
           user: {
-            firstName: 'Kelly',
-            lastName: 'Hacky',
-            status: 'accepted',
+            firstName: "Kelly",
+            lastName: "Hacky",
+            status: "accepted",
           },
         },
         {
           group: {
-            name: 'Als gaebe es keinen Morgen',
-            status: 'pending',
+            name: "Als gaebe es keinen Morgen",
+            status: "pending",
           },
         },
       ],
@@ -60,21 +60,21 @@ const seedEvents = async () => {
 
     const event2 = new Event({
       _id: ObjectId(),
-      eventType: 'food',
-      name: 'Soup & Music',
+      eventType: "food",
+      name: "Soup & Music",
       location: {
-        name: 'Neukoelln Kunterbunt',
+        name: "Neukoelln Kunterbunt",
         address: {
-          streetName: 'Weserstr.',
+          streetName: "Weserstr.",
           houseNumber: 234,
           postCode: 12345,
-          city: 'Berlin',
-          country: 'Germany',
+          city: "Berlin",
+          country: "Germany",
         },
       },
-      date: '2019-02-21T20:00',
+      date: "2019-02-21T20:00",
       host: {
-        name: 'Food Coop Berlin',
+        name: "Food Coop Berlin",
       },
     });
 

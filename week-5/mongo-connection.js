@@ -1,5 +1,5 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
+require("dotenv").config();
+const mongoose = require("mongoose");
 
 async function main() {
   await mongoose
@@ -15,7 +15,7 @@ async function main() {
       );
     })
     .catch(err => {
-      console.error('Error connecting to mongo', err);
+      console.error("Error connecting to mongo", err);
     });
 }
 

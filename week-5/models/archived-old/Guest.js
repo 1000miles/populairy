@@ -5,7 +5,7 @@ module.exports = class Guest {
     this.name = `${firstName} ${lastName}`;
     this.email = email;
     this.popups = popups;
-    this.role = 'guest';
+    this.role = "guest";
     this.id = id;
   }
 

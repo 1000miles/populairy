@@ -3,8 +3,8 @@ module.exports = class User {
     firstName,
     lastName,
     email,
-    role = 'guest',
-    phoneNumber = '',
+    role = "guest",
+    phoneNumber = "",
     popups = [],
     id,
   ) {
@@ -21,25 +21,25 @@ module.exports = class User {
   attend(popup) {
     this.popups.push(popup);
 
-    if (this.role === 'host') {
+    if (this.role === "host") {
       console.log(`This:`, this);
       popup.hosts.push(this.name);
-    } else if (this.role === 'organizer') {
+    } else if (this.role === "organizer") {
       popup.organizers.push(this);
     } else {
-      this.role = 'guest';
+      this.role = "guest";
       popup.guests.push(this);
     }
   }
 
   getUserInfo() {
     switch (role) {
-      case 'host':
-      case 'organizer':
+      case "host":
+      case "organizer":
         console.log(
           `The ${this.role} ${this.name} organizes ${this.popups} and can be contacted via ${this.email} or ${this.phoneNumber}.`,
         );
-      case 'guest':
+      case "guest":
         console.log(
           `The ${this.role} ${this.name} organizes ${this.popups} and can be contacted via ${this.email}.`,
         );

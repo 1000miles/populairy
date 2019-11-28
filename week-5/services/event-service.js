@@ -1,5 +1,5 @@
-const BaseService = require('./base-service');
-const Event = require('../models/with-mongoose/EventNEW');
+const BaseService = require("./base-service");
+const Event = require("../models/with-mongoose/EventNEW");
 
 /**
  * @param {String} eventType - category of an event and can differ from pop-up's category
@@ -22,10 +22,10 @@ class EventService extends BaseService {
       console.log(`DEBUG [event-service]`, popup);
 
       switch (type) {
-        case 'group':
+        case "group":
           obj = popup.popupOrganizer.group.name;
           break;
-        case 'single person':
+        case "single person":
           obj = `${popup.popupOrganizer.firstName} ${popup.popupOrganizer.lastName}`;
           break;
       }
