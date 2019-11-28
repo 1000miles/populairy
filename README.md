@@ -102,19 +102,23 @@ Debugging
 
 Use `const mongoose = require('mongoose').set('debug', true);` on top of each model, e.g. `/models/Model.js` to get a verbose view of inserting/updating/deleting data in the console. Disable it again once you are done.
 
+Browser Console
+
+Go to browser > dev tools > console and run the axios commands below.
+
 ### User
 
 1. Get all users
 
 ```js
-axios.get('/user/all').then(console.log);
+axios.get("/user/all").then(console.log);
 ```
 
 2. Get single user
 
 ```js
 // GET http://localhost:3000/:id
-axios.get('/user/5dd93e067689550c4a89fc03').then(console.log);
+axios.get("/user/5dd93e067689550c4a89fc03").then(console.log);
 ```
 
 3. Create a new user
@@ -122,10 +126,10 @@ axios.get('/user/5dd93e067689550c4a89fc03').then(console.log);
 ```js
 // POST http://localhost:3000/user
 axios
-  .post('/user', {
-    firstName: 'Jonny',
-    lastName: 'Crush',
-    email: 'jonny@example.org',
+  .post("/user", {
+    firstName: "Jonny",
+    lastName: "Crush",
+    email: "jonny@example.org",
   })
   .then(console.log);
 ```
@@ -135,7 +139,7 @@ axios
 ```js
 // PATCH http://localhost:3000/user/:id
 axios
-  .patch('/user/5dd93e067689550c4a89fc03', { lastName: 'Another Lastname' })
+  .patch("/user/5dd93e067689550c4a89fc03", { lastName: "Another Lastname" })
   .then(console.log);
 ```
 
@@ -143,7 +147,7 @@ axios
 
 ```js
 // DEL http://localhost:3000/user/:id
-axios.delete('/user/5dd92e87f94cd40612c0783d').then(console.log);
+axios.delete("/user/5dd92e87f94cd40612c0783d").then(console.log);
 ```
 
 ### Event
@@ -152,21 +156,21 @@ axios.delete('/user/5dd92e87f94cd40612c0783d').then(console.log);
 
 ```js
 // GET http://localhost:3000/event/all/
-axios.get('/event/all').then(console.log);
+axios.get("/event/all").then(console.log);
 ```
 
 2. Get all events (JSON)
 
 ```js
 // GET http://localhost:3000/event/all/json
-axios.get('/event/all/json').then(console.log);
+axios.get("/event/all/json").then(console.log);
 ```
 
 3. Get an event
 
 ```js
 // GET http://localhost:3000/event/:id
-axios.get('/event/5ddb1166f62c82203bafc8de').then(console.log);
+axios.get("/event/5ddb1166f62c82203bafc8de").then(console.log);
 ```
 
 4. Create an event
@@ -175,29 +179,33 @@ axios.get('/event/5ddb1166f62c82203bafc8de').then(console.log);
 // CREATE http://localhost:3000/event/new
 // Validations happen in /controllers/eventController.js
 axios
-  .post('/event/new', {
-    eventType: 'haircraft',
-    eventName: 'onHair 3 Night',
+  .post("/event/new", {
+    eventType: "haircraft",
+    eventName: "onHair 5 Night",
     location: {
-      name: 'Madame Rossi',
+      name: "Madame Rossi 2",
       address: {
-        additionalString: '2nd floor, next to bar',
-        streetName: 'Wegbereiter 21',
-        houseNumber: '234a',
-        postCode: '12345',
-        city: 'Berlin',
-        country: 'Germany',
+        additionalString: "2nd floor, next to bar",
+        streetName: "Wegbereiter 21",
+        houseNumber: "234a",
+        postCode: "12345",
+        city: "Berlin",
+        country: "Germany",
       },
     },
     date: {
-      week_day: 'Saturday',
-      start_datetime: 'May 5, 2020, 11:00AM',
-      end_datetime: 'May 5, 2020, 9:00PM',
+      week_day: {
+        from: "Saturday",
+        to: "Saturday",
+      },
+      start_datetime: "May 5, 2020, 11:00 AM",
+      end_datetime: "May 5, 2020, 9:00 PM",
     },
     eventHost: {
       group: {
-        name: 'Barbery X Collective',
-        email: 'barberyx@example.org',
+        name: "Barbery X Collective",
+        websiteUrl: "http://barberywheel.org",
+        email: "barberyx@example.org",
       },
     },
   })
@@ -209,8 +217,8 @@ axios
 ```js
 // PUT http://localhost:3000/event/ObjectId
 axios
-  .patch('/event/5ddb1166f62c82203bafc8de', {
-    eventName: 'onHair 3 Night',
+  .patch("/event/5ddb1166f62c82203bafc8de", {
+    eventName: "onHair 3 Night",
   })
   .then(console.log);
 ```
@@ -219,21 +227,21 @@ axios
 
 ```js
 // GET http://localhost:3000/event/all/json
-axios.get('/event/all/json').then(console.log);
+axios.get("/event/all/json").then(console.log);
 ```
 
-7. Get an event
+7. Get an event (template)
 
 ```js
 // GET http://localhost:3000/event/:id
-axios.get('/event/5ddb1166f62c82203bafc8de').then(console.log);
+axios.get("/event/5ddb1166f62c82203bafc8de").then(console.log);
 ```
 
 8. Delete an event
 
 ```js
 // DEL http://localhost:3000/event/:id
-axios.delete('/event/5ddafbfe9a6e950ff63900a9').then(console.log);
+axios.delete("/event/5ddafbfe9a6e950ff63900a9").then(console.log);
 ```
 
 ## Getting started
@@ -258,7 +266,7 @@ $ cp env.SAMPLE .env
 
 4. Seed initial data
 
-```js
+```node
 $ node bin/seedAllModels.js
 ```
 
@@ -278,5 +286,5 @@ $ npm start
 $ npm run format
 
 # Prettify .pug files
-$ ./node_modules/.bin/prettier --write "**/*.pug"
+$ npm run pug
 ```
