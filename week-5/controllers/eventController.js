@@ -11,7 +11,7 @@ exports.validate = method => {
           .isString(),
         check('eventName', "Event name can't be blank.")
           .exists()
-					.isString(),
+          .isString(),
         check('location.address.additionalInfo')
           .optional()
           .isString(),
@@ -35,37 +35,41 @@ exports.validate = method => {
           .isString(),
         check('date.week_day.to', "Week day to can't be blank.")
           .exists()
-					.isString(),
-				// TODO: Change to .isISO8601() later
+          .isString(),
+        // TODO: Change to .isISO8601() later
         check('date.start_datetime', "Start date and time can't be blank.")
-					.exists()
-					.isString(),
-				// TODO: Change to .isISO8601() later
+          .exists()
+          .isString(),
+        // TODO: Change to .isISO8601() later
         check('date.end_datetime', "End date and time can't be blank.")
-					.exists()
-					.isString(),
-				// TODO: Check if event host is group or user and apply corresponding properties
-				check('eventHost.group.name')
-					.optional()
-					.isString(),
-				// TODO: Should be url
-				check('eventHost.group.websiteUrl', "Must be a valid URL.")
-					.optional()
-					.isURL({protocols: ['http','https'], require_tld: true, require_protocol: true }),
-				// TODO: Should be unique
-				check('eventHost.group.email', "Must be a valid email address.")
-					.optional()
-					.isString(),
-				check('eventHost.user.name.firstName')
-					.optional()
-					.isString(),
-				check('eventHost.user.name.lastName')
-					.optional()
-					.isString(),
-				// TODO: Should be unique
-				check('eventHost.user.email', "Must be a valid email address.")
-					.optional()
-					.isEmail(),
+          .exists()
+          .isString(),
+        // TODO: Check if event host is group or user and apply corresponding properties
+        check('eventHost.group.name')
+          .optional()
+          .isString(),
+        // TODO: Should be url
+        check('eventHost.group.websiteUrl', 'Must be a valid URL.')
+          .optional()
+          .isURL({
+            protocols: ['http', 'https'],
+            require_tld: true,
+            require_protocol: true,
+          }),
+        // TODO: Should be unique
+        check('eventHost.group.email', 'Must be a valid email address.')
+          .optional()
+          .isString(),
+        check('eventHost.user.name.firstName')
+          .optional()
+          .isString(),
+        check('eventHost.user.name.lastName')
+          .optional()
+          .isString(),
+        // TODO: Should be unique
+        check('eventHost.user.email', 'Must be a valid email address.')
+          .optional()
+          .isEmail(),
         check('joinedHosts')
           .optional()
           .isArray(),
@@ -81,7 +85,7 @@ exports.validate = method => {
       return [
         check('eventType', 'Event type must be a string.')
           .isString()
-					.optional(),
+          .optional(),
         check('eventName', 'Event name must be a string.')
           .isString()
           .optional(),
@@ -105,34 +109,36 @@ exports.validate = method => {
           .optional(),
         check('date.week_day', 'Week day must be a string.')
           .isString()
-					.optional(),
-				// TODO: Change to .isISO8601() later
-				check('date.start_datetime', 'Start date and time must be a date.')
-					.isString()
-					.optional(),
-				// TODO: Change to .isISO8601() later
-        check('date.end_datetime', 'End date and time must be a date.')
-					.optional(),
-				// TODO: Check if event host is group or user and apply corresponding properties
+          .optional(),
+        // TODO: Change to .isISO8601() later
+        check('date.start_datetime', 'Start date and time must be a date.')
+          .isString()
+          .optional(),
+        // TODO: Change to .isISO8601() later
+        check(
+          'date.end_datetime',
+          'End date and time must be a date.',
+        ).optional(),
+        // TODO: Check if event host is group or user and apply corresponding properties
         check('eventHost.group.name')
           .optional()
-					.isString(),
-				// TODO: Should be url
-				check('eventHost.group.websiteUrl')
-          .optional()
-					.isString(),
-				// TODO: Should be unique
-				check('eventHost.group.email', "Must be a valid email address.")
+          .isString(),
+        // TODO: Should be url
+        check('eventHost.group.websiteUrl')
           .optional()
           .isString(),
-				check('eventHost.user.name.firstName')
+        // TODO: Should be unique
+        check('eventHost.group.email', 'Must be a valid email address.')
           .optional()
-					.isString(),
-				check('eventHost.user.name.lastName')
+          .isString(),
+        check('eventHost.user.name.firstName')
           .optional()
-					.isString(),
-				// TODO: Should be unique
-				check('eventHost.user.email', "Must be a valid email address.")
+          .isString(),
+        check('eventHost.user.name.lastName')
+          .optional()
+          .isString(),
+        // TODO: Should be unique
+        check('eventHost.user.email', 'Must be a valid email address.')
           .optional()
           .isEmail(),
         check('joinedHosts', 'Joined hosts must be an array of strings.')
