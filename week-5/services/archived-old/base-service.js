@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require("fs");
 
 module.exports = class Service {
   constructor(model, dbPath) {
@@ -8,9 +8,9 @@ module.exports = class Service {
 
   async findAll() {
     return new Promise((resolve, reject) => {
-      fs.readFile(this.dbPath, 'utf8', async (err, file) => {
+      fs.readFile(this.dbPath, "utf8", async (err, file) => {
         if (err) {
-          if (err.code == 'ENOENT') {
+          if (err.code == "ENOENT") {
             await this.saveAll([]);
             return resolve([]);
           }

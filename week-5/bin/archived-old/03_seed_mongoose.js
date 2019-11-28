@@ -1,16 +1,16 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const Event = require('../../models/with-mongoose/EventNEW');
-const Popup = require('../../models/with-mongoose/PopupNEW');
-const User = require('../../models/with-mongoose/UserNEW');
+const Event = require("../../models/with-mongoose/EventNEW");
+const Popup = require("../../models/with-mongoose/PopupNEW");
+const User = require("../../models/with-mongoose/UserNEW");
 
-const EventService = require('../../services/event-service');
-const PopupService = require('../../services/popup-service');
-const UserService = require('../../services/user-service');
+const EventService = require("../../services/event-service");
+const PopupService = require("../../services/popup-service");
+const UserService = require("../../services/user-service");
 
 async function seed() {
   mongoose
-    .connect(process.env.MONGODB_URI || 'mongodb://localhost/populairy', {
+    .connect(process.env.MONGODB_URI || "mongodb://localhost/populairy", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
@@ -20,102 +20,102 @@ async function seed() {
       );
     })
     .catch(err => {
-      console.error('Error connecting to mongo', err);
+      console.error("Error connecting to mongo", err);
     });
 
   try {
     const event1 = new Event({
-      eventType: 'haircraft',
-      name: 'OnHair Night',
-      location: 'Neukoelln Kunterbunt',
-      date: '2019-02-21T20:00',
-      host: 'X Event Collective',
+      eventType: "haircraft",
+      name: "OnHair Night",
+      location: "Neukoelln Kunterbunt",
+      date: "2019-02-21T20:00",
+      host: "X Event Collective",
     });
 
     const event2 = new Event({
-      eventType: 'food',
-      name: 'Soup & Music',
-      location: 'Neukoelln Kunterbunt',
-      date: '2019-02-21T20:00',
-      host: 'Food Coop Berlin',
+      eventType: "food",
+      name: "Soup & Music",
+      location: "Neukoelln Kunterbunt",
+      date: "2019-02-21T20:00",
+      host: "Food Coop Berlin",
     });
 
     const barberShop = new Popup({
-      category: 'barber',
-      title: 'Barber Shop Vol. 11',
-      joinedEvent: 'OnHair Night',
-      date: '2019-02-21T20:00',
-      host: 'RooArr Pop-up Collective',
-      space: 'Neukoelln Kunterbunt',
+      category: "barber",
+      title: "Barber Shop Vol. 11",
+      joinedEvent: "OnHair Night",
+      date: "2019-02-21T20:00",
+      host: "RooArr Pop-up Collective",
+      space: "Neukoelln Kunterbunt",
     });
 
     const barberShop2 = new Popup({
-      category: 'barber',
-      title: 'Pony and Clyde #23',
-      joinedEvent: 'OnHair Night',
-      date: '2019-02-21T20:00',
-      host: 'Bored Panda',
-      space: 'Neukoelln Kunterbunt',
+      category: "barber",
+      title: "Pony and Clyde #23",
+      joinedEvent: "OnHair Night",
+      date: "2019-02-21T20:00",
+      host: "Bored Panda",
+      space: "Neukoelln Kunterbunt",
     });
 
     const foodCorner = new Popup({
-      category: 'food',
-      title: 'Food Corner',
-      joinedEvent: 'Soup & Music',
-      date: '2019-03-15T20:00:00',
-      host: 'KreuzKoelln Collective',
-      space: 'Astra Stuben',
+      category: "food",
+      title: "Food Corner",
+      joinedEvent: "Soup & Music",
+      date: "2019-03-15T20:00:00",
+      host: "KreuzKoelln Collective",
+      space: "Astra Stuben",
     });
 
     const guest1 = new User({
-      firstName: 'Riley',
-      lastName: 'Deyin',
-      email: 'rileyd@example.org',
+      firstName: "Riley",
+      lastName: "Deyin",
+      email: "rileyd@example.org",
     });
     const guest2 = new User({
-      firstName: 'Jami',
-      lastName: 'Watson',
-      email: 'jamiw@example.org',
+      firstName: "Jami",
+      lastName: "Watson",
+      email: "jamiw@example.org",
     });
     const guest3 = new User({
-      firstName: 'Jenny',
-      lastName: 'Morgan',
-      email: 'jenw@example.org',
+      firstName: "Jenny",
+      lastName: "Morgan",
+      email: "jenw@example.org",
     });
     const guest4 = new User({
-      firstName: 'Chris',
-      lastName: 'Stuff',
-      email: 'chris@example.org',
+      firstName: "Chris",
+      lastName: "Stuff",
+      email: "chris@example.org",
     });
 
     const host = new User({
-      firstName: 'Mhisa',
-      lastName: 'Yourg',
-      email: 'mhisaw@example.org',
-      role: 'host',
-      phoneNumber: '+44 8484 34 22 55',
+      firstName: "Mhisa",
+      lastName: "Yourg",
+      email: "mhisaw@example.org",
+      role: "host",
+      phoneNumber: "+44 8484 34 22 55",
     });
     const host2 = new User({
-      firstName: 'Nana',
-      lastName: 'Nooo',
-      email: 'nanoo@example.org',
-      role: 'host',
-      phoneNumber: '+44 12 54 87 33',
+      firstName: "Nana",
+      lastName: "Nooo",
+      email: "nanoo@example.org",
+      role: "host",
+      phoneNumber: "+44 12 54 87 33",
     });
 
     const organizer = new User({
-      firstName: 'Xaya',
-      lastName: 'Hey',
-      email: 'Xaya@example.org',
-      role: 'organizer',
-      phoneNumber: '+49 056 78 34 21',
+      firstName: "Xaya",
+      lastName: "Hey",
+      email: "Xaya@example.org",
+      role: "organizer",
+      phoneNumber: "+49 056 78 34 21",
     });
     const organizer2 = new User({
-      firstName: 'Fabienne',
-      lastName: 'Lala',
-      email: 'fabienne@example.org',
-      role: 'organizer',
-      phoneNumbeer: '+49 123 456 78 90',
+      firstName: "Fabienne",
+      lastName: "Lala",
+      email: "fabienne@example.org",
+      role: "organizer",
+      phoneNumbeer: "+49 123 456 78 90",
     });
 
     // host.setRole();

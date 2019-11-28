@@ -1,10 +1,10 @@
 # Folders to ignore
 node_modules/
+**/.vscode/
+api-rest-client-testing/
 
 # Weeks
 **/node_modules
 
 # Files to ignore
 **/.env
-
-**/.vscode/

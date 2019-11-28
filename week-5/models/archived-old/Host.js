@@ -13,15 +13,15 @@ module.exports = class User {
   setRole() {
     switch (role) {
       // host = event host
-      case 'host':
-        this.role = 'host';
+      case "host":
+        this.role = "host";
         break;
       // organizer = popup organizer
-      case 'organizer':
-        this.role = 'organizer';
+      case "organizer":
+        this.role = "organizer";
         break;
-      case 'guest':
-        this.role = 'guest';
+      case "guest":
+        this.role = "guest";
         break;
       default:
         console.log(`ERROR, role can't be empty.`);
@@ -32,24 +32,24 @@ module.exports = class User {
   attend(popup) {
     this.popups.push(popup.title);
 
-    if (this.role === 'host') {
+    if (this.role === "host") {
       popup.hosts.push(this);
-    } else if (this.role === 'organizer') {
+    } else if (this.role === "organizer") {
       popup.organizers.push(this);
     } else {
-      this.role = 'guest';
+      this.role = "guest";
       popup.guests.push(this);
     }
   }
 
   getUserInfo() {
     switch (role) {
-      case 'host':
-      case 'organizer':
+      case "host":
+      case "organizer":
         console.log(
           `The ${this.role} ${this.name} organizes ${this.popups} and can be contacted via ${this.email} or ${this.phoneNumber}.`,
         );
-      case 'guest':
+      case "guest":
         console.log(
           `The ${this.role} ${this.name} organizes ${this.popups} and can be contacted via ${this.email}.`,
         );

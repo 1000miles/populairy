@@ -1,5 +1,5 @@
-const BaseService = require('./base-service');
-const GuestModel = require('./../../models/archived-old/Guest');
+const BaseService = require("./base-service");
+const GuestModel = require("./../../models/archived-old/Guest");
 
 class GuestService extends BaseService {
   constructor() {

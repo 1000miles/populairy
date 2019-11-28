@@ -1,6 +1,6 @@
-const Chalk = require('chalk');
-const BaseService = require('./base-service');
-const User = require('../models/with-mongoose/UserNEW');
+const Chalk = require("chalk");
+const BaseService = require("./base-service");
+const User = require("../models/with-mongoose/UserNEW");
 
 class UserService extends BaseService {
   model = User;
@@ -25,7 +25,7 @@ class UserService extends BaseService {
 
     const message2 = `The ${user.role} ${user.firstName} ${user.lastName} can be contacted via ${user.email}.`;
 
-    if (user.role === 'host' || user.role === 'organizer') return message1;
+    if (user.role === "host" || user.role === "organizer") return message1;
     else return message2;
   }
 }

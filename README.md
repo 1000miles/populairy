@@ -42,15 +42,15 @@ Examples
 - [x] ExpressJS (Backend Framework)
 - [x] MongoDB (Database)
 - [x] Mongoose (Schema)
-- [x] Pug (views) => be changed to React later
+- [x] Pug (views) => Vue => React (Front-End)
 - [x] Nodemon (Dev Live Server)
 - [x] Prettier (Formatting)
 - [x] Axios (HTTP requests)
+- [ ] Ava => Mocha && Enzyme (Testing)
+- [ ] Docker
 - [ ] Heroku || Netlify (Hosting)
-- [ ] ReactJS (Frontend Framework)
 - [ ] Babel (JS Compiler)
 - [ ] Eslint (JS Linter)
-- [ ] Mocha && Enzyme (Testing)
 
 ## 3. Features
 
@@ -101,6 +101,10 @@ Examples
 Debugging
 
 Use `const mongoose = require('mongoose').set('debug', true);` on top of each model, e.g. `/models/Model.js` to get a verbose view of inserting/updating/deleting data in the console. Disable it again once you are done.
+
+Browser Console
+
+Go to browser > dev tools > console and run the axios commands below.
 
 ### User
 
@@ -176,33 +180,36 @@ axios.get("/event/5ddb1166f62c82203bafc8de").then(console.log);
 // Validations happen in /controllers/eventController.js
 axios
   .post("/event/new", {
-		  "eventType": "haircraft",
-		  "eventName": "onHair 3 Night",
-		  "location": {
-		    "name": "Madame Rossi",
-		    "address": {
-		      "additionalString": "2nd floor, next to bar",
-		      "streetName": "Wegbereiter 21",
-		      "houseNumber": "234a",
-		      "postCode": "12345",
-		      "city": "Berlin",
-		      "country": "Germany"
-		    }
-		  },
-		  "date": {
-		    "week_day": "Saturday",
-		    "start_datetime": "May 5, 2020, 11:00AM",
-		    "end_datetime": "May 5, 2020, 9:00PM"
-		  },
-		  "eventHost": {
-		    "group": {
-		      "name": "Barbery X Collective",
-		      "email": "barberyx@example.org"
-		    }
-		  }
-		}
-	)
-	.then(console.log);
+    eventType: "haircraft",
+    eventName: "onHair 5 Night",
+    location: {
+      name: "Madame Rossi 2",
+      address: {
+        additionalString: "2nd floor, next to bar",
+        streetName: "Wegbereiter 21",
+        houseNumber: "234a",
+        postCode: "12345",
+        city: "Berlin",
+        country: "Germany",
+      },
+    },
+    date: {
+      week_day: {
+        from: "Saturday",
+        to: "Saturday",
+      },
+      start_datetime: "May 5, 2020, 11:00 AM",
+      end_datetime: "May 5, 2020, 9:00 PM",
+    },
+    eventHost: {
+      group: {
+        name: "Barbery X Collective",
+        websiteUrl: "http://barberywheel.org",
+        email: "barberyx@example.org",
+      },
+    },
+  })
+  .then(console.log);
 ```
 
 5. Update an event (PATCH)
@@ -223,12 +230,13 @@ axios
 axios.get("/event/all/json").then(console.log);
 ```
 
-7. Get an event
+7. Get an event (template)
 
 ```js
 // GET http://localhost:3000/event/:id
 axios.get("/event/5ddb1166f62c82203bafc8de").then(console.log);
 ```
+
 8. Delete an event
 
 ```js
@@ -258,7 +266,7 @@ $ cp env.SAMPLE .env
 
 4. Seed initial data
 
-```js
+```node
 $ node bin/seedAllModels.js
 ```
 
@@ -278,5 +286,5 @@ $ npm start
 $ npm run format
 
 # Prettify .pug files
-$ ./node_modules/.bin/prettier --write "**/*.pug"
+$ npm run pug
 ```

@@ -1,5 +1,5 @@
-const BaseService = require('./base-service');
-const PopupModel = require('./../../models/archived-old/Popup');
+const BaseService = require("./base-service");
+const PopupModel = require("./../../models/archived-old/Popup");
 
 class PopupService extends BaseService {
   constructor() {

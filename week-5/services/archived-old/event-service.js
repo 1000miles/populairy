@@ -1,5 +1,5 @@
-const BaseService = require('./base-service');
-const EventModel = require('./../../models/archived-old/Event');
+const BaseService = require("./base-service");
+const EventModel = require("./../../models/archived-old/Event");
 
 class EventService extends BaseService {
   constructor() {

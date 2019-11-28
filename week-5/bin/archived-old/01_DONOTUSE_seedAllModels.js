@@ -1,20 +1,20 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const Event = require('../../models/archived-old/Event');
-const Popup = require('../../models/archived-old/Popup');
-const Host = require('../../models/archived-old/Host');
-const Guest = require('../../models/archived-old/Guest');
+const Event = require("../../models/archived-old/Event");
+const Popup = require("../../models/archived-old/Popup");
+const Host = require("../../models/archived-old/Host");
+const Guest = require("../../models/archived-old/Guest");
 
-const EventService = require('../../services/archived/popup-service');
-const PopupService = require('../../services/archived/popup-service');
-const HostService = require('../../services/archived/host-service');
-const GuestService = require('../../services/archived/guest-service');
+const EventService = require("../../services/archived/popup-service");
+const PopupService = require("../../services/archived/popup-service");
+const HostService = require("../../services/archived/host-service");
+const GuestService = require("../../services/archived/guest-service");
 
 // ATTENTION: This does not work anymore since the models and paths have changed.
 
 async function seed() {
   mongoose
-    .connect(process.env.MONGODB_URI || 'mongodb://localhost/populairy', {
+    .connect(process.env.MONGODB_URI || "mongodb://localhost/populairy", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
@@ -24,71 +24,71 @@ async function seed() {
       );
     })
     .catch(err => {
-      console.error('Error connecting to mongo', err);
+      console.error("Error connecting to mongo", err);
     });
 
   try {
     const event1 = new Event(
-      'haircraft',
-      'OnHair Night',
-      'Neukoelln Kunterbunt',
-      '2019-02-21T20:00',
-      'X Event Collective',
+      "haircraft",
+      "OnHair Night",
+      "Neukoelln Kunterbunt",
+      "2019-02-21T20:00",
+      "X Event Collective",
     );
 
     const event2 = new Event(
-      'food',
-      'Soup & Music',
-      'Neukoelln Kunterbunt',
-      '2019-02-21T20:00',
-      'Food Coop Berlin',
+      "food",
+      "Soup & Music",
+      "Neukoelln Kunterbunt",
+      "2019-02-21T20:00",
+      "Food Coop Berlin",
     );
 
     const barberShop = new Popup(
-      'barber',
-      'Barber Shop Vol. 11',
-      'OnHair Night',
-      'RooArr Pop-up Collective',
-      '2019-02-21T20:00',
-      'Neukoelln Kunterbunt',
+      "barber",
+      "Barber Shop Vol. 11",
+      "OnHair Night",
+      "RooArr Pop-up Collective",
+      "2019-02-21T20:00",
+      "Neukoelln Kunterbunt",
     );
 
     const barberShop2 = new Popup(
-      'barber',
-      'Pony and Clyde #23',
-      'OnHair Night',
-      'Bored Panda',
-      '2019-02-21T20:00',
-      'Neukoelln Kunterbunt',
+      "barber",
+      "Pony and Clyde #23",
+      "OnHair Night",
+      "Bored Panda",
+      "2019-02-21T20:00",
+      "Neukoelln Kunterbunt",
     );
 
     const host = new Host(
-      'Georgia',
-      'Toggendorf',
-      'georgia@example.org',
-      '+33 124 566 63 64',
+      "Georgia",
+      "Toggendorf",
+      "georgia@example.org",
+      "+33 124 566 63 64",
     );
 
     const host2 = new Host(
-      'Tamy',
-      'Nexus',
-      'tamy@example.org',
-      '+33 857 97 33 94',
+      "Tamy",
+      "Nexus",
+      "tamy@example.org",
+      "+33 857 97 33 94",
     );
 
     const foodCorner = new Popup(
-      'food',
-      'Food Corner',
-      'Soup & Music',
-      'KreuzKoelln Collective',
-      '2019-03-15T20:00:00',
-      'Astra Stuben',
+      "food",
+      "Food Corner",
+      "Soup & Music",
+      "KreuzKoelln Collective",
+      "2019-03-15T20:00:00",
+      "Astra Stuben",
     );
 
-    const guest1 = new Guest('Riley', 'Deyin', 'rileyd@example.org');
-    const guest2 = new Guest('Jami', 'Watson', 'jamiw@example.org');
-    const guest3 = new Guest('Mhisa', 'Yourg', 'mhisaw@example.org');
-    const guest4 = new Guest('Fabienne', 'Lala', 'fabienne@example.org');
+    const guest1 = new Guest("Riley", "Deyin", "rileyd@example.org");
+    const guest2 = new Guest("Jami", "Watson", "jamiw@example.org");
+    const guest3 = new Guest("Mhisa", "Yourg", "mhisaw@example.org");
+    const guest4 = new Guest("Fabienne", "Lala", "fabienne@example.org");
 
     host.attend(barberShop);
     host.attend(barberShop2);
