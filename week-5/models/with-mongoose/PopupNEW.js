@@ -4,71 +4,49 @@ const Schema = mongoose.Schema;
 const popupSchema = new Schema(
   {
     category: {
-      type: String,
-      required: [true, "Category can't be blank."],
-    },
-    event: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Event",
-      autopopulate: {
-        maxDepth: 1,
-      },
+			type: String,
     },
     popupTitle: {
       type: String,
-      required: [true, "Pop-up title can't be blank."],
-    },
+		},
+		description: String,
     slots: {
-      day: {
-        from: String,
-        to: String,
-      },
-      time: {
-        from: String,
-        to: String,
-      },
+			date: {
+				from: Date,
+				to: Date,
+			}
     },
     // Pop-up main organizer
     popupOrganizer: {
-      name: {
-        group: {
-          name: String,
-        },
-        user: {
-          firstName: String,
-          lastName: String,
-        },
-      },
+			name: String,
+			email: String,
+			websiteUrl: String,
     },
     // Pop-up co-organizers
     joinedOrganizers: [
       {
-        user: {
-          firstName: String,
-          lastName: String,
-          status: {
-            type: String,
-            enum: ["pending", "accepted", "declined", null],
-            default: null,
-          },
-        },
-        group: {
-          name: String,
-          status: {
-            type: String,
-            enum: ["pending", "accepted", "declined", null],
-            default: null,
-          },
-        },
+				name: String,
+				email: String,
+				status: {
+					type: String,
+					enum: ["pending", "accepted", "declined"],
+				},
       },
-    ],
-    guests: {
+		],
+		event: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Event",
       autopopulate: {
         maxDepth: 1,
       },
     },
+    guests: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Event",
+      autopopulate: {
+        maxDepth: 1,
+      },
+    }],
   },
   {
     timestamps: {
