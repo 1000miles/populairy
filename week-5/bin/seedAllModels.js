@@ -125,30 +125,29 @@ const seedUsers = async () => {
     const barberShop1 = new Popup({
       category: "barber",
       popupTitle: "Barber Shop Vol. 11",
+      description:
+        "Barber Shop is located in Neukoelln and offers tarot reading during the hair cut sessions...",
       slots: {
-        week_day: "Friday",
-        from: "Dec 29, 2019, 11:00 AM",
-        to: "Dec 29, 2019, 6:00 PM",
+        date: {
+          from: new Date(2020, 02, 22, 10, 00, 00),
+          to: new Date(2020, 02, 22, 21, 00, 00),
+        },
       },
       popupOrganizer: {
-        name: {
-          group: {
-            name: "RooArr Pop-up Collective",
-          },
-        },
+        name: "RooArr Pop-up Collective",
+        email: "roaar@example.org",
+        websiteUrl: "https://rroaarr-example.org",
       },
       joinedOrganizers: [
         {
-          user: {
-            firstName: "Jakob",
-            lastName: "Grenzwertig",
-            status: "pending",
-          },
-          user: {
-            firstName: "Bertie",
-            lastName: "Bollwerk",
-            status: "accepted",
-          },
+          name: "Jakob Grenzwertig",
+          email: "jakob@example.org",
+          status: "pending",
+        },
+        {
+          name: "Bertie Bolllwerk",
+          email: "bertie@example.org",
+          status: "accepted",
         },
       ],
     });
@@ -156,22 +155,18 @@ const seedUsers = async () => {
     const barberShop2 = new Popup({
       category: "barber",
       popupTitle: "Pony and Clyde #23",
+      description:
+        "Pony and Clyde was founded in 2017 by 2 best friennds. They always wanted to...",
       slots: {
-        day: {
-          from: "Friday",
-          to: "Friday",
-        },
-        time: {
-          from: "May 29, 2019, 11:00 AM",
-          to: "May 29, 2019, 7:00 PM",
+        date: {
+          from: new Date(2020, 02, 22, 10, 00, 00),
+          to: new Date(2020, 02, 22, 21, 00, 00),
         },
       },
       popupOrganizer: {
-        name: {
-          group: {
-            name: "Board Panda",
-          },
-        },
+        name: "Bored Panda",
+        email: "boredpan@example.org",
+        websiteUrl: "https://boredpan-example.org",
       },
       joinedOrganizers: [],
     });
@@ -179,23 +174,17 @@ const seedUsers = async () => {
     const foodCorner1 = new Popup({
       category: "food",
       popupTitle: "Food around the clock",
+      description: "Wonderful organic food all night long",
       slots: {
-        day: {
-          from: "Thursday",
-          to: "Thursday",
-        },
-        time: {
-          from: "May 28, 2020, 12:00 PM",
-          to: "May 28, 2020, 10:00 PM",
+        date: {
+          from: new Date(2019, 12, 29, 11, 00, 00),
+          to: new Date(2019, 12, 29, 20, 00, 00),
         },
       },
       popupOrganizer: {
-        name: {
-          user: {
-            firstName: "Colin",
-            lastName: "Brenston",
-          },
-        },
+        name: "Colin Breston",
+        email: "colin@example.org",
+        websiteUrl: "https://colix-example.org",
       },
       joinedOrganizers: [],
     });

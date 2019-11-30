@@ -5,8 +5,34 @@ const popupSchema = new Schema(
   {
     category: {
       type: String,
-      required: [true, "Category can't be blank."],
     },
+    popupTitle: {
+      type: String,
+    },
+    description: String,
+    slots: {
+      date: {
+        from: Date,
+        to: Date,
+      },
+    },
+    // Pop-up main organizer
+    popupOrganizer: {
+      name: String,
+      email: String,
+      websiteUrl: String,
+    },
+    // Pop-up co-organizers
+    joinedOrganizers: [
+      {
+        name: String,
+        email: String,
+        status: {
+          type: String,
+          enum: ["pending", "accepted", "declined"],
+        },
+      },
+    ],
     event: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Event",
@@ -14,61 +40,15 @@ const popupSchema = new Schema(
         maxDepth: 1,
       },
     },
-    popupTitle: {
-      type: String,
-      required: [true, "Pop-up title can't be blank."],
-    },
-    slots: {
-      day: {
-        from: String,
-        to: String,
-      },
-      time: {
-        from: String,
-        to: String,
-      },
-    },
-    // Pop-up main organizer
-    popupOrganizer: {
-      name: {
-        group: {
-          name: String,
-        },
-        user: {
-          firstName: String,
-          lastName: String,
-        },
-      },
-    },
-    // Pop-up co-organizers
-    joinedOrganizers: [
+    guests: [
       {
-        user: {
-          firstName: String,
-          lastName: String,
-          status: {
-            type: String,
-            enum: ["pending", "accepted", "declined", null],
-            default: null,
-          },
-        },
-        group: {
-          name: String,
-          status: {
-            type: String,
-            enum: ["pending", "accepted", "declined", null],
-            default: null,
-          },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Event",
+        autopopulate: {
+          maxDepth: 1,
         },
       },
     ],
-    guests: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Event",
-      autopopulate: {
-        maxDepth: 1,
-      },
-    },
   },
   {
     timestamps: {
