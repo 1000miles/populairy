@@ -1,9 +1,9 @@
 extends layout
 
 block content
-	p #[strong Pop-up ID]: #{popup._id}
+  p #[strong Pop-up ID]: #{popup._id}
 
-	h1 #{popup.popupTitle}
-	p #[strong Organizer]: #{popup.popupOrganizer.name}, Email: #{popup.popupOrganizer.email}, Website: #{popup.popupOrganizer.websiteUrl}
-	p #[strong Date]: #{popup.slots.date.from} - #{popup.slots.date.to}
-	| #[strong Description:] #{popup.description}
+  h1 #{popup.popupTitle}
+  p #[strong Organizer]: #{popup.popupOrganizer.name}, Email: #{popup.popupOrganizer.email}, Website: #{popup.popupOrganizer.websiteUrl}
+  p #[strong Date]: #{popup.slots.date.from} - #{popup.slots.date.to}
+  | #[strong Description:] #{popup.description}

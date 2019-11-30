@@ -124,28 +124,29 @@ const seedUsers = async () => {
 
     const barberShop1 = new Popup({
       category: "barber",
-			popupTitle: "Barber Shop Vol. 11",
-			description: "Barber Shop is located in Neukoelln and offers tarot reading during the hair cut sessions...",
+      popupTitle: "Barber Shop Vol. 11",
+      description:
+        "Barber Shop is located in Neukoelln and offers tarot reading during the hair cut sessions...",
       slots: {
-				date: {
-					from: new Date(2020, 02, 22, 10, 00, 00),
-					to: new Date(2020, 02, 22, 21, 00, 00)
-				},
+        date: {
+          from: new Date(2020, 02, 22, 10, 00, 00),
+          to: new Date(2020, 02, 22, 21, 00, 00),
+        },
       },
       popupOrganizer: {
-				name: "RooArr Pop-up Collective",
-				email: "roaar@example.org",
-				websiteUrl: "https://rroaarr-example.org"
+        name: "RooArr Pop-up Collective",
+        email: "roaar@example.org",
+        websiteUrl: "https://rroaarr-example.org",
       },
       joinedOrganizers: [
         {
-					name: "Jakob Grenzwertig",
-					email: "jakob@example.org",
+          name: "Jakob Grenzwertig",
+          email: "jakob@example.org",
           status: "pending",
-				},
-				{
-					name: "Bertie Bolllwerk",
-					email: "bertie@example.org",
+        },
+        {
+          name: "Bertie Bolllwerk",
+          email: "bertie@example.org",
           status: "accepted",
         },
       ],
@@ -153,36 +154,37 @@ const seedUsers = async () => {
 
     const barberShop2 = new Popup({
       category: "barber",
-			popupTitle: "Pony and Clyde #23",
-			description: "Pony and Clyde was founded in 2017 by 2 best friennds. They always wanted to...",
+      popupTitle: "Pony and Clyde #23",
+      description:
+        "Pony and Clyde was founded in 2017 by 2 best friennds. They always wanted to...",
       slots: {
-				date: {
-					from: new Date(2020, 02, 22, 10, 00, 00),
-					to: new Date(2020, 02, 22, 21, 00, 00)
-				},
+        date: {
+          from: new Date(2020, 02, 22, 10, 00, 00),
+          to: new Date(2020, 02, 22, 21, 00, 00),
+        },
       },
       popupOrganizer: {
-				name: "Bored Panda",
-				email: "boredpan@example.org",
-				websiteUrl: "https://boredpan-example.org"
+        name: "Bored Panda",
+        email: "boredpan@example.org",
+        websiteUrl: "https://boredpan-example.org",
       },
       joinedOrganizers: [],
     });
 
     const foodCorner1 = new Popup({
       category: "food",
-			popupTitle: "Food around the clock",
-			description: "Wonderful organic food all night long",
+      popupTitle: "Food around the clock",
+      description: "Wonderful organic food all night long",
       slots: {
-				date: {
-					from: new Date(2019, 12, 29, 11, 00, 00),
-					to: new Date(2019, 12, 29, 20, 00, 00)
-				},
+        date: {
+          from: new Date(2019, 12, 29, 11, 00, 00),
+          to: new Date(2019, 12, 29, 20, 00, 00),
+        },
       },
       popupOrganizer: {
-				name: "Colin Breston",
-				email: "colin@example.org",
-				websiteUrl: "https://colix-example.org"
+        name: "Colin Breston",
+        email: "colin@example.org",
+        websiteUrl: "https://colix-example.org",
       },
       joinedOrganizers: [],
     });

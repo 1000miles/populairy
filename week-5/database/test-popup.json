@@ -1,30 +1,30 @@
 {
-	"category": "barber",
-	"popupTitle": "Barber Shop Vol. 11",
-	"description": "Barber Shop is located in Neukoelln and offers tarot reading during the hair cut sessions...",
-	"slots": {
-		"date": {
-			"from": "2020-01-29T10:00:00.000Z",
-			"to": "2020-01-29T19:00:00.000Z"
-		}
-	},
-	"popupOrganizer": {
-		"name": "RooArr Pop-up Collective",
-		"email": "roaar@example.org",
-		"websiteUrl": "https://rroaarr-example.org"
-	},
-	"joinedOrganizers": [
-		{
-			"name": "Jakob Grenzwertig",
-			"email": "jakob@example.org",
-			"status": "pending"
-		},
-		{
-			"name": "Haley Cornway",
-			"email": "haley@example.org",
-			"status": "pending"
-		}
-	],
-	"event": {},
-	"guests": []
+  "category": "barber",
+  "popupTitle": "Barber Shop Vol. 11",
+  "description": "Barber Shop is located in Neukoelln and offers tarot reading during the hair cut sessions...",
+  "slots": {
+    "date": {
+      "from": "2020-01-29T10:00:00.000Z",
+      "to": "2020-01-29T19:00:00.000Z"
+    }
+  },
+  "popupOrganizer": {
+    "name": "RooArr Pop-up Collective",
+    "email": "roaar@example.org",
+    "websiteUrl": "https://rroaarr-example.org"
+  },
+  "joinedOrganizers": [
+    {
+      "name": "Jakob Grenzwertig",
+      "email": "jakob@example.org",
+      "status": "pending"
+    },
+    {
+      "name": "Haley Cornway",
+      "email": "haley@example.org",
+      "status": "pending"
+    }
+  ],
+  "event": {},
+  "guests": []
 }

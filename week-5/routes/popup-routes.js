@@ -39,10 +39,10 @@ router.get("/all/json", async (req, res) => {
       data: popups,
     });
   } catch (err) {
-		res.status(400).json({
-			status: "400. Bad request.",
-			message: err,
-		});
+    res.status(400).json({
+      status: "400. Bad request.",
+      message: err,
+    });
     return next(err);
   }
   // res.render("popuplistJSON", { items: popups });
@@ -50,86 +50,88 @@ router.get("/all/json", async (req, res) => {
 
 // GET http://localhost:3000/popup/:id
 router.get("/:id", async (req, res, next) => {
-	try {
-		const popup = await PopupService.findById(req.params.id);
+  try {
+    const popup = await PopupService.findById(req.params.id);
 
-		if (!popup) {
-			throw "404. Pop-up does not exist."
-		} else {
-			res.render("popup", { popup })
-		}
+    if (!popup) {
+      throw "404. Pop-up does not exist.";
+    } else {
+      res.render("popup", { popup });
+    }
   } catch (err) {
-		res.send(err);
+    res.send(err);
   }
 });
 
 // GET http://localhost:3000/popup/:id/json
 router.get("/:id/json", async (req, res, next) => {
-	try {
-		const popup = await PopupService.findById(req.params.id);
+  try {
+    const popup = await PopupService.findById(req.params.id);
 
-		if (!popup) {
-			throw "404. Pop-up does not exist."
-		} else {
-			res.status(200).json({
-				status: "Success",
-				data: popup,
-			});
-		}
+    if (!popup) {
+      throw "404. Pop-up does not exist.";
+    } else {
+      res.status(200).json({
+        status: "Success",
+        data: popup,
+      });
+    }
   } catch (err) {
-		res.send(err);
+    res.send(err);
   }
 });
 
 // POST http://localhost:3000/popup
-router.post("/new",
-	popupController.validate("createPopup"),
-	async (req, res, next) => {
-		try {
-			const errors = validationResult(req);
+router.post(
+  "/new",
+  popupController.validate("createPopup"),
+  async (req, res, next) => {
+    try {
+      const errors = validationResult(req);
 
-			// Check for validation errors
-			if (!errors.isEmpty()) {
-				return res.status(422).json({
-					status: "Error while validating.",
-					errors: errors.array(),
-				});
-			};
+      // Check for validation errors
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          status: "Error while validating.",
+          errors: errors.array(),
+        });
+      }
 
-			const {
-				category,
-				popupTitle,
-				description,
-				slots,
-				popupOrganizer,
-				joinedOrganizers,
-				guests
-			} = req.body;
+      const {
+        category,
+        popupTitle,
+        description,
+        slots,
+        popupOrganizer,
+        joinedOrganizers,
+        guests,
+      } = req.body;
 
-			const popup = await PopupService.add({
-				category,
-				popupTitle,
-				description,
-				slots,
-				popupOrganizer,
-				joinedOrganizers,
-				guests
-			});
+      const popup = await PopupService.add({
+        category,
+        popupTitle,
+        description,
+        slots,
+        popupOrganizer,
+        joinedOrganizers,
+        guests,
+      });
 
-			console.log(`POPUP`, popup)
+      console.log(`POPUP`, popup);
 
-			await res.status(200).json({
-				status: "Success. Pop-up created.",
-				data: popup,
-			});
-		} catch (err) {
-			return next(err);
-		}
-	}
+      await res.status(200).json({
+        status: "Success. Pop-up created.",
+        data: popup,
+      });
+    } catch (err) {
+      return next(err);
+    }
+  },
 );
 
 // UPDATE http://localhost:3000/popup/ObjectId
-router.patch("/:id",
+router.patch(
+  "/:id",
   popupController.validate("updatePopup"),
   async (req, res, next) => {
     try {
@@ -142,25 +144,25 @@ router.patch("/:id",
         });
       } else {
         const updatedPopup = await PopupService.findByIdAndUpdate(
-					req.params.id,
-					req.body,
-					{ new: true },
-					(err) => {
-						if(err) return handleError(err);
-						return res.status(201).json({
-							status: "Success. Popup updated.",
-							data: updatedPopup,
-						});
-					}
+          req.params.id,
+          req.body,
+          { new: true },
+          err => {
+            if (err) return handleError(err);
+            return res.status(201).json({
+              status: "Success. Popup updated.",
+              data: updatedPopup,
+            });
+          },
         );
 
-        await updatedPopup.save((err) => {
-					if (err) return handleError(err);
-					return res.status(201).json({
-						status: "Success. Popup updated.",
-						data: updatedPopup,
-					});
-				});
+        await updatedPopup.save(err => {
+          if (err) return handleError(err);
+          return res.status(201).json({
+            status: "Success. Popup updated.",
+            data: updatedPopup,
+          });
+        });
 
         console.log(`updatedPopup`, updatedPopup);
       }
@@ -172,20 +174,19 @@ router.patch("/:id",
 
 // DELETE http://localhost:3000/popup/ObjectId
 router.delete("/:id", async (req, res) => {
-	try {
-		const popup = await PopupService.deleteOne(req.params.id);
+  try {
+    const popup = await PopupService.deleteOne(req.params.id);
 
-		res.status(201).json({
-			status: "Success. Pop-up deleted.",
-			data: popup,
-		})
-	} catch (err) {
+    res.status(201).json({
+      status: "Success. Pop-up deleted.",
+      data: popup,
+    });
+  } catch (err) {
     res.status(422).json({
       status: "Fail. Pop-up not deleted.",
       message: err,
     });
   }
-
 });
 
 module.exports = router;

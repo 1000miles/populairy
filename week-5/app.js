@@ -52,7 +52,6 @@ app.use("/event", eventRoutes);
 app.use("/popup", popupRoutes);
 app.use("/user", userRoutes);
 
-
 app.listen(process.env.PORT, () => {
   console.log(`Server listening at ${process.env.PORT}`);
 });

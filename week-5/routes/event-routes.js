@@ -164,6 +164,7 @@ router.patch(
 router.delete("/:id", async (req, res) => {
   try {
     const event = await EventService.deleteOne(req.params.id);
+
     res.status(201).json({
       status: "Success. Event deleted.",
       data: event,

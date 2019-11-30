@@ -4,49 +4,51 @@ const Schema = mongoose.Schema;
 const popupSchema = new Schema(
   {
     category: {
-			type: String,
+      type: String,
     },
     popupTitle: {
       type: String,
-		},
-		description: String,
+    },
+    description: String,
     slots: {
-			date: {
-				from: Date,
-				to: Date,
-			}
+      date: {
+        from: Date,
+        to: Date,
+      },
     },
     // Pop-up main organizer
     popupOrganizer: {
-			name: String,
-			email: String,
-			websiteUrl: String,
+      name: String,
+      email: String,
+      websiteUrl: String,
     },
     // Pop-up co-organizers
     joinedOrganizers: [
       {
-				name: String,
-				email: String,
-				status: {
-					type: String,
-					enum: ["pending", "accepted", "declined"],
-				},
+        name: String,
+        email: String,
+        status: {
+          type: String,
+          enum: ["pending", "accepted", "declined"],
+        },
       },
-		],
-		event: {
+    ],
+    event: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Event",
       autopopulate: {
         maxDepth: 1,
       },
     },
-    guests: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Event",
-      autopopulate: {
-        maxDepth: 1,
+    guests: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Event",
+        autopopulate: {
+          maxDepth: 1,
+        },
       },
-    }],
+    ],
   },
   {
     timestamps: {
