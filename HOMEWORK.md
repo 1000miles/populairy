@@ -66,3 +66,12 @@ This project is based on the [Women Tech Makers Berlin - JavaScript Crash Course
 - [ ] Create tests for all routes and ensure all tests are covered by 100%
 
 **Video: [Women Techmakers Berlin JS Crash Course Vol 3 Lecture 6 — Testing](https://www.youtube.com/watch?v=sQVhP5q5CVY)**
+
+## Homework for week 7
+
+- [ ] Watch the videos from lesson 7
+- [ ] Create a simple front-end for all your pages with Vue
+
+**Video Part 1: [Women Techmakers Berlin JS Crash Course Vol 3 Lecture 7 — The Frontend](https://www.youtube.com/watch?v=PcK1ASlm1OU)**
+
+**Video Part 2: [Women Techmakers Berlin JS Crash Course Vol 3 Lecture 7 part 2 — Vue Router](https://www.youtube.com/watch?v=Rzjmh4vvrQo)**
