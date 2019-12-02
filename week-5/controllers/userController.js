@@ -13,7 +13,7 @@ exports.validate = method => {
           .isString()
           .exists(),
         body("email", "Email can't be blank")
-          .isString()
+          .isEmail()
           .exists(),
         body("role")
           .isString()
@@ -38,7 +38,7 @@ exports.validate = method => {
           .isString()
           .optional(),
         body("email", "Email can't be blank")
-          .isString()
+          .isEmail()
           .optional(),
         body("role")
           .isString()
