@@ -4,9 +4,9 @@ const moment = require("moment");
 // This is to generate ObjectId() when inserting items
 const ObjectId = mongoose.Types.ObjectId;
 
-const Event = require("../models/with-mongoose/EventNEW");
-const Popup = require("../models/with-mongoose/PopupNEW");
-const User = require("../models/with-mongoose/UserNEW");
+const Event = require("../models/with-mongoose/Event");
+const Popup = require("../models/with-mongoose/Popup");
+const User = require("../models/with-mongoose/User");
 
 const EventService = require("../services/event-service");
 const PopupService = require("../services/popup-service");
@@ -53,14 +53,10 @@ const seedUsers = async () => {
           country: "Germany",
         },
       },
-      date: {
-        week_day: {
-          from: "Friday",
-          to: "Friday",
-        },
-        start_datetime: "Dec 29, 2019, 11:00 AM",
-        end_datetime: "Dec 29, 2019, 11:00 PM",
-      },
+			date: {
+				from: new Date(2019, 12, 29, 11, 00, 00),
+				to: new Date(2019, 12, 29, 23, 00, 00),
+			},
       eventHost: {
         user: {
           name: {
@@ -89,14 +85,10 @@ const seedUsers = async () => {
           country: "Germany",
         },
       },
-      date: {
-        week_day: {
-          from: "Thursday",
-          to: "Thursday",
-        },
-        start_datetime: "May 28, 2020, 10:00 AM",
-        end_datetime: "May 28, 2020, 10:00 PM",
-      },
+			date: {
+				from: new Date(2020, 05, 28, 10, 00, 00),
+				to: new Date(2020, 05, 28, 22, 00, 00),
+			},
       eventHost: {
         group: {
           name: "Food Coop Berlin",
@@ -271,15 +263,6 @@ const seedUsers = async () => {
     );
 
     await User.create(users);
-
-    // console.log(`364:`, `${user1.firstName} ${user1.lastName}`);
-    // console.log(`365:`, event1.eventName)
-
-    // const addUserToEvent = await UserService.attendEvent(user1, event1);
-    // const addHostToEvent = await UserService.attendEvent(host1, event2);
-
-    // console.log(`addUserToEvent`, addUserToEvent)
-    // console.log(`addHostToEvent`, addHostToEvent);
 
     await users.map(user =>
       console.log(

@@ -50,13 +50,13 @@ module.exports = class Service {
     return this.model.findByIdAndDelete(itemId._id);
   }
 
-  /* Find and delete one item */
+  /* Returns the document after deletion */
   async findOneAndDelete(item) {
     console.log(`[base-service.js] findOneAndDelete(item):`, Chalk.green(item));
     return this.model.findOneAndDelete({ _id: item });
   }
 
-  /* Delete one item */
+  /* Delete single document */
   async deleteOne(item) {
     console.log(`[base-service.js] deleteOne(item):`, Chalk.green(item));
     return this.model.deleteOne({ _id: item });

@@ -4,7 +4,8 @@ POST http://localhost:3000/user/new
 content-type: application/json
 
 {
-	"firstName": "Carma",
-	"lastName": "Benito",
-	"email": "carma@example.org"
+	"firstName": "Gordon",
+	"lastName": "Subway",
+	"email": "gordon@example.org",
+	"role": "organizer"
 }
