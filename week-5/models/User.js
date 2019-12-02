@@ -4,10 +4,17 @@ const Schema = mongoose.Schema;
 /**
  * @property {string} firstName - The first name of a user.
  * @property {string} lastName - The last name of a user.
- * @enum {string} role - The role of a user.
+ * @property {string} lastName - The email of the user.
+ *
+ * Enum for roles
  * @property {string} role.guest - The default user role.
  * @property {string} role.host - The host of an event.
  * @property {string} role.organizer - The organizer of a pop-up.
+ *
+ * @property {array}  [events] - A user can attend multiple events and is referenced to the model Event.
+ * @property {array}  [popups] - A user can attend multiple popups and is referenced to the model Pop-up
+ * @property {string} [joinedHosting] - A user can join as an event co-host and needs to approval
+ * @property {string} [joinedOrganizing] - A user can join as a pop-up co-organizer and needs to approval.
  */
 
 const userSchema = new Schema(
@@ -101,6 +108,28 @@ const userSchema = new Schema(
 );
 
 userSchema.plugin(require("mongoose-autopopulate"));
+
+/**
+ * https://mongoosejs.com/docs/guide.html#methods
+ * Assign attendEvent() to the "methods" object of userSchema
+ */
+// Note: Fat arrow for async func does not work here
+userSchema.methods.attendEvent = async function(user, event) {
+	try {
+		console.log(`[User.js] attendEvent()`)
+
+		// console.log(`this`, this) => this = user
+		this.events.push(event);
+
+		// `.push(this)` = specific push recognized by mongoose
+		event.guests.push(this);
+
+		await user.save();
+		await event.save();
+	} catch (err) {
+		console.log(`[User.js] attendEvent() ERROR`, err)
+	}
+}
 
 const User = mongoose.model("User", userSchema);
 
