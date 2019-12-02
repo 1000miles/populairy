@@ -81,7 +81,7 @@ router.post(
 
 			const event = await EventService.add(req.body);
 
-			res.status(201).send(`Success. Event created.`, event);
+			res.send(event);
 
 			// Axios
       // res.status(200).json({
@@ -114,32 +114,31 @@ router.patch(
   eventController.validate("updateEvent"),
   async (req, res, next) => {
     try {
-      const errors = validationResult(req);
+			const updatedEvent = await EventService.findOneAndUpdate(
+				req.params.id,
+				req.body,
+				{
+					new: true,
+					runValidators: true,
+				},
+			);
+
+			res.send(updatedEvent)
+
+			// console.log(`updatedEvent`, updatedEvent);
+
+			// res.status(200).json({
+			// 	status: "Success 200. Event updated.",
+			// 	data: updatedEvent,
+    } catch (err) {
+			const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
         return res.status(424).json({
           errors: errors.array(),
           status: "Error 424. Event not updated.",
-        });
-      } else {
-        const updatedEvent = await EventService.findOneAndUpdate(
-          req.params.id,
-          req.body,
-          {
-            new: true,
-            runValidators: true,
-          },
-        );
-
-        // console.log(`updatedEvent`, updatedEvent);
-
-        res.status(200).json({
-          status: "Success 200. Event updated.",
-          data: updatedEvent,
-        });
-      }
-    } catch (err) {
-      return next(err);
+				});
+			}
     }
   },
 );
@@ -148,7 +147,7 @@ router.patch(
 router.delete("/:id", async (req, res) => {
   try {
     await EventService.findOneAndDelete(req.params.id);
-
+		// Use 200 (insteadd of 204 - No content) to return successful deletion message
     res.status(200).json({
       status: "SUCCESS. Event deleted.",
       data: null,

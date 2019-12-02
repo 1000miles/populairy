@@ -85,7 +85,7 @@ router.post(
 
 			// console.log(`POPUP`, popup);
 
-			res.status(201).send(`Success. Pop-up created`, popup)
+			res.send(popup)
 
 			// Axios
       // res.status(200).json({
@@ -115,15 +115,16 @@ router.patch(
 			const updatedPopup = await PopupService.findOneAndUpdate(
 				req.params.id,
 				req.body,
-				{ new: true },
+				{ new: true, runValidators: true },
 			);
 
 			// console.log(`updatedPopup`, updatedPopup);
 
-			res.status(200).json({
-				status: "Success 200. Pop-up updated.",
-				data: updatedPopup,
-			});
+			res.send(updatedPopup);
+			// res.status(200).json({
+			// 	status: "Success 200. Pop-up updated.",
+			// 	data: updatedPopup,
+			// });
     } catch (err) {
 			const errors = validationResult(req);
 
@@ -142,7 +143,8 @@ router.delete("/:id", async (req, res) => {
   try {
     await PopupService.findOneAndDelete(req.params.id);
 
-    res.status(204).json({
+    res.status(200).json({
+			// Use 200 (insteadd of 204 - No content) to return successful deletion message
       status: "Success. Pop-up deleted.",
       data: null,
     });

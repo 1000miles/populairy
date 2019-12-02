@@ -81,7 +81,7 @@ router.post("/new",
 		try {
 			const user = await UserService.add(req.body);
 
-			res.status(201).send(`Success. User created.`, user)
+			res.send(user)
 
 			// Axios
 			// res.status(200).json({
@@ -120,10 +120,12 @@ router.patch(
 				},
 			);
 
-			res.status(200).json({
-				status: "Success 200. User updated.",
-				data: updatedUser,
-			});
+			res.sendd(updatedUser);
+
+			// res.status(200).json({
+			// 	status: "Success 200. User updated.",
+			// 	data: updatedUser,
+			// });
 
     } catch (err) {
 			const errors = validationResult(req);
@@ -144,7 +146,8 @@ router.delete("/:id", async (req, res) => {
     // Returns deleted document after deletion
     await UserService.findOneAndDelete(req.params.id);
 
-    res.status(204).json({
+    res.status(200).json({
+			// Use 200 (insteadd of 204 - No content) to return successful deletion message
       status: "Success. User deleted.",
       data: null,
     });
