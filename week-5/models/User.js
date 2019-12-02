@@ -114,9 +114,9 @@ userSchema.plugin(require("mongoose-autopopulate"));
  * Assign attendEvent() to the "methods" object of userSchema
  */
 // Note: Fat arrow for async func does not work here
-userSchema.methods.attendEvent = async function(user, event) {
+userSchema.methods.attend = async function(user, event) {
 	try {
-		console.log(`[User.js] attendEvent()`)
+		console.log(`[User.js] attend()`)
 
 		// console.log(`this`, this) => this = user
 		this.events.push(event);
@@ -127,7 +127,25 @@ userSchema.methods.attendEvent = async function(user, event) {
 		await user.save();
 		await event.save();
 	} catch (err) {
-		console.log(`[User.js] attendEvent() ERROR`, err)
+		console.log(`[User.js] attend() ERROR`, err)
+	}
+}
+
+// Note: Fat arrow for async func does not work here
+userSchema.methods.visit = async function(user, popup) {
+	try {
+		console.log(`[User.js] visit()`)
+
+		// console.log(`this`, this) => this = user
+		this.popups.push(popup);
+
+		// `.push(this)` = specific push recognized by mongoose
+		popup.guests.push(this);
+
+		await user.save();
+		await popup.save();
+	} catch (err) {
+		console.log(`[User.js] visit() ERROR`, err)
 	}
 }
 

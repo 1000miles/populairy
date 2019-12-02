@@ -142,4 +142,19 @@ router.post("/:id/events", async (req, res) => {
 	}
 })
 
+router.post("/:id/popups", async (req, res) => {
+
+	try {
+		const user = await UserService.findById(req.params.id);
+		const popup = await PopupService.findById(req.body.popup);
+
+		user.visit(user, popup)
+		res.send(user)
+	} catch (err) {
+		res.status(404).json({
+			error: err
+		})
+	}
+})
+
 module.exports = router;
