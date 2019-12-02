@@ -1,5 +1,5 @@
 const { body } = require("express-validator/check");
-require("../models/with-mongoose/User");
+require("../models/User");
 
 // User Schema Validator
 exports.validate = method => {

@@ -22,17 +22,20 @@ module.exports = class Service {
     return this.model.findById(itemId);
   }
 
-  async findByIdAndUpdate(filter, query, options) {
+  // Finds a matching document, updates it according to the update arg, passing any options,
+  // and returns the found document (if any) to the callback.
+  // findByIdAndUpdate(id, update, options)
+  async findByIdAndUpdate(itemId, query, options) {
     console.log`[base-service.js] findByIdAndUpdate(query):`, Chalk.blue(query);
-    return this.model.findByIdAndUpdate(filter, query, options);
+    return this.model.findByIdAndUpdate(itemId, query, options);
   }
 
-  async findOneAndUpdate(filter, query, options) {
+  async findOneAndUpdate(itemId, query, options) {
     console.log(
       `[base-service.js] findOneAndUpdate(query):`,
       Chalk.blue(query),
     );
-    return this.model.findOneAndUpdate(filter, query, options);
+    return this.model.findOneAndUpdate({ _id: itemId }, query, options);
   }
 
   /** Updates all documents that match filter */
@@ -50,16 +53,10 @@ module.exports = class Service {
     return this.model.findByIdAndDelete(itemId._id);
   }
 
-  /* Find and delete one item */
+  /* Returns the document after deletion */
   async findOneAndDelete(item) {
     console.log(`[base-service.js] findOneAndDelete(item):`, Chalk.green(item));
     return this.model.findOneAndDelete({ _id: item });
-  }
-
-  /* Delete one item */
-  async deleteOne(item) {
-    console.log(`[base-service.js] deleteOne(item):`, Chalk.green(item));
-    return this.model.deleteOne({ _id: item });
   }
 
   // BE CAREFUL HERE!

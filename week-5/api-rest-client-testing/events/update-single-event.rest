@@ -4,8 +4,13 @@ PATCH http://localhost:3000/event/5ddf05b0aae918288eee8980
 content-type: application/json
 
 {
-	"eventHost.user.name.firstName": "Stella",
-	"eventHost.user.email": "stella@example.org",
-	"date.week_day": "Monday",
-	"date.start_datetime": "Dec 29, 2019, 10:00 AM"
+	"eventName": "Flash Tattoo vol. 12",
+	"eventHost": {
+		"name": "Stella Callahan",
+		"email": "stella@example.org"
+	},
+	"date": {
+		"from": "2019-12-29T11:00:00Z",
+		"to": "2019-12-29T19:00:00Z"
+	}
 }

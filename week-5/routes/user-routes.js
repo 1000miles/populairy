@@ -1,9 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-const { validationResult } = require("express-validator/check");
-const userController = require("../controllers/userController");
-
 const EventService = require("../services/event-service");
 const PopupService = require("../services/popup-service");
 const UserService = require("../services/user-service");
@@ -15,7 +12,7 @@ router.get("/all", async (req, res) => {
 
     res.render("users", { users });
   } catch (err) {
-    res.send(`Error while loading users.`, err);
+    res.status(404).send(`Error 404. Users not found.`, err);
   }
 });
 
@@ -24,17 +21,15 @@ router.get("/all/json", async (req, res) => {
   try {
     const users = await UserService.findAll();
 
-    if (users) {
-      res.status(200).json({
-        status: "Success.",
-        results: users.length,
-        data: users,
-      });
-    }
+    res.status(200).json({
+      status: "Success.",
+      results: users.length,
+      data: users,
+    });
     // res.render('userlistJSON', { items: users });
   } catch (err) {
-    res.status(400).json({
-      status: "400. Bad request.",
+    return res.status(404).json({
+      status: "Error 404. Users not found.",
       message: err,
     });
   }
@@ -47,17 +42,13 @@ router.get("/:id", async (req, res) => {
     const events = await EventService.findAll(req.params.id);
     const popups = await PopupService.findAll(req.params.id);
 
-    if (!user) {
-      throw "404. User does not exist.";
-    } else {
-      res.render("user", {
-        user,
-        events,
-        popups,
-      });
-    }
+    res.render("user", {
+      user,
+      events,
+      popups,
+    });
   } catch (err) {
-    res.send(`Error while loading user.`, err);
+    res.status(404).send(err);
   }
 });
 
@@ -74,64 +65,47 @@ router.get("/:id/json", async (req, res) => {
     });
   } catch (err) {
     res.status(404).json({
-      status: "Fail. User not found.",
-      message: err,
+      status: "Error 404. User not found.",
+      errors: err,
     });
   }
 });
 
 // CREATE a new user = POST http://localhost:3000/user/
-router.post("/new", userController.validate("createUser"), async (req, res) => {
+router.post("/new", async (req, res, next) => {
   try {
     const user = await UserService.add(req.body);
 
-    res.status(201).json({
-      status: "Success. User created.",
-      data: user,
-    });
+    res.send(user);
   } catch (err) {
-    res.status(424).json({
-      status: "Fail. User not created.",
-      message: err,
+    return res.status(400).json({
+      status: "Error 400. User not created.",
+      errors: err,
     });
   }
 });
 
 // UPDATE a single user unit - PATCH http://localhost:3000/user/objectId
-router.patch(
-  "/:id",
-  userController.validate("updateUser"),
-  async (req, res, next) => {
-    try {
-      const errors = validationResult(req);
+router.patch("/:id", async (req, res, next) => {
+  try {
+    // Find user by id, retrieve data from req.body with options and return user after update
+    const updatedUser = await UserService.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
 
-      if (!errors.isEmpty()) {
-        return res.status(422).json({
-          errors: errors.array(),
-          status: "Error. User not updated.",
-        });
-      } else {
-        // Find user by id, retrieve data from req.body with options
-        // and return user after update
-        const updatedUser = await UserService.findOneAndUpdate(
-          req.params.id,
-          req.body,
-          {
-            new: true,
-            runValidators: true,
-          },
-        );
-
-        res.status(200).json({
-          status: "Success. User updated.",
-          data: updatedUser,
-        });
-      }
-    } catch (err) {
-      return next();
-    }
-  },
-);
+    res.send(updatedUser);
+  } catch (err) {
+    return res.status(404).json({
+      status: "Error 404. User not found.",
+      errors: err,
+    });
+  }
+});
 
 // DELETE a single user DELETE http://localhost:3000/user/objectId
 router.delete("/:id", async (req, res) => {
@@ -139,14 +113,16 @@ router.delete("/:id", async (req, res) => {
     // Returns deleted document after deletion
     await UserService.findOneAndDelete(req.params.id);
 
-    res.status(204).json({
-      status: "Success. User deleted.",
-      data: null,
-    });
+    if (req.params.id)
+      res.status(200).json({
+        // Use 200 (insteadd of 204 - No content) to return successful deletion message
+        status: "Success. User deleted.",
+        data: null,
+      });
   } catch (err) {
-    res.status(400).json({
-      status: "Error. User not deleted.",
-      message: err,
+    return res.status(404).json({
+      status: "Error 404. User not deleted.",
+      errors: err,
     });
   }
 });

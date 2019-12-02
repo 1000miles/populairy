@@ -72,7 +72,7 @@ Examples
 - [ ] An event can have multiple hosts (joinedHosts) that are confirmed as hosts.
 - [ ] An event has a date with a day and time range (from, to) each.
 - [ ] An event has a location with address, postcode, city and country info.
-- [] An event has one or many guests attending.
+- [ ] An event has one or many guests attending.
 
 ### Pop-up
 
@@ -108,25 +108,26 @@ Go to browser > dev tools > console and run the axios commands below.
 
 ### User
 
-1. Get all users
+1. Get all users (JSON)
 
 ```js
-axios.get("/user/all").then(console.log);
+// GET http://localhost:3000/user/all/json
+axios.get("/user/all/json").then(console.log);
 ```
 
-2. Get single user
+2. Get aa single user (JSON)
 
 ```js
-// GET http://localhost:3000/:id
+// GET http://localhost:3000/:id/json
 axios.get("/user/5dd93e067689550c4a89fc03").then(console.log);
 ```
 
 3. Create a new user
 
 ```js
-// POST http://localhost:3000/user
+// POST http://localhost:3000/user/new
 axios
-  .post("/user", {
+  .post("/user/new", {
     firstName: "Jonny",
     lastName: "Crush",
     email: "jonny@example.org",
@@ -152,32 +153,23 @@ axios.delete("/user/5dd92e87f94cd40612c0783d").then(console.log);
 
 ### Event
 
-1. Get all events (template)
-
-```js
-// GET http://localhost:3000/event/all/
-axios.get("/event/all").then(console.log);
-```
-
-2. Get all events (JSON)
+1. Get all events (JSON)
 
 ```js
 // GET http://localhost:3000/event/all/json
 axios.get("/event/all/json").then(console.log);
 ```
 
-3. Get an event
+2. Get an event (JSON)
 
 ```js
-// GET http://localhost:3000/event/:id
-axios.get("/event/5ddb1166f62c82203bafc8de").then(console.log);
+// GET http://localhost:3000/event/:id/json
+axios.get("/event/5ddb1166f62c82203bafc8de/json").then(console.log);
 ```
 
-4. Create an event
+3. Create an event
 
 ```js
-// CREATE http://localhost:3000/event/new
-// Validations happen in /controllers/eventController.js
 axios
   .post("/event/new", {
     eventType: "haircraft",
@@ -185,7 +177,7 @@ axios
     location: {
       name: "Madame Rossi 2",
       address: {
-        additionalString: "2nd floor, next to bar",
+        additionalString: "2nd floor, next to bar", // optional
         streetName: "Wegbereiter 21",
         houseNumber: "234a",
         postCode: "12345",
@@ -194,25 +186,20 @@ axios
       },
     },
     date: {
-      week_day: {
-        from: "Saturday",
-        to: "Saturday",
-      },
-      start_datetime: "May 5, 2020, 11:00 AM",
-      end_datetime: "May 5, 2020, 9:00 PM",
+      from: "2010-05-05T9:OO:00Z",
+    	to: : "2010-05-05T20:OO:00Z",
     },
     eventHost: {
-      group: {
-        name: "Barbery X Collective",
-        websiteUrl: "http://barberywheel.org",
-        email: "barberyx@example.org",
+			name: "Barbery X Collective",
+			websiteUrl: "http://barberywheel.org", // optional
+			email: "barberyx@example.org",
       },
     },
   })
   .then(console.log);
 ```
 
-5. Update an event (PATCH)
+4. Update an event (PATCH)
 
 ```js
 // PUT http://localhost:3000/event/ObjectId
@@ -223,25 +210,63 @@ axios
   .then(console.log);
 ```
 
-6. Get all events (JSON)
-
-```js
-// GET http://localhost:3000/event/all/json
-axios.get("/event/all/json").then(console.log);
-```
-
-7. Get an event (template)
-
-```js
-// GET http://localhost:3000/event/:id
-axios.get("/event/5ddb1166f62c82203bafc8de").then(console.log);
-```
-
-8. Delete an event
+5. Delete an event
 
 ```js
 // DEL http://localhost:3000/event/:id
 axios.delete("/event/5ddafbfe9a6e950ff63900a9").then(console.log);
+```
+
+### Pop-up
+
+1. Get all pop-ups (JSON)
+
+```js
+// GET http://localhost:3000/popup/all/json
+axios.get("/popup/all/json").then(console.log);
+```
+
+2. Get a pop-up (JSON)
+
+```js
+// GET http://localhost:3000/popup/:id/json
+axios.get("/popup/5de553e5ae12564c68c58bef/json").then(console.log);
+```
+
+3. Create a new pop-up
+```js
+// POST http://localhost:3000/popup/new
+axios.post("/popup/new",
+	{
+		category: "barber",
+		popupTitle: "Barber Shop Vol. 11",
+		description: "Barber Shop X was founded in 2017 by 5 best friends who wanted to make a difference in the way we experience...",
+		slots: {
+			date: {
+				from: "2010-05-05T9:OO:00Z",
+				to: : "2010-05-05T20:OO:00Z",
+			},
+		},
+		popupOrganizer: {
+			name: "RooArr Pop-up Collective",
+			email: "roaar@example.org",
+			websiteUrl: "https://rroaarr-example.org" // optional
+		},
+}).then(console.log);
+```
+
+4. Update a pop-up
+```js
+// PATCH http://localhost:3000/popup/:id/json
+axios.patch("/popup/5de553e5ae12564c68c58bef", {
+	popupTitle: "Pony and Clyde X Night"
+}).then(console.log);
+```
+
+5. Delete a pop-up
+```js
+// GET http://localhost:3000/popup/:id/json
+axios.delete("/popup/5de553e5ae12564c68c58bef").then(console.log);
 ```
 
 ## Getting started

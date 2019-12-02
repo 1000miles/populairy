@@ -4,9 +4,9 @@ const moment = require("moment");
 // This is to generate ObjectId() when inserting items
 const ObjectId = mongoose.Types.ObjectId;
 
-const Event = require("../models/with-mongoose/EventNEW");
-const Popup = require("../models/with-mongoose/PopupNEW");
-const User = require("../models/with-mongoose/UserNEW");
+const Event = require("../models/Event");
+const Popup = require("../models/Popup");
+const User = require("../models/User");
 
 const EventService = require("../services/event-service");
 const PopupService = require("../services/popup-service");
@@ -16,7 +16,7 @@ let events = [];
 let popups = [];
 let users = [];
 
-const seedUsers = async () => {
+const seedModels = async () => {
   mongoose
     .connect(process.env.MONGODB_URI || "mongodb://localhost/populairy", {
       useNewUrlParser: true,
@@ -54,21 +54,12 @@ const seedUsers = async () => {
         },
       },
       date: {
-        week_day: {
-          from: "Friday",
-          to: "Friday",
-        },
-        start_datetime: "Dec 29, 2019, 11:00 AM",
-        end_datetime: "Dec 29, 2019, 11:00 PM",
+        from: new Date(2019, 12, 29, 11, 00, 00),
+        to: new Date(2019, 12, 29, 23, 00, 00),
       },
       eventHost: {
-        user: {
-          name: {
-            firstName: "Jaunita",
-            lastName: "Hicks",
-          },
-          email: "jaunita@example.org",
-        },
+        name: "Jaunita Hicks",
+        email: "jaunita@example.org",
       },
       joinedHosts: [],
       popups: [],
@@ -90,19 +81,13 @@ const seedUsers = async () => {
         },
       },
       date: {
-        week_day: {
-          from: "Thursday",
-          to: "Thursday",
-        },
-        start_datetime: "May 28, 2020, 10:00 AM",
-        end_datetime: "May 28, 2020, 10:00 PM",
+        from: new Date(2020, 05, 28, 10, 00, 00),
+        to: new Date(2020, 05, 28, 22, 00, 00),
       },
       eventHost: {
-        group: {
-          name: "Food Coop Berlin",
-          websiteUrl: "https://www.fooodcoopsers.org",
-          email: "foodcoopsers@example.org",
-        },
+        name: "Food Coop Berlin",
+        websiteUrl: "https://www.fooodcoopsers.org",
+        email: "foodcoopsers@example.org",
       },
       joinedHosts: [],
       popups: [],
@@ -138,18 +123,7 @@ const seedUsers = async () => {
         email: "roaar@example.org",
         websiteUrl: "https://rroaarr-example.org",
       },
-      joinedOrganizers: [
-        {
-          name: "Jakob Grenzwertig",
-          email: "jakob@example.org",
-          status: "pending",
-        },
-        {
-          name: "Bertie Bolllwerk",
-          email: "bertie@example.org",
-          status: "accepted",
-        },
-      ],
+      joinedOrganizers: [],
     });
 
     const barberShop2 = new Popup({
@@ -207,56 +181,172 @@ const seedUsers = async () => {
       firstName: "Riley",
       lastName: "Deyin",
       email: "rileyd@example.org",
+      isMain: {
+        host: false,
+        organizer: false,
+      },
+      role: "organizer",
       events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: false,
+        status: null,
+      },
+      joinedOrganizing: {
+        confirmed: true,
+        status: "accepted",
+      },
     });
 
     const user2 = new User({
       firstName: "Jami",
       lastName: "Watson",
       email: "jamiw@example.org",
+      isMain: {
+        host: false,
+        organizer: false,
+      },
       role: "guest",
+      events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: false,
+        status: null,
+      },
+      joinedOrganizing: {
+        confirmed: false,
+        status: null,
+      },
     });
     const user3 = new User({
       firstName: "Jenny",
       lastName: "Morgan",
       email: "jenw@example.org",
+      isMain: {
+        host: false,
+        organizer: false,
+      },
+      role: "guest",
+      events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: false,
+        status: null,
+      },
+      joinedOrganizing: {
+        confirmed: false,
+        status: "pending",
+      },
     });
     const user4 = new User({
       firstName: "Chris",
       lastName: "Stuff",
       email: "chris@example.org",
+      isMain: {
+        host: false,
+        organizer: false,
+      },
+      role: "guest",
+      events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: false,
+        status: "pending",
+      },
+      joinedOrganizing: {
+        confirmed: false,
+        status: "rejected",
+      },
     });
 
     const host1 = new User({
       firstName: "Mhisa",
       lastName: "Yourg",
       email: "mhisaw@example.org",
+      isMain: {
+        host: true,
+        organizer: false,
+      },
       role: "host",
       phoneNumber: "+44 8484 34 22 55",
       events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: true,
+        status: null,
+        joinedDate: null,
+      },
+      joinedOrganizing: {
+        confirmed: false,
+        status: null,
+        joinedDate: null,
+      },
     });
     const host2 = new User({
       firstName: "Nana",
       lastName: "Nooo",
       email: "nanoo@example.org",
+      isMain: {
+        host: false,
+        organizer: false,
+      },
       role: "host",
       phoneNumber: "+44 12 54 87 33",
+      events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: true,
+        status: "accepted",
+        joinedDate: new Date("2018-11-28"),
+      },
+      joinedOrganizing: {
+        confirmed: false,
+        status: null,
+      },
     });
 
     const organizer1 = new User({
       firstName: "Xaya",
       lastName: "Hey",
       email: "Xaya@example.org",
+      isMain: {
+        host: false,
+        organizer: false,
+      },
       role: "organizer",
       phoneNumber: "+49 056 78 34 21",
       events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: false,
+        status: null,
+      },
+      joinedOrganizing: {
+        confirmed: true,
+        status: "accepted",
+        joinedDate: new Date("2017-10-12"),
+      },
     });
     const organizer2 = new User({
       firstName: "Fabienne",
       lastName: "Lala",
       email: "fabienne@example.org",
+      isMain: {
+        host: false,
+        organizer: true,
+      },
       role: "organizer",
       phoneNumbeer: "+49 123 456 78 90",
+      events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: false,
+        status: null,
+      },
+      joinedOrganizing: {
+        confirmed: false,
+        status: null,
+      },
     });
 
     await users.push(
@@ -272,15 +362,6 @@ const seedUsers = async () => {
 
     await User.create(users);
 
-    // console.log(`364:`, `${user1.firstName} ${user1.lastName}`);
-    // console.log(`365:`, event1.eventName)
-
-    // const addUserToEvent = await UserService.attendEvent(user1, event1);
-    // const addHostToEvent = await UserService.attendEvent(host1, event2);
-
-    // console.log(`addUserToEvent`, addUserToEvent)
-    // console.log(`addHostToEvent`, addHostToEvent);
-
     await users.map(user =>
       console.log(
         `CREATED Id: ${user._id} - user name: ${user.firstName} ${user.lastName} (${user.role})`,
@@ -294,4 +375,4 @@ const seedUsers = async () => {
   }
 };
 
-seedUsers();
+seedModels();
