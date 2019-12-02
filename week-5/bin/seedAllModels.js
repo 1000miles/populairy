@@ -6,7 +6,7 @@ const ObjectId = mongoose.Types.ObjectId;
 
 const Event = require("../models/Event");
 const Popup = require("../models/Popup");
-const User = require("../models/with-mongoose/User");
+const User = require("../models/User");
 
 const EventService = require("../services/event-service");
 const PopupService = require("../services/popup-service");
@@ -58,8 +58,8 @@ const seedModels = async () => {
         to: new Date(2019, 12, 29, 23, 00, 00),
       },
       eventHost: {
-				name: "Jaunita Hicks",
-				email: "jaunita@example.org",
+        name: "Jaunita Hicks",
+        email: "jaunita@example.org",
       },
       joinedHosts: [],
       popups: [],
@@ -85,9 +85,9 @@ const seedModels = async () => {
         to: new Date(2020, 05, 28, 22, 00, 00),
       },
       eventHost: {
-          name: "Food Coop Berlin",
-          websiteUrl: "https://www.fooodcoopsers.org",
-          email: "foodcoopsers@example.org",
+        name: "Food Coop Berlin",
+        websiteUrl: "https://www.fooodcoopsers.org",
+        email: "foodcoopsers@example.org",
       },
       joinedHosts: [],
       popups: [],
