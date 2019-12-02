@@ -33,7 +33,7 @@ router.get("/all/json", async (req, res) => {
       data: popups,
     });
   } catch (err) {
-    res.status(404).json({
+    return res.status(404).json({
       status: "Error 404. Pop-ups not found.",
       message: err,
     });
@@ -64,7 +64,7 @@ router.get("/:id/json", async (req, res, next) => {
   } catch (err) {
     res.status(404).json({
       status: "Error 404. Pop-up not found.",
-      message: err,
+      errors: err,
     });
   }
 });
@@ -86,10 +86,13 @@ router.post("/new", async (req, res, next) => {
 // UPDATE http://localhost:3000/popup/ObjectId
 router.patch("/:id", async (req, res, next) => {
   try {
-    const updatedPopup = await PopupService.findOneAndUpdate(
+    const updatedPopup = await PopupService.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true, runValidators: true },
+      {
+				new: true,
+				runValidators: true
+			},
     );
 
     res.status(200).send(updatedPopup);

@@ -90,7 +90,7 @@ router.post("/new", async (req, res, next) => {
  */
 router.patch("/:id", async (req, res, next) => {
   try {
-    const updatedEvent = await EventService.findOneAndUpdate(
+    const updatedEvent = await EventService.findByIdAndUpdate(
       req.params.id,
       req.body,
       {

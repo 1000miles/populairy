@@ -1,6 +1,6 @@
 const Chalk = require("chalk");
 const BaseService = require("./base-service");
-const User = require("../models/with-mongoose/User");
+const User = require("../models/User");
 
 class UserService extends BaseService {
   model = User;
