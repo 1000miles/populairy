@@ -1,0 +1,10 @@
+// http://localhost:3000/user/new
+
+POST http://localhost:3000/user/new
+content-type: application/json
+
+{
+	"firstName": "Carma",
+	"lastName": "Benito",
+	"email": "carma@example.org"
+}

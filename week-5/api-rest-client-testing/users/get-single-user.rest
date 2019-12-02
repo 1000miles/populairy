@@ -1,0 +1,4 @@
+// http://localhost:3000/user/:id/json
+
+GET http://localhost:3000/user/5de3f808007ffe0d02bd576a/json
+content-type: application/json

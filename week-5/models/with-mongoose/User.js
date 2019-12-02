@@ -1,6 +1,15 @@
 const mongoose = require("mongoose").set("debug", true);
 const Schema = mongoose.Schema;
 
+/**
+ * @property {string} firstName - The first name of a user.
+ * @property {string} lastName - The last name of a user.
+ * @enum {string} role - The role of a user.
+ * @property {string} role.guest - The default user role.
+ * @property {string} role.host - The host of an event.
+ * @property {string} role.organizer - The organizer of a pop-up.
+ */
+
 const userSchema = new Schema(
   {
     firstName: {
@@ -11,10 +20,10 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
-      required: [true, "Email can't be blank."],
     },
     role: {
       type: String,
+      enum: ["guest", "host", "organizer"],
       default: "guest",
     },
     phoneNumber: String,
@@ -33,24 +42,6 @@ const userSchema = new Schema(
         ref: "Popup",
         autopopulate: {
           maxDepth: 1,
-        },
-      },
-    ],
-    eventCohosting: [
-      {
-        status: {
-          type: String,
-          enum: ["pending", "accepted", "declined", null],
-          default: null,
-        },
-      },
-    ],
-    popupCoorganizing: [
-      {
-        status: {
-          type: String,
-          enum: ["pending", "accepted", "declined", null],
-          default: null,
         },
       },
     ],

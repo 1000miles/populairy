@@ -1,0 +1,4 @@
+// http://localhost:3000/user/:id
+
+DELETE http://localhost:3000/user/5de44c58e0009e397031b14b
+content-type: application/json
