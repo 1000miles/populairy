@@ -6,8 +6,8 @@ class UserService extends BaseService {
   model = User;
 
   async attendEvent(user, event) {
-		console.log(`DEBUG [user-service.js] event 1:`, event);
-		
+    console.log(`DEBUG [user-service.js] event 1:`, event);
+
     user = `${user.firstName} ${user.lastName}`;
     console.log(`[user-service.js] user`, user);
 
