@@ -1,5 +1,5 @@
 const BaseService = require("./base-service");
-const Popup = require("../models/with-mongoose/Popup");
+const Popup = require("../models/Popup");
 
 class PopupService extends BaseService {
   model = Popup;

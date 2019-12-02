@@ -5,7 +5,7 @@ const moment = require("moment");
 const ObjectId = mongoose.Types.ObjectId;
 
 const Event = require("../models/Event");
-const Popup = require("../models/with-mongoose/Popup");
+const Popup = require("../models/Popup");
 const User = require("../models/with-mongoose/User");
 
 const EventService = require("../services/event-service");
@@ -16,7 +16,7 @@ let events = [];
 let popups = [];
 let users = [];
 
-const seedUsers = async () => {
+const seedModels = async () => {
   mongoose
     .connect(process.env.MONGODB_URI || "mongodb://localhost/populairy", {
       useNewUrlParser: true,
@@ -58,13 +58,8 @@ const seedUsers = async () => {
         to: new Date(2019, 12, 29, 23, 00, 00),
       },
       eventHost: {
-        user: {
-          name: {
-            firstName: "Jaunita",
-            lastName: "Hicks",
-          },
-          email: "jaunita@example.org",
-        },
+				name: "Jaunita Hicks",
+				email: "jaunita@example.org",
       },
       joinedHosts: [],
       popups: [],
@@ -90,11 +85,9 @@ const seedUsers = async () => {
         to: new Date(2020, 05, 28, 22, 00, 00),
       },
       eventHost: {
-        group: {
           name: "Food Coop Berlin",
           websiteUrl: "https://www.fooodcoopsers.org",
           email: "foodcoopsers@example.org",
-        },
       },
       joinedHosts: [],
       popups: [],
@@ -130,18 +123,7 @@ const seedUsers = async () => {
         email: "roaar@example.org",
         websiteUrl: "https://rroaarr-example.org",
       },
-      joinedOrganizers: [
-        {
-          name: "Jakob Grenzwertig",
-          email: "jakob@example.org",
-          status: "pending",
-        },
-        {
-          name: "Bertie Bolllwerk",
-          email: "bertie@example.org",
-          status: "accepted",
-        },
-      ],
+      joinedOrganizers: [],
     });
 
     const barberShop2 = new Popup({
@@ -277,4 +259,4 @@ const seedUsers = async () => {
   }
 };
 
-seedUsers();
+seedModels();

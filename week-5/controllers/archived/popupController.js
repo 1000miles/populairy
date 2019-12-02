@@ -1,5 +1,5 @@
 const { body, validationResult } = require("express-validator/check");
-require("../models/with-mongoose/Popup");
+require("../../models/Popup");
 
 // Model Schema Validator
 exports.validate = method => {
