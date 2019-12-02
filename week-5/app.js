@@ -3,7 +3,6 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-// const expressValidator = require("express-validator");
 
 require("pug");
 require("./mongo-connection");
@@ -15,13 +14,6 @@ const popupRoutes = require("./routes/popup-routes");
 const userRoutes = require("./routes/user-routes");
 
 const app = express();
-
-/*********************************************
- * Validator v5.3.1 Downgrade due to known bug
- * https://github.com/express-validator/express-validator/issues/735
- * npm install express-validatior@5.3.1--save-exact
- *********************************************/
-// app.use(expressValidator());
 
 /********************
  * Views

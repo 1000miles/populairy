@@ -4,7 +4,7 @@ const moment = require("moment");
 // This is to generate ObjectId() when inserting items
 const ObjectId = mongoose.Types.ObjectId;
 
-const Event = require("../models/with-mongoose/Event");
+const Event = require("../models/Event");
 const Popup = require("../models/with-mongoose/Popup");
 const User = require("../models/with-mongoose/User");
 

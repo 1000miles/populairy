@@ -1,9 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-const { validationResult } = require("express-validator/check");
-const eventController = require("../controllers/eventController");
-
 const EventService = require("../services/event-service");
 const PopupService = require("../services/popup-service");
 
@@ -16,7 +13,7 @@ router.get("/all", async (req, res) => {
 
     res.render("events", { events, popups });
   } catch (err) {
-    res.status(404).send(`Error 404. Events not found.`, err);
+    return res.status(404).send(`Error 404. Events not found.`, err);
     // console.log(err);
   }
 });
@@ -33,7 +30,7 @@ router.get("/all/json", async (req, res, next) => {
       data: events,
     });
   } catch (err) {
-    res.status(404).json({
+    return res.status(404).json({
       status: "Error 404. Events not found.",
       message: err,
     });
@@ -50,7 +47,7 @@ router.get("/:id", async (req, res) => {
 
     res.render("event", { event, location });
   } catch (err) {
-    res.status(404).send(`Error 404. Event not found.`, err);
+    return res.status(404).send(`Error 404. Event not found.`, err);
   }
 });
 
@@ -64,7 +61,7 @@ router.get("/:id/json", async (req, res) => {
       data: event,
     });
   } catch (err) {
-    res.status(404).json({
+    return res.status(404).json({
       status: "Error 404. Event not found.",
       message: err,
     });
@@ -72,32 +69,18 @@ router.get("/:id/json", async (req, res) => {
 });
 
 // POST `/event/new` w/ req.body
-router.post(
-  "/new",
-  eventController.validate("createEvent"),
-  async (req, res, next) => {
-    try {
-      const event = await EventService.add(req.body);
+router.post("/new", async (req, res, next) => {
+  try {
+    const event = await EventService.add(req.body);
 
-      res.send(event);
-
-      // Axios
-      // res.status(200).json({
-      //   status: "Success. Event created.",
-      //   data: event,
-      // });
-    } catch (err) {
-      const errors = validationResult(req);
-
-      if (!errors.isEmpty()) {
-        return res.status(400).json({
-          status: "Error 400. Event not created.",
-          errors: errors.array(),
-        });
-      }
-    }
-  },
-);
+    res.send(event);
+  } catch (err) {
+    return res.status(400).json({
+      status: "Error 400. Event not created.",
+      errors: err,
+    });
+  }
+});
 
 /**
  * PATCH `/event/:id` - Update event
@@ -105,40 +88,25 @@ router.post(
  * prevent empty values for the other properties that
  * haven't been updated
  */
+router.patch("/:id", async (req, res, next) => {
+  try {
+    const updatedEvent = await EventService.findOneAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
 
-router.patch(
-  "/:id",
-  eventController.validate("updateEvent"),
-  async (req, res, next) => {
-    try {
-      const updatedEvent = await EventService.findOneAndUpdate(
-        req.params.id,
-        req.body,
-        {
-          new: true,
-          runValidators: true,
-        },
-      );
-
-      res.send(updatedEvent);
-
-      // console.log(`updatedEvent`, updatedEvent);
-
-      // res.status(200).json({
-      // 	status: "Success 200. Event updated.",
-      // 	data: updatedEvent,
-    } catch (err) {
-      const errors = validationResult(req);
-
-      if (!errors.isEmpty()) {
-        return res.status(424).json({
-          errors: errors.array(),
-          status: "Error 424. Event not updated.",
-        });
-      }
-    }
-  },
-);
+    res.send(updatedEvent);
+  } catch (err) {
+    return res.status(400).json({
+      status: "Error 400. Event not created.",
+      errors: err,
+    });
+  }
+});
 
 // DELETE `/event/:id` JSON
 router.delete("/:id", async (req, res) => {
@@ -150,9 +118,9 @@ router.delete("/:id", async (req, res) => {
       data: null,
     });
   } catch (err) {
-    res.status(400).json({
+    return res.status(400).json({
       status: "Error 400. Event not deleted.",
-      message: err,
+      errors: err,
     });
   }
 });

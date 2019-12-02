@@ -1,5 +1,5 @@
 const BaseService = require("./base-service");
-const Event = require("../models/with-mongoose/Event");
+const Event = require("../models/Event");
 
 /**
  * @param {String} eventType - category of an event and can differ from pop-up's category
