@@ -27,14 +27,13 @@ router.get("/all/json", async (req, res, next) => {
     const events = await EventService.findAll();
     // res.render('eventlistJSON', { items: events });
 
-		res.status(200).json({
-			status: "Success.",
-			result: events.length,
-			data: events,
-		});
-
+    res.status(200).json({
+      status: "Success.",
+      result: events.length,
+      data: events,
+    });
   } catch (err) {
-		res.status(404).json({
+    res.status(404).json({
       status: "Error 404. Events not found.",
       message: err,
     });
@@ -78,26 +77,24 @@ router.post(
   eventController.validate("createEvent"),
   async (req, res, next) => {
     try {
+      const event = await EventService.add(req.body);
 
-			const event = await EventService.add(req.body);
+      res.send(event);
 
-			res.send(event);
-
-			// Axios
+      // Axios
       // res.status(200).json({
       //   status: "Success. Event created.",
       //   data: event,
       // });
     } catch (err) {
-			const errors = validationResult(req);
+      const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
         return res.status(400).json({
           status: "Error 400. Event not created.",
           errors: errors.array(),
         });
-			}
-
+      }
     }
   },
 );
@@ -114,31 +111,31 @@ router.patch(
   eventController.validate("updateEvent"),
   async (req, res, next) => {
     try {
-			const updatedEvent = await EventService.findOneAndUpdate(
-				req.params.id,
-				req.body,
-				{
-					new: true,
-					runValidators: true,
-				},
-			);
+      const updatedEvent = await EventService.findOneAndUpdate(
+        req.params.id,
+        req.body,
+        {
+          new: true,
+          runValidators: true,
+        },
+      );
 
-			res.send(updatedEvent)
+      res.send(updatedEvent);
 
-			// console.log(`updatedEvent`, updatedEvent);
+      // console.log(`updatedEvent`, updatedEvent);
 
-			// res.status(200).json({
-			// 	status: "Success 200. Event updated.",
-			// 	data: updatedEvent,
+      // res.status(200).json({
+      // 	status: "Success 200. Event updated.",
+      // 	data: updatedEvent,
     } catch (err) {
-			const errors = validationResult(req);
+      const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
         return res.status(424).json({
           errors: errors.array(),
           status: "Error 424. Event not updated.",
-				});
-			}
+        });
+      }
     }
   },
 );
@@ -147,7 +144,7 @@ router.patch(
 router.delete("/:id", async (req, res) => {
   try {
     await EventService.findOneAndDelete(req.params.id);
-		// Use 200 (insteadd of 204 - No content) to return successful deletion message
+    // Use 200 (insteadd of 204 - No content) to return successful deletion message
     res.status(200).json({
       status: "SUCCESS. Event deleted.",
       data: null,

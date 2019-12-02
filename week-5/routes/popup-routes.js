@@ -23,7 +23,7 @@ router.get("/all", async (req, res) => {
       users,
     });
   } catch (err) {
-		res.status(404).send(`Error 404. Pop-ups not found.`, err);
+    res.status(404).send(`Error 404. Pop-ups not found.`, err);
     // console.log(err);
   }
 });
@@ -50,7 +50,7 @@ router.get("/all/json", async (req, res) => {
 // GET http://localhost:3000/popup/:id
 router.get("/:id", async (req, res, next) => {
   try {
-		const popup = await PopupService.findById(req.params.id);
+    const popup = await PopupService.findById(req.params.id);
 
     res.render("popup", { popup });
   } catch (err) {
@@ -61,15 +61,15 @@ router.get("/:id", async (req, res, next) => {
 // GET http://localhost:3000/popup/:id/json
 router.get("/:id/json", async (req, res, next) => {
   try {
-		const popup = await PopupService.findById(req.params.id);
+    const popup = await PopupService.findById(req.params.id);
 
-		res.status(200).json({
-			status: "Success",
-			data: popup,
-		});
+    res.status(200).json({
+      status: "Success",
+      data: popup,
+    });
   } catch (err) {
     res.status(404).json({
-			status: "Error 404. Pop-up not found.",
+      status: "Error 404. Pop-up not found.",
       message: err,
     });
   }
@@ -83,17 +83,17 @@ router.post(
     try {
       const popup = await PopupService.add(req.body);
 
-			// console.log(`POPUP`, popup);
+      // console.log(`POPUP`, popup);
 
-			res.send(popup)
+      res.send(popup);
 
-			// Axios
+      // Axios
       // res.status(200).json({
       //   status: "Success. Pop-up created.",
       //   data: popup,
       // });
     } catch (err) {
-			const errors = validationResult(req);
+      const errors = validationResult(req);
 
       // Check for validation errors
       if (!errors.isEmpty()) {
@@ -101,7 +101,7 @@ router.post(
           status: "Error 400. Pop-up not created.",
           errors: errors.array(),
         });
-			}
+      }
     }
   },
 );
@@ -112,29 +112,29 @@ router.patch(
   popupController.validate("updatePopup"),
   async (req, res, next) => {
     try {
-			const updatedPopup = await PopupService.findOneAndUpdate(
-				req.params.id,
-				req.body,
-				{ new: true, runValidators: true },
-			);
+      const updatedPopup = await PopupService.findOneAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true, runValidators: true },
+      );
 
-			// console.log(`updatedPopup`, updatedPopup);
+      // console.log(`updatedPopup`, updatedPopup);
 
-			res.send(updatedPopup);
-			// res.status(200).json({
-			// 	status: "Success 200. Pop-up updated.",
-			// 	data: updatedPopup,
-			// });
+      res.send(updatedPopup);
+      // res.status(200).json({
+      // 	status: "Success 200. Pop-up updated.",
+      // 	data: updatedPopup,
+      // });
     } catch (err) {
-			const errors = validationResult(req);
+      const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
         return res.status(424).json({
           errors: errors.array(),
           status: "Error 424. Pop-up not updated.",
         });
-			};
-    };
+      }
+    }
   },
 );
 
@@ -144,7 +144,7 @@ router.delete("/:id", async (req, res) => {
     await PopupService.findOneAndDelete(req.params.id);
 
     res.status(200).json({
-			// Use 200 (insteadd of 204 - No content) to return successful deletion message
+      // Use 200 (insteadd of 204 - No content) to return successful deletion message
       status: "Success. Pop-up deleted.",
       data: null,
     });

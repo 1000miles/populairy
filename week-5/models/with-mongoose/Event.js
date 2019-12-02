@@ -31,8 +31,8 @@ const eventSchema = new mongoose.Schema(
       },
     },
     date: {
-			from: Date,
-			to: Date
+      from: Date,
+      to: Date,
     },
     // Host can be a group or a single user w/ first and last name
     eventHost: {

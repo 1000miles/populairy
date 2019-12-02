@@ -53,10 +53,10 @@ const seedUsers = async () => {
           country: "Germany",
         },
       },
-			date: {
-				from: new Date(2019, 12, 29, 11, 00, 00),
-				to: new Date(2019, 12, 29, 23, 00, 00),
-			},
+      date: {
+        from: new Date(2019, 12, 29, 11, 00, 00),
+        to: new Date(2019, 12, 29, 23, 00, 00),
+      },
       eventHost: {
         user: {
           name: {
@@ -85,10 +85,10 @@ const seedUsers = async () => {
           country: "Germany",
         },
       },
-			date: {
-				from: new Date(2020, 05, 28, 10, 00, 00),
-				to: new Date(2020, 05, 28, 22, 00, 00),
-			},
+      date: {
+        from: new Date(2020, 05, 28, 10, 00, 00),
+        to: new Date(2020, 05, 28, 22, 00, 00),
+      },
       eventHost: {
         group: {
           name: "Food Coop Berlin",

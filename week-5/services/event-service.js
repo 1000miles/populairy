@@ -13,7 +13,7 @@ const Event = require("../models/with-mongoose/Event");
  */
 
 class EventService extends BaseService {
-	model = Event;
+  model = Event;
 }
 
 module.exports = new EventService();

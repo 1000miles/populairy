@@ -9,7 +9,7 @@ const popupSchema = new Schema(
     popupTitle: {
       type: String,
     },
-		description: String,
+    description: String,
     slots: {
       date: {
         from: Date,
