@@ -5,7 +5,7 @@ block content
     h4 #[u #{events.length}] Event(s) with #[u #{popups.length}] Pop-up(s) listed and counting...
     each event in events
       h2 #{event.eventName}
-      p #{event.date.week_day.from}, #[strong from]: #{event.date.start_datetime} #[strong to]: #{event.date.end_datetime}
+      p #{event.date.from}, #[strong from]: #{event.date.from} #[strong to]: #{event.date.to}
       p #[strong Location]: #{event.location.name}, #{event.location.address.streetName} #{event.location.address.houseNumber}, #{event.location.address.postCode} #{event.location.address.city}, #{event.location.address.country}
   else
     p No events found.
