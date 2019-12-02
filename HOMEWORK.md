@@ -45,10 +45,10 @@ This project is based on the [Women Tech Makers Berlin - JavaScript Crash Course
 
 ## Homework for week 5
 
-- [ ] Convert all of your models into mongoose models
-- [ ] Implement all of your business logic in services
+- [x] Convert all of your models into mongoose models
+- [x] Implement all of your business logic in services
 - [ ] Expose all of your business logic through routes
-- [ ] Add a readme on which axios.get and axios.post calls to make, in order to run your application
+- [x] Add a readme on which axios.get and axios.post calls to make, in order to run your application
 
 **Video: [Women Techmakers Berlin JS Crash Course Vol 3 Lecture 5 — Adding a MongoDB Datastore](https://www.youtube.com/watch?v=mRQ-I5E-QHc)**
 

@@ -22,9 +22,9 @@ module.exports = class Service {
     return this.model.findById(itemId);
   }
 
-	// Finds a matching document, updates it according to the update arg, passing any options,
-	// and returns the found document (if any) to the callback.
-	// findByIdAndUpdate(id, update, options)
+  // Finds a matching document, updates it according to the update arg, passing any options,
+  // and returns the found document (if any) to the callback.
+  // findByIdAndUpdate(id, update, options)
   async findByIdAndUpdate(itemId, query, options) {
     console.log`[base-service.js] findByIdAndUpdate(query):`, Chalk.blue(query);
     return this.model.findByIdAndUpdate(itemId, query, options);

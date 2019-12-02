@@ -90,9 +90,9 @@ router.patch("/:id", async (req, res, next) => {
       req.params.id,
       req.body,
       {
-				new: true,
-				runValidators: true
-			},
+        new: true,
+        runValidators: true,
+      },
     );
 
     res.status(200).send(updatedPopup);

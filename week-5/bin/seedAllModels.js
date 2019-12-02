@@ -181,172 +181,172 @@ const seedModels = async () => {
       firstName: "Riley",
       lastName: "Deyin",
       email: "rileyd@example.org",
-			isMain: {
-				host: false,
-				organizer: false,
-			},
-			role: "organizer",
-			events: [],
-			popups: [],
-			joinedHosting: {
-				confirmed: false,
-				status: null,
-			},
-			joinedOrganizing: {
-				confirmed: true,
-				status: "accepted"
-			},
+      isMain: {
+        host: false,
+        organizer: false,
+      },
+      role: "organizer",
+      events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: false,
+        status: null,
+      },
+      joinedOrganizing: {
+        confirmed: true,
+        status: "accepted",
+      },
     });
 
     const user2 = new User({
       firstName: "Jami",
       lastName: "Watson",
-			email: "jamiw@example.org",
-			isMain: {
-				host: false,
-				organizer: false,
-			},
-			role: "guest",
-			events: [],
-			popups: [],
-			joinedHosting: {
-				confirmed: false,
-				status: null,
-			},
-			joinedOrganizing: {
-				confirmed: false,
-				status: null,
-			},
+      email: "jamiw@example.org",
+      isMain: {
+        host: false,
+        organizer: false,
+      },
+      role: "guest",
+      events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: false,
+        status: null,
+      },
+      joinedOrganizing: {
+        confirmed: false,
+        status: null,
+      },
     });
     const user3 = new User({
       firstName: "Jenny",
       lastName: "Morgan",
-			email: "jenw@example.org",
-			isMain: {
-				host: false,
-				organizer: false,
-			},
-			role: "guest",
-			events: [],
-			popups: [],
-			joinedHosting: {
-				confirmed: false,
-				status: null,
-			},
-			joinedOrganizing: {
-				confirmed: false,
-				status: "pending"
-			},
+      email: "jenw@example.org",
+      isMain: {
+        host: false,
+        organizer: false,
+      },
+      role: "guest",
+      events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: false,
+        status: null,
+      },
+      joinedOrganizing: {
+        confirmed: false,
+        status: "pending",
+      },
     });
     const user4 = new User({
       firstName: "Chris",
-			lastName: "Stuff",
-			email: "chris@example.org",
-			isMain: {
-				host: false,
-				organizer: false,
-			},
-			role: "guest",
-			events: [],
-			popups: [],
-			joinedHosting: {
-				confirmed: false,
-				status: "pending"
-			},
-			joinedOrganizing: {
-				confirmed: false,
-				status: "rejected"
-			},
+      lastName: "Stuff",
+      email: "chris@example.org",
+      isMain: {
+        host: false,
+        organizer: false,
+      },
+      role: "guest",
+      events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: false,
+        status: "pending",
+      },
+      joinedOrganizing: {
+        confirmed: false,
+        status: "rejected",
+      },
     });
 
     const host1 = new User({
       firstName: "Mhisa",
       lastName: "Yourg",
-			email: "mhisaw@example.org",
-			isMain: {
-				host: true,
-				organizer: false,
-			},
+      email: "mhisaw@example.org",
+      isMain: {
+        host: true,
+        organizer: false,
+      },
       role: "host",
       phoneNumber: "+44 8484 34 22 55",
-			events: [],
-			popups: [],
-			joinedHosting: {
-				confirmed: true,
-				status: null,
-				joinedDate: null
-			},
-			joinedOrganizing: {
-				confirmed: false,
-				status: null,
-				joinedDate: null,
-			},
+      events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: true,
+        status: null,
+        joinedDate: null,
+      },
+      joinedOrganizing: {
+        confirmed: false,
+        status: null,
+        joinedDate: null,
+      },
     });
     const host2 = new User({
       firstName: "Nana",
       lastName: "Nooo",
-			email: "nanoo@example.org",
-			isMain: {
-				host: false,
-				organizer: false,
-			},
+      email: "nanoo@example.org",
+      isMain: {
+        host: false,
+        organizer: false,
+      },
       role: "host",
-			phoneNumber: "+44 12 54 87 33",
-			events: [],
-			popups: [],
-			joinedHosting: {
-				confirmed: true,
-				status: "accepted",
-				joinedDate: new Date("2018-11-28"),
-			},
-			joinedOrganizing: {
-				confirmed: false,
-				status: null,
-			},
+      phoneNumber: "+44 12 54 87 33",
+      events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: true,
+        status: "accepted",
+        joinedDate: new Date("2018-11-28"),
+      },
+      joinedOrganizing: {
+        confirmed: false,
+        status: null,
+      },
     });
 
     const organizer1 = new User({
       firstName: "Xaya",
       lastName: "Hey",
-			email: "Xaya@example.org",
-			isMain: {
-				host: false,
-				organizer: false,
-			},
+      email: "Xaya@example.org",
+      isMain: {
+        host: false,
+        organizer: false,
+      },
       role: "organizer",
       phoneNumber: "+49 056 78 34 21",
-			events: [],
-			popups: [],
-			joinedHosting: {
-				confirmed: false,
-				status: null,
-			},
-			joinedOrganizing: {
-				confirmed: true,
-				status: "accepted",
-				joinedDate: new Date("2017-10-12"),
-			},
+      events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: false,
+        status: null,
+      },
+      joinedOrganizing: {
+        confirmed: true,
+        status: "accepted",
+        joinedDate: new Date("2017-10-12"),
+      },
     });
     const organizer2 = new User({
       firstName: "Fabienne",
       lastName: "Lala",
-			email: "fabienne@example.org",
-			isMain: {
-				host: false,
-				organizer: true,
-			},
+      email: "fabienne@example.org",
+      isMain: {
+        host: false,
+        organizer: true,
+      },
       role: "organizer",
-			phoneNumbeer: "+49 123 456 78 90",
-			events: [],
-			popups: [],
-			joinedHosting: {
-				confirmed: false,
-				status: null,
-			},
-			joinedOrganizing: {
-				confirmed: false,
-				status: null,
-			},
+      phoneNumbeer: "+49 123 456 78 90",
+      events: [],
+      popups: [],
+      joinedHosting: {
+        confirmed: false,
+        status: null,
+      },
+      joinedOrganizing: {
+        confirmed: false,
+        status: null,
+      },
     });
 
     await users.push(

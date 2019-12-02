@@ -72,44 +72,40 @@ router.get("/:id/json", async (req, res) => {
 });
 
 // CREATE a new user = POST http://localhost:3000/user/
-router.post("/new",
-  async (req, res, next) => {
-    try {
-      const user = await UserService.add(req.body);
+router.post("/new", async (req, res, next) => {
+  try {
+    const user = await UserService.add(req.body);
 
-      res.send(user);
-    } catch (err) {
-			return res.status(400).json({
-				status: "Error 400. User not created.",
-				errors: err,
-			});
-    }
-  },
-);
+    res.send(user);
+  } catch (err) {
+    return res.status(400).json({
+      status: "Error 400. User not created.",
+      errors: err,
+    });
+  }
+});
 
 // UPDATE a single user unit - PATCH http://localhost:3000/user/objectId
-router.patch("/:id",
-  async (req, res, next) => {
-    try {
-      // Find user by id, retrieve data from req.body with options and return user after update
-			const updatedUser = await UserService.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        {
-					new: true,
-					runValidators: true,
-				},
-			);
+router.patch("/:id", async (req, res, next) => {
+  try {
+    // Find user by id, retrieve data from req.body with options and return user after update
+    const updatedUser = await UserService.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
 
-      res.send(updatedUser);
-    } catch (err) {
-			return res.status(404).json({
-				status: "Error 404. User not found.",
-				errors: err,
-			});
-    }
-  },
-);
+    res.send(updatedUser);
+  } catch (err) {
+    return res.status(404).json({
+      status: "Error 404. User not found.",
+      errors: err,
+    });
+  }
+});
 
 // DELETE a single user DELETE http://localhost:3000/user/objectId
 router.delete("/:id", async (req, res) => {
@@ -117,12 +113,12 @@ router.delete("/:id", async (req, res) => {
     // Returns deleted document after deletion
     await UserService.findOneAndDelete(req.params.id);
 
-		if (req.params.id)
-			res.status(200).json({
-				// Use 200 (insteadd of 204 - No content) to return successful deletion message
-				status: "Success. User deleted.",
-				data: null,
-			});
+    if (req.params.id)
+      res.status(200).json({
+        // Use 200 (insteadd of 204 - No content) to return successful deletion message
+        status: "Success. User deleted.",
+        data: null,
+      });
   } catch (err) {
     return res.status(404).json({
       status: "Error 404. User not deleted.",
