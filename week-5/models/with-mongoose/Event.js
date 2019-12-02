@@ -31,18 +31,8 @@ const eventSchema = new mongoose.Schema(
       },
     },
     date: {
-      week_day: {
-        from: String,
-        to: String,
-      },
-      start_datetime: {
-        // TODO: Change to date later
-        type: String,
-      },
-      end_datetime: {
-        // TODO: Change to date later
-        type: String,
-      },
+			from: Date,
+			to: Date
     },
     // Host can be a group or a single user w/ first and last name
     eventHost: {
