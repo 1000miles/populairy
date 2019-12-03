@@ -59,8 +59,8 @@ const popupSchema = new Schema({
         maxDepth: 1,
       },
     },
-	],
-	// Host of this current pop-up
+  ],
+  // Host of this current pop-up
   event: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Event",
@@ -76,35 +76,35 @@ const popupSchema = new Schema({
         maxDepth: 1,
       },
     },
-	],
-	// List of all events that this pop-up has joined
-	events: [
-		{
+  ],
+  // List of all events that this pop-up has joined
+  events: [
+    {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Event",
       autopopulate: {
         maxDepth: 1,
       },
     },
-	]
+  ],
 });
 
 popupSchema.plugin(require("mongoose-autopopulate"));
 
 popupSchema.methods.register = async function(event, popup) {
-	try {
-		console.log(`[Popup.js] register()`)
+  try {
+    console.log(`[Popup.js] register()`);
 
-		this.events.push(event)
-		event.popups.push(this)
+    this.events.push(event);
+    event.popups.push(this);
 
-		await popup.save();
-		await event.save();
-	} catch (err) {
-		console.log(`[User.js] register() ERROR`, err)
-	}
-}
+    await popup.save();
+    await event.save();
+  } catch (err) {
+    console.log(`[User.js] register() ERROR`, err);
+  }
+};
 
-const Popup = mongoose.model('Popup', popupSchema);
+const Popup = mongoose.model("Popup", popupSchema);
 
- module.exports = Popup;
+module.exports = Popup;

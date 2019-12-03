@@ -125,17 +125,17 @@ router.delete("/:id", async (req, res) => {
 
 // Register for an event
 router.post("/:id/events", async (req, res) => {
-	try {
-		const popup = await PopupService.findById(req.params.id)
-		const event = await EventService.findById(req.body.event);
+  try {
+    const popup = await PopupService.findById(req.params.id);
+    const event = await EventService.findById(req.body.event);
 
-		popup.register(event, popup);
-		res.send(popup);
-	} catch (err) {
-		res.status(400).json({
-			errors: err
-		})
-	}
-})
+    popup.register(event, popup);
+    res.send(popup);
+  } catch (err) {
+    res.status(400).json({
+      errors: err,
+    });
+  }
+});
 
 module.exports = router;
