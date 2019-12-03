@@ -12,11 +12,11 @@ const popupSchema = new Schema({
     type: String,
     required: [true, "Category can't be blank."],
   },
-  popupTitle: {
+  name: {
     type: String,
-    required: [true, "Pop-up title can't be blank."],
-    minlength: [8, "Pop-up title should be min. 8 characters."],
-    maxlength: [40, "Pop-up title should be max. 40 characters."],
+    required: [true, "Pop-up name can't be blank."],
+    minlength: [8, "Pop-up name should be min. 8 characters."],
+    maxlength: [40, "Pop-up name should be max. 40 characters."],
   },
   description: {
     type: String,
@@ -37,7 +37,7 @@ const popupSchema = new Schema({
     },
   },
   // Pop-up main organizer
-  popupOrganizer: {
+  organizer: {
     name: {
       type: String,
       required: [true, "Pop-up organizer name can't be blank."],
@@ -48,24 +48,6 @@ const popupSchema = new Schema({
     },
     websiteUrl: {
       type: String,
-    },
-  },
-  // Pop-up co-organizers
-  joinedOrganizers: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      autopopulate: {
-        maxDepth: 1,
-      },
-    },
-  ],
-  // Host of this current pop-up
-  event: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Event",
-    autopopulate: {
-      maxDepth: 1,
     },
   },
   guests: [

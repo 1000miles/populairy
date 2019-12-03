@@ -40,8 +40,13 @@ const seedModels = async () => {
     await Event.deleteMany();
 
     const event1 = new Event({
-      eventType: "haircraft",
-      eventName: "OnHair Night 2",
+      category: "haircraft",
+			name: "OnHair Night 2",
+			description: "OnHair Night is a monthly event with 10 pop-ups...",
+			eventHost: {
+        name: "Jaunita Hicks",
+        email: "jaunita@example.org",
+      },
       location: {
         name: "Neukoelln Kunterbunt",
         address: {
@@ -52,23 +57,24 @@ const seedModels = async () => {
           city: "Berlin",
           country: "Germany",
         },
-      },
+			},
       date: {
         from: new Date(2019, 12, 29, 11, 00, 00),
         to: new Date(2019, 12, 29, 23, 00, 00),
       },
-      eventHost: {
-        name: "Jaunita Hicks",
-        email: "jaunita@example.org",
-      },
-      joinedHosts: [],
       popups: [],
       guests: [],
     });
 
     const event2 = new Event({
-      eventType: "food",
-      eventName: "Soup & Music",
+      category: "food",
+			name: "Soup & Music",
+			description: "Soup & Music is a combination of electronic music...",
+			eventHost: {
+        name: "Food Coop Berlin",
+        websiteUrl: "https://www.fooodcoopsers.org",
+        email: "foodcoopsers@example.org",
+      },
       location: {
         name: "Astra Stuben",
         address: {
@@ -84,12 +90,6 @@ const seedModels = async () => {
         from: new Date(2020, 05, 28, 10, 00, 00),
         to: new Date(2020, 05, 28, 22, 00, 00),
       },
-      eventHost: {
-        name: "Food Coop Berlin",
-        websiteUrl: "https://www.fooodcoopsers.org",
-        email: "foodcoopsers@example.org",
-      },
-      joinedHosts: [],
       popups: [],
       guests: [],
     });
@@ -109,7 +109,7 @@ const seedModels = async () => {
 
     const barberShop1 = new Popup({
       category: "barber",
-      popupTitle: "Barber Shop Vol. 11",
+      name: "Barber Shop Vol. 11",
       description:
         "Barber Shop is located in Neukoelln and offers tarot reading during the hair cut sessions...",
       slots: {
@@ -118,17 +118,18 @@ const seedModels = async () => {
           to: new Date(2020, 02, 22, 21, 00, 00),
         },
       },
-      popupOrganizer: {
+      organizer: {
         name: "RooArr Pop-up Collective",
         email: "roaar@example.org",
         websiteUrl: "https://rroaarr-example.org",
-      },
-      joinedOrganizers: [],
+			},
+			guests: [],
+			events: [],
     });
 
     const barberShop2 = new Popup({
       category: "barber",
-      popupTitle: "Pony and Clyde #23",
+      name: "Pony and Clyde #23",
       description:
         "Pony and Clyde was founded in 2017 by 2 best friennds. They always wanted to...",
       slots: {
@@ -137,17 +138,18 @@ const seedModels = async () => {
           to: new Date(2020, 02, 22, 21, 00, 00),
         },
       },
-      popupOrganizer: {
+      organizer: {
         name: "Bored Panda",
         email: "boredpan@example.org",
         websiteUrl: "https://boredpan-example.org",
       },
-      joinedOrganizers: [],
+			guests: [],
+			events: [],
     });
 
     const foodCorner1 = new Popup({
       category: "food",
-      popupTitle: "Food around the clock",
+      name: "Food around the clock",
       description: "Wonderful organic food all night long",
       slots: {
         date: {
@@ -155,12 +157,13 @@ const seedModels = async () => {
           to: new Date(2019, 12, 29, 20, 00, 00),
         },
       },
-      popupOrganizer: {
+      organizer: {
         name: "Colin Breston",
         email: "colin@example.org",
         websiteUrl: "https://colix-example.org",
       },
-      joinedOrganizers: [],
+			guests: [],
+			events: [],
     });
 
     await popups.push(barberShop1, barberShop2, foodCorner1);
@@ -181,172 +184,71 @@ const seedModels = async () => {
       firstName: "Riley",
       lastName: "Deyin",
       email: "rileyd@example.org",
-      isMain: {
-        host: false,
-        organizer: false,
-      },
-      role: "organizer",
+			role: "guest",
       events: [],
-      popups: [],
-      joinedHosting: {
-        confirmed: false,
-        status: null,
-      },
-      joinedOrganizing: {
-        confirmed: true,
-        status: "accepted",
-      },
+      popups: []
     });
 
     const user2 = new User({
       firstName: "Jami",
       lastName: "Watson",
       email: "jamiw@example.org",
-      isMain: {
-        host: false,
-        organizer: false,
-      },
       role: "guest",
       events: [],
       popups: [],
-      joinedHosting: {
-        confirmed: false,
-        status: null,
-      },
-      joinedOrganizing: {
-        confirmed: false,
-        status: null,
-      },
     });
     const user3 = new User({
       firstName: "Jenny",
       lastName: "Morgan",
       email: "jenw@example.org",
-      isMain: {
-        host: false,
-        organizer: false,
-      },
-      role: "guest",
-      events: [],
+			role: "guest",
+			events: [],
       popups: [],
-      joinedHosting: {
-        confirmed: false,
-        status: null,
-      },
-      joinedOrganizing: {
-        confirmed: false,
-        status: "pending",
-      },
     });
     const user4 = new User({
       firstName: "Chris",
       lastName: "Stuff",
       email: "chris@example.org",
-      isMain: {
-        host: false,
-        organizer: false,
-      },
       role: "guest",
       events: [],
       popups: [],
-      joinedHosting: {
-        confirmed: false,
-        status: "pending",
-      },
-      joinedOrganizing: {
-        confirmed: false,
-        status: "rejected",
-      },
     });
 
     const host1 = new User({
       firstName: "Mhisa",
       lastName: "Yourg",
       email: "mhisaw@example.org",
-      isMain: {
-        host: true,
-        organizer: false,
-      },
       role: "host",
       phoneNumber: "+44 8484 34 22 55",
-      events: [],
-      popups: [],
-      joinedHosting: {
-        confirmed: true,
-        status: null,
-        joinedDate: null,
-      },
-      joinedOrganizing: {
-        confirmed: false,
-        status: null,
-        joinedDate: null,
-      },
     });
     const host2 = new User({
       firstName: "Nana",
       lastName: "Nooo",
-      email: "nanoo@example.org",
-      isMain: {
-        host: false,
-        organizer: false,
-      },
+			email: "nanoo@example.org",
       role: "host",
       phoneNumber: "+44 12 54 87 33",
       events: [],
       popups: [],
-      joinedHosting: {
-        confirmed: true,
-        status: "accepted",
-        joinedDate: new Date("2018-11-28"),
-      },
-      joinedOrganizing: {
-        confirmed: false,
-        status: null,
-      },
     });
 
     const organizer1 = new User({
       firstName: "Xaya",
       lastName: "Hey",
-      email: "Xaya@example.org",
-      isMain: {
-        host: false,
-        organizer: false,
-      },
+			email: "Xaya@example.org",
       role: "organizer",
       phoneNumber: "+49 056 78 34 21",
       events: [],
       popups: [],
-      joinedHosting: {
-        confirmed: false,
-        status: null,
-      },
-      joinedOrganizing: {
-        confirmed: true,
-        status: "accepted",
-        joinedDate: new Date("2017-10-12"),
-      },
-    });
+		});
+
     const organizer2 = new User({
       firstName: "Fabienne",
       lastName: "Lala",
       email: "fabienne@example.org",
-      isMain: {
-        host: false,
-        organizer: true,
-      },
       role: "organizer",
       phoneNumbeer: "+49 123 456 78 90",
       events: [],
       popups: [],
-      joinedHosting: {
-        confirmed: false,
-        status: null,
-      },
-      joinedOrganizing: {
-        confirmed: false,
-        status: null,
-      },
     });
 
     await users.push(

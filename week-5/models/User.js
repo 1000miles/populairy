@@ -30,23 +30,11 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: [true, "Email can't be blank."],
-    },
-    isMain: {
-      // Main event host
-      host: {
-        type: Boolean,
-        default: false,
-      },
-      // Main pop-up organizer
-      organizer: {
-        type: Boolean,
-        default: false,
-      },
-    },
+		},
     role: {
       type: String,
-      enum: ["guest", "host", "organizer"],
-      default: "guest",
+      enum: ["guest", "host", "organizer", "user"],
+      default: "user",
       select: true,
     },
     phoneNumber: String,
@@ -68,36 +56,6 @@ const userSchema = new Schema(
         },
       },
     ],
-    joinedHosting: {
-      confirmed: {
-        type: Boolean,
-        default: false,
-      },
-      status: {
-        type: String,
-        enum: ["pending", "accepted", "rejected", null],
-        default: null,
-      },
-      joinedDate: {
-        type: Date,
-        default: null,
-      },
-    },
-    joinedOrganizing: {
-      confirmed: {
-        type: Boolean,
-        default: false,
-      },
-      status: {
-        type: String,
-        enum: ["pending", "accepted", "rejected", null],
-        default: null,
-      },
-      joinedDate: {
-        type: Date,
-        default: null,
-      },
-    },
   },
   {
     timestamps: {
