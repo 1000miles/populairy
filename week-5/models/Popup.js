@@ -1,6 +1,12 @@
 const mongoose = require("mongoose").set("debug", true);
 const Schema = mongoose.Schema;
 
+/**
+ * @property {String} event - An event is the main host of the current pop-up.
+ * @property {String} events - A list of events that a pop-up has joined (history)
+ * @property {String} slots - Slots are the available time ranges for a pop-up to be assigned to. A slot is always associated with the same date as an event that a pop-up joins.
+ */
+
 const popupSchema = new Schema({
   category: {
     type: String,
@@ -53,7 +59,8 @@ const popupSchema = new Schema({
         maxDepth: 1,
       },
     },
-  ],
+	],
+	// Host of this current pop-up
   event: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Event",
@@ -69,17 +76,35 @@ const popupSchema = new Schema({
         maxDepth: 1,
       },
     },
-  ],
+	],
+	// List of all events that this pop-up has joined
+	events: [
+		{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Event",
+      autopopulate: {
+        maxDepth: 1,
+      },
+    },
+	]
 });
 
 popupSchema.plugin(require("mongoose-autopopulate"));
 
-// const Popup = mongoose.model('Popup', popupSchema);
+popupSchema.methods.register = async function(event, popup) {
+	try {
+		console.log(`[Popup.js] register()`)
 
-// module.exports = Popup;
+		this.events.push(event)
+		event.popups.push(this)
 
-// FIXME: overwriting error: 'Cannot overwrite `Popup` model once compiled.'
-module.exports =
-  mongoose.models && mongoose.models.Popup
-    ? mongoose.models.Popup
-    : mongoose.model("Popup", popupSchema);
+		await popup.save();
+		await event.save();
+	} catch (err) {
+		console.log(`[User.js] register() ERROR`, err)
+	}
+}
+
+const Popup = mongoose.model('Popup', popupSchema);
+
+ module.exports = Popup;
