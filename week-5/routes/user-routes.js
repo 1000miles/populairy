@@ -127,4 +127,32 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.post("/:id/events", async (req, res) => {
+  try {
+    const user = await UserService.findById(req.params.id);
+    const event = await EventService.findById(req.body.event);
+
+    user.attendEvent(user, event);
+    res.send(user);
+  } catch (err) {
+    res.status(404).json({
+      error: err,
+    });
+  }
+});
+
+router.post("/:id/popups", async (req, res) => {
+  try {
+    const user = await UserService.findById(req.params.id);
+    const popup = await PopupService.findById(req.body.popup);
+
+    user.visit(user, popup);
+    res.send(user);
+  } catch (err) {
+    res.status(404).json({
+      error: err,
+    });
+  }
+});
+
 module.exports = router;

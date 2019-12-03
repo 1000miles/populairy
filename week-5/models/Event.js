@@ -3,16 +3,36 @@ const mongoose = require("mongoose").set("debug", true);
 // Validations happen in the /controllers/eventController
 const eventSchema = new mongoose.Schema(
   {
-    eventType: {
+    category: {
       type: String,
-      required: [true, "Event type can't be blank."],
+      required: [true, "Event category can't be blank."],
     },
-    eventName: {
+    name: {
       type: String,
       required: [true, "Event name can't be blank."],
       minlength: [8, "Event name should be min. 8 characters long"],
       maxlength: [40, "Event name should be max. 40 characters long"],
-    },
+		},
+		description: {
+			type: String,
+			minlength: 10,
+			maxlength: 250,
+			required: [true, "Event description can't be blank."],
+		},
+		// Host can be a group or a single user w/ first and last name
+		eventHost: {
+			name: {
+				type: String,
+				required: [true, "Host name can't be blank."],
+			},
+			websiteUrl: {
+				type: String,
+			},
+			email: {
+				type: String,
+				required: [true, "Email can't be blank."],
+			},
+		},
     location: {
       name: {
         type: String,
@@ -51,30 +71,7 @@ const eventSchema = new mongoose.Schema(
         type: Date,
         required: [true, "To date can't be blank."],
       },
-    },
-    // Host can be a group or a single user w/ first and last name
-    eventHost: {
-      name: {
-        type: String,
-        required: [true, "Host name can't be blank."],
-      },
-      websiteUrl: {
-        type: String,
-      },
-      email: {
-        type: String,
-        required: [true, "Email can't be blank."],
-      },
-    },
-    joinedHosts: [
-      {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: "User",
-        autopopulate: {
-          maxDepth: 1,
-        },
-      },
-    ],
+		},
     popups: [
       {
         type: mongoose.SchemaTypes.ObjectId,
