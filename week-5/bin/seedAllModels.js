@@ -41,9 +41,9 @@ const seedModels = async () => {
 
     const event1 = new Event({
       category: "haircraft",
-			name: "OnHair Night 2",
-			description: "OnHair Night is a monthly event with 10 pop-ups...",
-			eventHost: {
+      name: "OnHair Night 2",
+      description: "OnHair Night is a monthly event with 10 pop-ups...",
+      eventHost: {
         name: "Jaunita Hicks",
         email: "jaunita@example.org",
       },
@@ -57,7 +57,7 @@ const seedModels = async () => {
           city: "Berlin",
           country: "Germany",
         },
-			},
+      },
       date: {
         from: new Date(2019, 12, 29, 11, 00, 00),
         to: new Date(2019, 12, 29, 23, 00, 00),
@@ -68,9 +68,9 @@ const seedModels = async () => {
 
     const event2 = new Event({
       category: "food",
-			name: "Soup & Music",
-			description: "Soup & Music is a combination of electronic music...",
-			eventHost: {
+      name: "Soup & Music",
+      description: "Soup & Music is a combination of electronic music...",
+      eventHost: {
         name: "Food Coop Berlin",
         websiteUrl: "https://www.fooodcoopsers.org",
         email: "foodcoopsers@example.org",
@@ -122,9 +122,9 @@ const seedModels = async () => {
         name: "RooArr Pop-up Collective",
         email: "roaar@example.org",
         websiteUrl: "https://rroaarr-example.org",
-			},
-			guests: [],
-			events: [],
+      },
+      guests: [],
+      events: [],
     });
 
     const barberShop2 = new Popup({
@@ -143,8 +143,8 @@ const seedModels = async () => {
         email: "boredpan@example.org",
         websiteUrl: "https://boredpan-example.org",
       },
-			guests: [],
-			events: [],
+      guests: [],
+      events: [],
     });
 
     const foodCorner1 = new Popup({
@@ -162,8 +162,8 @@ const seedModels = async () => {
         email: "colin@example.org",
         websiteUrl: "https://colix-example.org",
       },
-			guests: [],
-			events: [],
+      guests: [],
+      events: [],
     });
 
     await popups.push(barberShop1, barberShop2, foodCorner1);
@@ -184,9 +184,9 @@ const seedModels = async () => {
       firstName: "Riley",
       lastName: "Deyin",
       email: "rileyd@example.org",
-			role: "guest",
+      role: "guest",
       events: [],
-      popups: []
+      popups: [],
     });
 
     const user2 = new User({
@@ -201,8 +201,8 @@ const seedModels = async () => {
       firstName: "Jenny",
       lastName: "Morgan",
       email: "jenw@example.org",
-			role: "guest",
-			events: [],
+      role: "guest",
+      events: [],
       popups: [],
     });
     const user4 = new User({
@@ -224,7 +224,7 @@ const seedModels = async () => {
     const host2 = new User({
       firstName: "Nana",
       lastName: "Nooo",
-			email: "nanoo@example.org",
+      email: "nanoo@example.org",
       role: "host",
       phoneNumber: "+44 12 54 87 33",
       events: [],
@@ -234,12 +234,12 @@ const seedModels = async () => {
     const organizer1 = new User({
       firstName: "Xaya",
       lastName: "Hey",
-			email: "Xaya@example.org",
+      email: "Xaya@example.org",
       role: "organizer",
       phoneNumber: "+49 056 78 34 21",
       events: [],
       popups: [],
-		});
+    });
 
     const organizer2 = new User({
       firstName: "Fabienne",

@@ -23,7 +23,7 @@ const popupSchema = new Schema({
     minlength: 10,
     maxlength: 250,
     required: [true, "Pop-up description can't be blank."],
-  },
+	},
   slots: {
     date: {
       from: {
@@ -54,9 +54,11 @@ const popupSchema = new Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Event",
-      autopopulate: {
-        maxDepth: 1,
-      },
+			autopopulate: {
+				maxDepth: 1,
+				// Show only first, last name and id
+			 select: "firstName lastName"
+		 },
     },
   ],
   // List of all events that this pop-up has joined
@@ -64,9 +66,11 @@ const popupSchema = new Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Event",
-      autopopulate: {
-        maxDepth: 1,
-      },
+			autopopulate: {
+				maxDepth: 1,
+				// Show only name, date and id
+			 select: "name date",
+		 },
     },
   ],
 });

@@ -1,0 +1,13 @@
+// http://localhost:3000/user/:id/events
+
+# axios.post("/user/5de553e5ae12564c68c58bf0/events", event: "5de553e5ae12564c68c58beb").then(console.log)
+
+// User attends event
+POST http://localhost:3000/user/5de79581cefd9429c96ca190/events
+content-type: application/json
+
+{
+	// Key has to be whole object `event`, only `_id` wouldn't work
+	"event": "5de79581cefd9429c96ca18c"
+}
+

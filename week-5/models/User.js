@@ -30,7 +30,7 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: [true, "Email can't be blank."],
-		},
+    },
     role: {
       type: String,
       enum: ["guest", "host", "organizer", "user"],
@@ -43,7 +43,9 @@ const userSchema = new Schema(
         type: mongoose.SchemaTypes.ObjectId,
         ref: "Event",
         autopopulate: {
-          maxDepth: 1,
+					maxDepth: 1,
+					// Show only name, date and id
+          select: "name date"
         },
       },
     ],
@@ -52,7 +54,9 @@ const userSchema = new Schema(
         type: mongoose.SchemaTypes.ObjectId,
         ref: "Popup",
         autopopulate: {
-          maxDepth: 1,
+					maxDepth: 1,
+					// Show only name, date, slots and id
+          select: "name date slots"
         },
       },
     ],
@@ -96,8 +100,6 @@ userSchema.methods.visit = async function(user, popup) {
 
     // console.log(`this`, this) => this = user
     this.popups.push(popup);
-
-    // `.push(this)` = specific push recognized by mongoose
     popup.guests.push(this);
 
     await user.save();

@@ -1,0 +1,11 @@
+// http://localhost:3000/popup/:id/events
+
+# axios.post("/popup/5de68827097d370762bbdc7c/events", { event: "5de68827097d370762bbdc7a" }).then(console.log)
+
+// Pop-up registers for event
+POST http://localhost:3000/popup/5de68827097d370762bbdc7c/events
+content-type: application/json
+
+{
+	"event": "5de68827097d370762bbdc7a"
+}

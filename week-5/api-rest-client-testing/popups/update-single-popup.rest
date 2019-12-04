@@ -1,0 +1,10 @@
+// http://localhost:3000/popup/:id
+
+PATCH http://localhost:3000/popup/5ddf05b0aae918288eee8980
+content-type: application/json
+
+{
+	"category": "handcraft",
+	"popupTitle": "WHEELY repair session",
+	"description": "WHEELY is a collective of 5 people from Toronto. They met the first time at college and became good friends. In 2017 they decided to challenge their friendship and bring it to the next level...",
+}

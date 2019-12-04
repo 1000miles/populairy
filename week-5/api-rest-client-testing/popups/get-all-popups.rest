@@ -1,0 +1,5 @@
+// http://localhost:3000/popup/all/json
+
+GET http://localhost:3000/popup/all/json
+content-type: application/json
+

@@ -132,7 +132,9 @@ router.post("/:id/events", async (req, res) => {
     const user = await UserService.findById(req.params.id);
     const event = await EventService.findById(req.body.event);
 
-    user.attendEvent(user, event);
+    console.log(`[user-routes.js] POST EVENT`, event);
+
+    user.attend(user, event);
     res.send(user);
   } catch (err) {
     res.status(404).json({
