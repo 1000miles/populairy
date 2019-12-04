@@ -47,15 +47,15 @@ This project is based on the [Women Tech Makers Berlin - JavaScript Crash Course
 
 - [x] Convert all of your models into mongoose models
 - [x] Implement all of your business logic in services
-- [ ] Expose all of your business logic through routes
+- [x] Expose all of your business logic through routes
 - [x] Add a readme on which axios.get and axios.post calls to make, in order to run your application
 
 **Video: [Women Techmakers Berlin JS Crash Course Vol 3 Lecture 5 — Adding a MongoDB Datastore](https://www.youtube.com/watch?v=mRQ-I5E-QHc)**
 
 ## Homework for week 6
 
-- [ ] Install [ava](https://www.npmjs.com/package/ava), [nyc](https://www.npmjs.com/package/nyc), [supertest](https://www.npmjs.com/package/supertest) for testing
-- [ ] Config `package.json` with:
+- [x] Install [ava](https://www.npmjs.com/package/ava), [nyc](https://www.npmjs.com/package/nyc), [supertest](https://www.npmjs.com/package/supertest) for testing
+- [x] Config `package.json` with:
 
 	```js
   "scripts": {
@@ -75,3 +75,17 @@ This project is based on the [Women Tech Makers Berlin - JavaScript Crash Course
 **Video Part 1: [Women Techmakers Berlin JS Crash Course Vol 3 Lecture 7 — The Frontend](https://www.youtube.com/watch?v=PcK1ASlm1OU)**
 
 **Video Part 2: [Women Techmakers Berlin JS Crash Course Vol 3 Lecture 7 part 2 — Vue Router](https://www.youtube.com/watch?v=Rzjmh4vvrQo)**
+
+## Homework for week 8
+
+- [ ] Install [Docker](https://docs.docker.com/install/)
+- [ ] Setup Docker for heroku deployment
+- [ ] Sign up for a [Heroku](http://herokuapp.com/) account and instll [heroku-cli](https://devcenter.heroku.com/articles/heroku-cli)
+- [ ] Deploy your app using Heroku
+
+### Useful links:
+
+- [WTMB Welcome Guide - Docker](https://github.com/WTMBerlin/jscc-welcomeguide#docker)
+- [WTMB Welcome Guide - Heroku](https://github.com/WTMBerlin/jscc-welcomeguide#heroku)
+- [WTMB Week 8 Instructions](https://github.com/WTMBerlin/jscc2019/blob/master/week-8/README.md)
+- [Heroku Container Registry & Runtime (Docker Deploys)](https://devcenter.heroku.com/articles/container-registry-and-runtime)
