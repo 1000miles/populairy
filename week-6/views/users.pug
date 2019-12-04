@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h3 #[u #{users.length}] People attending...
+  each user in users
+    if user.role === "host" || "organizer"
+      li #{user.firstName} #{user.lastName}, #[strong E-Mail]: #{user.email}, #[strong Role]: #{user.role}, #[strong Phone]: #{user.phoneNumber}
+    else if (user.role === "guest")
+      li #[strong Name]: #{user.firstName} #{user.lastName}, #[strong E-Mail]: #{user.email}, #[strong Role]: #{user.role}
+      | #{events}

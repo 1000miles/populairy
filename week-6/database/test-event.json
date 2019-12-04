@@ -1,0 +1,29 @@
+{
+  "eventType": "haircraft",
+  "eventName": "onHair 4 Night",
+  "location": {
+    "name": "Madame Rossi 2",
+    "address": {
+      "additionalString": "2nd floor, next to bar",
+      "streetName": "Wegbereiter 21",
+      "houseNumber": "234a",
+      "postCode": "12345",
+      "city": "Berlin",
+      "country": "Germany"
+    }
+  },
+  "date": {
+    "week_day": {
+      "from": "Saturday",
+      "to": "Saturday"
+    },
+    "start_datetime": "May 5, ®2020, 11:00AM",
+    "end_datetime": "May 5, 2020, 9:00PM"
+  },
+  "eventHost": {
+    "group": {
+      "name": "Barbery X Collective",
+      "email": "barberyx@example.org"
+    }
+  }
+}
