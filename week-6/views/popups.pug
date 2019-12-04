@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	h3 #[u #{popups.length}] Pop-up(s) listed and counting...
+	each popup in popups
+		h3 #[strong #{popup.popupTitle}]
+		p #[strong Date]: #{popup.slots.date.from} - #{popup.slots.date.to}
+	h3 Guests:
+	each user in users
+		li #{user.firstName} #{user.lastName}, Email: #{user.email}, Phone: #{user.phoneNumber}
