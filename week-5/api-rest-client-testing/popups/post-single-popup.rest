@@ -1,0 +1,34 @@
+// http://localhost:3000/popup?:id
+
+POST http://localhost:3000/popup/new
+content-type: application/json
+
+{
+	"_id": "id",
+	"category": "barber",
+	"popupTitle": "Barber Shop Vol. 11",
+	"description": "Barber Shop is located in Neukoelln and offers tarot reading during the hair cut sessions...",
+	"slots": {
+		"date": {
+			"from": "2020, 02, 22, 10, 00, 00",
+			"to": "2020, 02, 22, 21, 00, 00"
+		},
+	},
+	"popupOrganizer": {
+		"name": "RooArr Pop-up Collective",
+		"email": "roaar@example.org",
+		"websiteUrl": "https://rroaarr-example.org"
+	},
+	"joinedOrganizers": [
+		{
+			"name": "Jakob Grenzwertig",
+			"email": "jakobw@example.org",
+			"status": "pending"
+		},
+		{
+			"name": "Bertie Bollwerk",
+			"email": "bertiew@example.org",
+			"status": "accepted"
+		},
+	]
+}

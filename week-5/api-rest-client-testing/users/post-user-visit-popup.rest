@@ -1,0 +1,13 @@
+// http://localhost:3000/user/:id/events
+
+# axios.post("/user/5de553e5ae12564c68c58bf0/events", event: "5de553e5ae12564c68c58beb").then(console.log)
+
+// User visits pop-up
+POST http://localhost:3000/user/5de68827097d370762bbdc7f/popups
+content-type: application/json
+
+{
+	// Key has to be whole object `popup`, only `_id` wouldn't work
+	"popup": "5de68827097d370762bbdc7e"
+}
+

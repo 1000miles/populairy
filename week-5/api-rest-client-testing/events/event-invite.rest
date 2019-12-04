@@ -1,0 +1,6 @@
+POST http://localhost:3000/event/5de594dde6e6f881b2c84bfa/register
+content-type: application/json
+
+{
+	popup: "5de594dde6e6f881b2c84bfe"
+}

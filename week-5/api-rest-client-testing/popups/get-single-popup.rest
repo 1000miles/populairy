@@ -1,0 +1,4 @@
+// http://localhost:3000/popup/:id
+
+GET http://localhost:3000/popup/5ddf3521f61304628b67f07a
+content-type: application/json

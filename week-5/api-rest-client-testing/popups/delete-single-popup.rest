@@ -1,0 +1,4 @@
+// http://localhost:3000/popup/:id
+
+DELETE http://localhost:3000/popup/5ddeb14c9e430059fdd60359
+content-type: application/json
